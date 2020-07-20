@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import dao.entities.AspectMacro;
@@ -112,4 +113,16 @@ public class FamilleDAO {
 	        }
 		 return familles;
 	 }
+	 public int nombreFamilles() {
+		   	int familles = 0;
+				 try {
+			            EntityManager em = this.newEntityManager();
+			            Query query =em.createQuery( "SELECT count(f) as nombreFamille FROM Famille f");
+			            familles = Integer.parseInt(query.getSingleResult().toString());
+			            this.closeEntityManager(em);
+			        } catch (Exception e) {
+			            System.out.println("Erreur  "+ e.getMessage());
+			        }
+				 return familles;
+			 }
 }

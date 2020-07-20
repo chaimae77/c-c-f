@@ -26,6 +26,7 @@ public class RendezVous implements Serializable{
 	    private String heureRendez;
 	    private String objet;
 	    private String note;
+	    private Boolean notifier;
 	    
 	    @ManyToOne
 	    private Individu patient;
@@ -35,13 +36,14 @@ public class RendezVous implements Serializable{
 	    
 	    
 
-	    public RendezVous(Date dateRendezVous, String heureRendez, String objet, String note, Individu patient) {
+	    public RendezVous(Date dateRendezVous, String heureRendez, String objet, String note, Individu patient , Boolean notifier) {
 			super();
 			this.dateRendezVous = dateRendezVous;
 			this.heureRendez = heureRendez;
 			this.objet = objet;
 			this.note = note;
 			this.patient = patient;
+			this.notifier = notifier;
 		}
 
 
@@ -101,7 +103,19 @@ public class RendezVous implements Serializable{
 
 	    
 	    
-	    @Override
+	    public Boolean getNotifier() {
+			return notifier;
+		}
+
+
+
+		public void setNotifier(Boolean notifier) {
+			this.notifier = notifier;
+		}
+
+
+
+		@Override
 	    public int hashCode() {
 	        int hash = 0;
 	        hash += (int) id_RendezVous;
@@ -125,9 +139,14 @@ public class RendezVous implements Serializable{
 
 		@Override
 		public String toString() {
-			return "RendezVous [dateRendezVous=" + dateRendezVous + ", heureRendez=" + heureRendez + ", objet=" + objet
+			return "RendezVous [id_RendezVous=" + id_RendezVous + ", dateRendezVous=" + dateRendezVous
+					+ ", heureRendez=" + heureRendez + ", objet=" + objet + ", note=" + note + ", notifier=" + notifier
 					+ ", patient=" + patient + "]";
 		}
+
+
+
+		
 
 	    
 	    

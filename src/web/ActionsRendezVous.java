@@ -60,7 +60,8 @@ public class ActionsRendezVous {
 		String objet = request.getParameter("objRDV");
 		String heure = request.getParameter("hrRDV");
 		String note = request.getParameter("ntRDV");
-		RendezVous rendez = new RendezVous(journeyDate, heure, objet, note, patient);
+		Boolean notifier = false;
+		RendezVous rendez = new RendezVous(journeyDate, heure, objet, note, patient,notifier);
 		
 		rendDAO.ajouterRendez(rendez);
 		return "/ajoutRendezVous.jsp";
@@ -141,7 +142,8 @@ public class ActionsRendezVous {
 		String objet = request.getParameter("objRDV");
 		String heure = request.getParameter("hrRDV");
 		String note = request.getParameter("ntRDV");
-		RendezVous rendez = new RendezVous(journeyDate, heure, objet, note, patient);
+		Boolean notifier = false;
+		RendezVous rendez = new RendezVous(journeyDate, heure, objet, note, patient,notifier);
 		
 		rendDAO.modifierRendez(Ancienid, rendez);
 		return "/ajoutRendezVous.jsp";

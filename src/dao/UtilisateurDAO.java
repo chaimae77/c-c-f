@@ -148,4 +148,17 @@ public class UtilisateurDAO {
             return false; 
         }
     }
+	
+	public int nombreUsers() {
+	   	int users = 0;
+			 try {
+		            EntityManager em = this.newEntityManager();
+		            Query query =em.createQuery( "SELECT count(u) as nombreUsers FROM Utilisateur u");
+		            users = Integer.parseInt(query.getSingleResult().toString());
+		            this.closeEntityManager(em);
+		        } catch (Exception e) {
+		            System.out.println("Erreur  "+ e.getMessage());
+		        }
+			 return users;
+		 }
 }
