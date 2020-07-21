@@ -303,6 +303,56 @@
 		</div>
 	</div>
 	
+	  <%
+            RendezDAO rdDAO = new RendezDAO();
+			List<RendezVous> rendezVous = rdDAO.listerRendezVousNonTrait();
+          %>
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Liste des Rendes-vous</h4>
+							</div>
+						</div>
+						<div class="card-body table-responsive">
+							<table class="table table-hover">
+								<thead class="text-warning">
+									<th>Nom</th>
+									<th>Prenom</th>
+									<th>Téléphone</th>
+									<th>Date R-v</th>
+									<th>Heure R-v</th>
+									<th>Note</th>
+									<th>Objet</th>
+									<th>Notifier</th>
+								</thead>
+								<tbody>
+									<%
+										for (RendezVous rd : rendezVous) {
+											String dateFormatee = formatDateJour.format(rd.getDateRendezVous());
+									%>
+									<tr>
+										<td><%=rd.getPatient().getNom()%></td>
+										<td><%=rd.getPatient().getPrenom()%></td>
+										<td><%=rd.getPatient().getTel1()%></td>
+										<td><%=dateFormatee%></td>
+										<td><%=rd.getHeureRendez()%></td>
+										<td><%=rd.getNote()%></td>
+										<td><%=rd.getObjet()%></td>
+										<td><input type="checkbox" name="" id="myCheck<%=rd.getId()%>"
+											 onclick="myFunction();" /></td>
+									</tr>
+									<%
+										}
+									%>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+	
 	<script>
 		var ctx = document.getElementById('syndromes').getContext('2d');
 		var labelsArray=[];
@@ -422,6 +472,9 @@
 		crossorigin="anonymous"></script>
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		
+		
 
 </body>
 </html>

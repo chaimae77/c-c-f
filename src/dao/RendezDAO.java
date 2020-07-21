@@ -126,4 +126,26 @@ public class RendezDAO {
 				        }
 				        return syndrome;
 			    }	
+		 public List<RendezVous> listerRendezVousNonTrait() {
+				Date myDate = new Date();
+				EntityManager em = this.newEntityManager();
+				TypedQuery<RendezVous> requete = em.createQuery("SELECT r FROM RendezVous r  WHERE r.dateRendezVous > :date",
+						RendezVous.class);
+				requete.setParameter("date", myDate);
+				List<RendezVous> rendez = requete.getResultList();
+				this.closeEntityManager(em);
+				return rendez;
+			}
+		//marquer comme notifier
+		public void marquerRendezVousNotifier(int idRDV, Boolean notifier) {
+				EntityManager em = this.newEntityManager();
+				TypedQuery<RendezVous> requete = em
+						.createQuery("update RendezVous set notifier = :notifier where id_RendezVous = :id ", RendezVous.class);
+				requete.setParameter("notifier", notifier);
+				requete.setParameter("id", idRDV);
+				int rdv  = requete.executeUpdate();
+				System.out.println("updateeeeeeeeeeeed : " + rdv);
+				this.closeEntityManager(em);
+			}
+
 }
