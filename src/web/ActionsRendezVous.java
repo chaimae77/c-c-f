@@ -23,32 +23,35 @@ public class ActionsRendezVous {
 	private IndividuDAO indDAO;
 	private RendezDAO rendDAO;
 	private DossierDAO dosDAO;
-	
+
 	public HttpServletRequest getRequest() {
 		return request;
 	}
+
 	public void setRequest(HttpServletRequest request) {
 		this.request = request;
 	}
+
 	public HttpServletResponse getResponse() {
 		return response;
 	}
+
 	public void setResponse(HttpServletResponse response) {
 		this.response = response;
 	}
-	
-	
+
 	public ActionsRendezVous(IndividuDAO indDAO, RendezDAO rendDAO, DossierDAO dosDAO) {
 		super();
 		this.indDAO = indDAO;
 		this.rendDAO = rendDAO;
 		this.dosDAO = dosDAO;
 	}
-	public String ajoutRendezVous(){
+
+	public String ajoutRendezVous() {
 		String pat = request.getParameter("patient");
 		int id = Integer.parseInt(pat);
 		Individu patient = indDAO.trouverIndById(id);
-		String date =request.getParameter("dateRDV");
+		String date = request.getParameter("dateRDV");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 		Date journeyDate = null;
 		try {
@@ -56,67 +59,75 @@ public class ActionsRendezVous {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		String objet = request.getParameter("objRDV");
 		String heure = request.getParameter("hrRDV");
 		String note = request.getParameter("ntRDV");
 		Boolean notifier = false;
-		RendezVous rendez = new RendezVous(journeyDate, heure, objet, note, patient,notifier);
-		
+		RendezVous rendez = new RendezVous(journeyDate, heure, objet, note, patient, notifier);
+
 		rendDAO.ajouterRendez(rendez);
 		return "/ajoutRendezVous.jsp";
 	}
-	public String suppRend(){
+
+	public String suppRend() {
 		String idy = request.getParameter("id");
 		int id = Integer.parseInt(idy);
 		rendDAO.supprimerRendez(id);
-		
+
 		return "/ajoutRendezVous.jsp";
 	}
-	public String rechercheRendezVousMod(){
+
+	public String rechercheRendezVousMod() {
 		String id = request.getParameter("individu");
 //		
-		HttpSession session =  request.getSession();
+		HttpSession session = request.getSession();
 		session.setAttribute("idPatient", id);
 		return "/modRendeVous.jsp";
 	}
-	public String rechercheRendezVous(){
+
+	public String rechercheRendezVous() {
 		String id = request.getParameter("individu");
 //		
-		HttpSession session =  request.getSession();
+		HttpSession session = request.getSession();
 		session.setAttribute("idPatient", id);
 		return "/suppRendezVous.jsp";
 	}
-	public String recherchePatientRendezMod(){
+
+	public String recherchePatientRendezMod() {
 		String id = request.getParameter("famille");
 //		
-		HttpSession session =  request.getSession();
+		HttpSession session = request.getSession();
 		session.setAttribute("idFamille", id);
 		return "/modRendeVous.jsp";
 	}
-	public String recherchePatientRendez(){
+
+	public String recherchePatientRendez() {
 		String id = request.getParameter("famille");
 //		
-		HttpSession session =  request.getSession();
+		HttpSession session = request.getSession();
 		session.setAttribute("idFamille", id);
 		return "/suppRendezVous.jsp";
 	}
-	public String rendezVous(){
+
+	public String rendezVous() {
 		String idDossier = request.getParameter("id");
 		HttpSession session = request.getSession();
 		session.setAttribute("Dossier", idDossier);
 		return "/formRendezVous.jsp";
 	}
-	public String rechercheDossierRendez(){
+
+	public String rechercheDossierRendez() {
 		String nom = request.getParameter("famille");
-		BeanDossier bean =  new BeanDossier();
+		BeanDossier bean = new BeanDossier();
 //		bean.setId(id_Famille);
 		bean.setDossiers(dosDAO.listeDossierByNonFamille(nom));
-		HttpSession session =  request.getSession();
+		HttpSession session = request.getSession();
 		session.setAttribute("beanDossier", bean);
 		return "/ajoutRendezVous.jsp";
 	}
-	public String modRendezTrait(){
+
+	public String modRendezTrait() {
 		String ide = request.getParameter("id");
 		int id = Integer.parseInt(ide);
 		RendezVous rendez = rendDAO.trouverRendezVousById(id);
@@ -124,13 +135,14 @@ public class ActionsRendezVous {
 		sessionModRend.setAttribute("RendezVous", rendez);
 		return "/modRendezTrait.jsp";
 	}
-	public String modifierRendezVous(){
+
+	public String modifierRendezVous() {
 		String idRendez = request.getParameter("idRendez");
 		int Ancienid = Integer.parseInt(idRendez);
 		String pat = request.getParameter("patient");
 		int id = Integer.parseInt(pat);
 		Individu patient = indDAO.trouverIndById(id);
-		String date =request.getParameter("dateRDV");
+		String date = request.getParameter("dateRDV");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 		Date journeyDate = null;
 		try {
@@ -138,22 +150,29 @@ public class ActionsRendezVous {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		String objet = request.getParameter("objRDV");
 		String heure = request.getParameter("hrRDV");
 		String note = request.getParameter("ntRDV");
 		Boolean notifier = false;
-		RendezVous rendez = new RendezVous(journeyDate, heure, objet, note, patient,notifier);
-		
+		RendezVous rendez = new RendezVous(journeyDate, heure, objet, note, patient, notifier);
+
 		rendDAO.modifierRendez(Ancienid, rendez);
 		return "/ajoutRendezVous.jsp";
 	}
-	
-	 public String modRendezVous(){
-		 
-			String idRDV = request.getParameter("id");
-			HttpSession session = request.getSession();
-			session.setAttribute("idRDV", idRDV);
-			return "/formRDV.jsp";
-		}
+
+	public String modRendezVous() {
+
+		String idRDV = request.getParameter("id");
+		HttpSession session = request.getSession();
+		session.setAttribute("idRDV", idRDV);
+		return "/formRDV.jsp";
+	}
+
+	public String marquerRDVNotifier() {
+		String idRDV = request.getParameter("id");
+		int newId = Integer.parseInt(idRDV);
+		rendDAO.marquerRendezVousNotifier(newId);
+		return "/charts.jsp";
+	}
 }

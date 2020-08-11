@@ -384,17 +384,40 @@ public class IndividuDAO {
 		return individus;
 	}
 
-	public List<Couple> listCoupleByFamille(int id_famille) {
-		List<Couple> couples = new ArrayList<>();
+	public List<Individu> listCoupleByFamille(int id_famille) {
+		List<Individu> couples = new ArrayList<>();
 		EntityManager em = this.newEntityManager();
-		Famille famille = em.find(Famille.class, id_famille);
-		TypedQuery<Couple> requete = em.createQuery(
-				"SELECT DISTINCT m FROM Famille f  JOIN FETCH f.individus i JOIN FETCH i.membreDeCouple m WHERE f.id_Famille =:id",
-				Couple.class);
-		requete.setParameter("id", famille.getId());
+		TypedQuery<Individu> requete = em.createQuery(
+				"SELECT DISTINCT i FROM Famille f  JOIN  f.individus i  JOIN i.membreDeCouple m WHERE f.id_Famille =:id",
+				Individu.class);
+		requete.setParameter("id",id_famille);
 		couples = requete.getResultList();
 		this.closeEntityManager(em);
 		return couples;
+	}
+	
+	public List<Individu> listCoupleFilsByFamille(int id_couple) {
+		List<Individu> individus = new ArrayList<>();
+		EntityManager em = this.newEntityManager();
+		TypedQuery<Individu> requete = em.createQuery(
+				"SELECT i FROM Individu i join i.filsDeCouple f WHERE f.id_Couple =:id",
+				Individu.class);
+		requete.setParameter("id",id_couple);
+		individus = requete.getResultList();
+		this.closeEntityManager(em);
+		return individus;
+	}
+	
+	public List<Individu> listCoupleFilsByFamille1(int id_famille) {
+		List<Individu> individus = new ArrayList<>();
+		EntityManager em = this.newEntityManager();
+		TypedQuery<Individu> requete = em.createQuery(
+				"SELECT i FROM Famille f JOIN  f.individus i JOIN i.membreDeCouple m JOIN i.filsDeCouple s where f.id_Famille = :id",
+				Individu.class);
+		requete.setParameter("id",id_famille);
+		individus = requete.getResultList();
+		this.closeEntityManager(em);
+		return individus;
 	}
 
 	public List<Couple> listCoupleByNomFamille(String nom) {

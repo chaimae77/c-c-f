@@ -22,129 +22,106 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-
-
 <!-- Custom CSS -->
 <link href="css/sb-admin.css" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="css/plugins/morris.css" rel="stylesheet">
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+	rel="stylesheet">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
 
-<!-- Custom Fonts -->
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
 <body>
-
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
-
-		<div id="page-wrapper">
-
-			<div class="container-fluid">
-
-				<!-- Page Heading -->
-				<div class="row">
-					<h3 class="page-header" style="text-align: center">
-						<img class="img" src="images\logo.png " width="" height=""
-							alt="logo" /><small></small>
-					</h3>
-
-					<!-- /.row -->
-					<div class="row">
-						<div class="col-md-6 col-lg-offset-3">
-							<h3 class="page-header">
-								Modification d'un Rendez-Vous <small></small>
-							</h3>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Modifier un Rendez Vous</h3>
-								</div>
-								<div class="panel-body">
-									<form role="form" action="modifierRendezVous.chu" method="post">
-										<%
-											String id_rdv = (String) session.getAttribute("idRDV");
-											int idRDV = Integer.parseInt(id_rdv);
-											RendezDAO rdvDAO = new RendezDAO();
-											RendezVous rdv = rdvDAO.trouverRendezVousById(idRDV); 
-											SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
-											String dates=formatter.format(rdv.getDateRendezVous());
-										%>
-										
-										<div class="form-group">
-
-											<input type="hidden" class="form-control" name="idRendez"
-												value='<%=rdv.getId()%>' placeholder="">
-										</div>
-										<div class="form-group">
-											<label for="nomFamille">Patient</label>
-											<%
-												IndividuDAO invidu = new IndividuDAO();
-												List<Individu> individus = new ArrayList<>();
-												individus = invidu.listerLesIndividu();
-											%>
-											<select class="form-control" name="patient">
-											<option value="<%=rdv.getPatient().getId()%>"><%=rdv.getPatient() %></option>
-												<%
-													for (Individu indi : individus) {
-														if(rdv.getPatient().getId()!= indi.getId()){
-												%>
-
-												<option value="<%=indi.getId()%>"><%=indi%></option>
-												<%
-													}
-													}
-												%>
-											</select>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-4 control-label">Date
-												Rendez-vous:</label> <input type="date" class="form-control"
-												name="dateRDV" value='<%=dates%>' />
-										</div>
-										<div class="form-group">
-											<label class="col-sm-4 control-label">Heure
-												Rendez-vous:</label> <input type="time" class="form-control"
-												name="hrRDV" value='<%=rdv.getHeureRendez()%>' />
-										</div>
-										<div class="form-group">
-											<label class="col-sm-4 control-label"> Objet</label>
-											<textarea class="form-control" name="objRDV"><%=rdv.getObjet()%></textarea>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-4 control-label"> Note</label>
-											<textarea class="form-control" name="ntRDV"><%=rdv.getNote()%></textarea>
-										</div>
-										</br>
-										<button type="submit"
-											class="btn btn-purple waves-effect waves-light">Modifier</button>
-									</form>
-								</div>
-								<!-- panel-body -->
-
-							</div>
-							<!-- panel -->
-						</div>
-
-
-					</div>
-					<!-- End row -->
-
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-1 col-lg-offset-0">
+					<a href="ajoutRendezVous.jsp" ><i class="material-icons preced">arrow_back</i></a>
 				</div>
-				<!-- /.container-fluid -->
-
 			</div>
-			<!-- /#page-wrapper -->
+			<div class="row">
+				<div class="col-md-8 col-lg-offset-2">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Modifier un Rendez Vous</h4>
+							</div>
+						</div>
+						<div class="card-body table-responsive">
+							<form role="form" action="modifierRendezVous.chu" method="post">
+								<%
+									String id_rdv = (String) session.getAttribute("idRDV");
+									int idRDV = Integer.parseInt(id_rdv);
+									RendezDAO rdvDAO = new RendezDAO();
+									RendezVous rdv = rdvDAO.trouverRendezVousById(idRDV);
+									SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+									String dates = formatter.format(rdv.getDateRendezVous());
+								%>
+
+								<div class="form-group">
+
+									<input type="hidden" class="form-control" name="idRendez"
+										value='<%=rdv.getId()%>' placeholder="">
+								</div>
+								<div class="form-group">
+									<label for="nomFamille">Patient</label>
+									<%
+										IndividuDAO invidu = new IndividuDAO();
+										List<Individu> individus = new ArrayList<>();
+										individus = invidu.listerLesIndividu();
+									%>
+									<select class="form-control" name="patient">
+										<option value="<%=rdv.getPatient().getId()%>"><%=rdv.getPatient()%></option>
+										<%
+											for (Individu indi : individus) {
+												if (rdv.getPatient().getId() != indi.getId()) {
+										%>
+
+										<option value="<%=indi.getId()%>"><%=indi%></option>
+										<%
+											}
+											}
+										%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="">Date Rendez-vous:</label> <input type="date"
+										class="form-control" name="dateRDV" value='<%=dates%>' />
+								</div>
+								<div class="form-group">
+									<label for="">Heure Rendez-vous:</label> <input type="time"
+										class="form-control" name="hrRDV"
+										value='<%=rdv.getHeureRendez()%>' />
+								</div>
+								<div class="form-group">
+									<label for=""> Objet</label>
+									<textarea class="form-control" name="objRDV"><%=rdv.getObjet()%></textarea>
+								</div>
+								<div class="form-group">
+									<label for=""> Note</label>
+									<textarea class="form-control" name="ntRDV"><%=rdv.getNote()%></textarea>
+								</div>
+								</br>
+								<button type="submit"
+									class="btn btn-purple waves-effect waves-light btnCardInfo">Modifier</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End row -->
 
 		</div>
 		<!-- /#wrapper -->
 	</div>
 </body>
-
-<%@include file="piedUt.jsp"%>
 </html>

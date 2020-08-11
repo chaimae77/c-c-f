@@ -104,9 +104,7 @@ import dao.entities.TypeStatut;
 import dao.entities.Utilisateur;
 
 //@WebServlet({ "/Controller", "/Connexion" })
-@MultipartConfig(fileSizeThreshold = 1024*1024*2,
-maxFileSize = 1024*1024*10,
-maxRequestSize = 1024*1024*50)
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, maxFileSize = 1024 * 1024 * 10, maxRequestSize = 1024 * 1024 * 50)
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -170,7 +168,7 @@ public class Controller extends HttpServlet {
 	private GenetiqueDAO genDAO;
 	private UtilisateurDAO userDAO;
 	private ActionsUser actionUser;
-	
+
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		indDAO = new IndividuDAO();
@@ -227,7 +225,7 @@ public class Controller extends HttpServlet {
 				typeCancerDAO);
 		examenClinique = new ActionExamenClinique(examPostDAO, examPreDAO, examenAnoDAO, indDAO, dosDAO, hopDAO,
 				categDAO, syndromesPostDAO, toucherDAO);
-		examenMedical = new ActionExamenMedical(dosDAO,endoDAO);
+		examenMedical = new ActionExamenMedical(dosDAO, endoDAO);
 		rendezVous = new ActionsRendezVous(indDAO, rendDAO, dosDAO);
 		endoscopie = new ActionsEndoscopie(dosDAO, hopDAO, typeAndoDAO, aspectDAO, cirfDAO, endoDAO, siegeDAO, compDAO,
 				endoAnoDAO);
@@ -240,7 +238,7 @@ public class Controller extends HttpServlet {
 		actionFamille = new ActionFamille(familleDAO, indDAO, dosDAO);
 		genetique = new ActionGenetique(dosDAO, hopDAO, genDAO);
 		actionUser = new ActionsUser(userDAO);
-		
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -278,17 +276,17 @@ public class Controller extends HttpServlet {
 
 		imagerie.setRequest(request);
 		imagerie.setResponse(response);
-		
+
 		genetique.setRequest(request);
 		genetique.setResponse(response);
-		
+
 		traitement.setRequest(request);
 		traitement.setResponse(response);
 
 		actionFamille.setRequest(request);
 		actionFamille.setResponse(response);
-		
-        actionUser.setRequest(request);
+
+		actionUser.setRequest(request);
 		actionUser.setResponse(response);
 		if (actionKey.equalsIgnoreCase("Connexion")) {
 			vue = actionUser.authenticate();
@@ -299,8 +297,8 @@ public class Controller extends HttpServlet {
 //			String email = request.getParameter("email");
 //			String login = request.getParameter("email");
 //			String pwd = request.getParameter("password");
-			//Utilisateur newUser = new Infirmier(nom, prenom, email, login, pwd);
-			//System.out.println(newUser);
+			// Utilisateur newUser = new Infirmier(nom, prenom, email, login, pwd);
+			// System.out.println(newUser);
 //			if ((new UtilisateurDAO()).creerNouveauCompte(newUser)) {
 //				vue = "/espaceUtilisateur.jsp";
 //			} else {
@@ -308,11 +306,12 @@ public class Controller extends HttpServlet {
 //			}
 
 		} else if (actionKey.equalsIgnoreCase("logout")) {
-			
-			   HttpSession session = request.getSession(false); if(session != null)
-			   session.invalidate();
-			   request.getRequestDispatcher("/index.jsp");
-			
+
+			HttpSession session = request.getSession(false);
+			if (session != null)
+				session.invalidate();
+			request.getRequestDispatcher("/index.jsp");
+
 		} else if (actionKey.equalsIgnoreCase("ajoutFamille")) {
 			vue = actionIndividu.ajoutFamille();
 		} else if (actionKey.equalsIgnoreCase("ajoutIndividu")) {
@@ -518,36 +517,37 @@ public class Controller extends HttpServlet {
 		} else if (actionKey.equalsIgnoreCase("consTraitement")) {
 			vue = traitement.consulTraitement();
 		}
-		
+
 		else if (actionKey.equalsIgnoreCase("consImagerie")) {
 			vue = imagerie.getImagerie();
-		}else if (actionKey.equalsIgnoreCase("consBiologie")) {
+		} else if (actionKey.equalsIgnoreCase("consBiologie")) {
 			vue = biologie.consultBiologie();
-		}else if (actionKey.equalsIgnoreCase("ajoutGenetique")) {
+		} else if (actionKey.equalsIgnoreCase("ajoutGenetique")) {
 			vue = genetique.ajoutGenetique();
-		}
-		else if (actionKey.equalsIgnoreCase("modGen")) {
+		} else if (actionKey.equalsIgnoreCase("modGen")) {
 			vue = genetique.modGen();
-		}else if (actionKey.equalsIgnoreCase("consGenetique")) {
+		} else if (actionKey.equalsIgnoreCase("consGenetique")) {
 			vue = genetique.consultGenetique();
-		}else if (actionKey.equalsIgnoreCase("modGenetique")) {
+		} else if (actionKey.equalsIgnoreCase("modGenetique")) {
 			vue = genetique.modGenetiqueTrait();
-		}else if (actionKey.equalsIgnoreCase("detailUtilisateur")) {
+		} else if (actionKey.equalsIgnoreCase("detailUtilisateur")) {
 			vue = actionUser.ConsulterUtilisateur();
-		}else if (actionKey.equalsIgnoreCase("suppUtilisateur")) {
+		} else if (actionKey.equalsIgnoreCase("suppUtilisateur")) {
 			vue = actionUser.SupprimerUtilisateur();
-		}else if (actionKey.equalsIgnoreCase("modUser")) {
+		} else if (actionKey.equalsIgnoreCase("modUser")) {
 			vue = actionUser.modUser();
-		}else if (actionKey.equalsIgnoreCase("modUtilisateur")) {
+		} else if (actionKey.equalsIgnoreCase("modUtilisateur")) {
 			vue = actionUser.ModifierUtilisateur();
-		}else if (actionKey.equalsIgnoreCase("ajoutUtilisateur")) {
+		} else if (actionKey.equalsIgnoreCase("ajoutUtilisateur")) {
 			vue = actionUser.AjouterUtilisateur();
-		}else if (actionKey.equalsIgnoreCase("rapportMedical")) {
+		} else if (actionKey.equalsIgnoreCase("rapportMedical")) {
 			vue = examenMedical.rapportMedical();
+		} else if (actionKey.equalsIgnoreCase("arbre")) {
+			vue = actionIndividu.afficherArbre();
+		} else if (actionKey.equalsIgnoreCase("notifier")) {
+			vue = rendezVous.marquerRDVNotifier();
 		}
-		
-		
-		
+
 		RequestDispatcher dispatcher;
 		dispatcher = request.getRequestDispatcher(vue);
 		dispatcher.forward(request, response);

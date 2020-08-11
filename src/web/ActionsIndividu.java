@@ -414,4 +414,13 @@ public class ActionsIndividu {
 		}
 		return "";
 	}
+	
+	public String afficherArbre() {
+		String idy = request.getParameter("id");
+		int id = Integer.parseInt(idy);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("id", id);
+		return "arbre.jsp";
+	}
 }

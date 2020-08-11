@@ -71,13 +71,12 @@ public class ActionsUser {
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		Object[] user = (new UtilisateurDAO()).authentification(login, password);
-		System.out.println("utilisateuuuur : " + user[2]);
 		if (user != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("nom", user[0]);
 			session.setAttribute("prenom", user[1]);
 			if ("infirmier".equals(user[2])) {
-				return "/espaceUtilisateur.jsp";
+				return "/charts.jsp";
 			}
 			if ("medecin".equals(user[2])) {
 				return "/espaceMedecin.jsp";

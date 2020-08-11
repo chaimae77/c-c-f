@@ -137,14 +137,12 @@ public class RendezDAO {
 				return rendez;
 			}
 		//marquer comme notifier
-		public void marquerRendezVousNotifier(int idRDV, Boolean notifier) {
+		public void marquerRendezVousNotifier(int idRDV) {
 				EntityManager em = this.newEntityManager();
 				TypedQuery<RendezVous> requete = em
-						.createQuery("update RendezVous set notifier = :notifier where id_RendezVous = :id ", RendezVous.class);
-				requete.setParameter("notifier", notifier);
+						.createQuery("update RendezVous set notifier = true where id_RendezVous = :id ", RendezVous.class);
 				requete.setParameter("id", idRDV);
 				int rdv  = requete.executeUpdate();
-				System.out.println("updateeeeeeeeeeeed : " + rdv);
 				this.closeEntityManager(em);
 			}
 

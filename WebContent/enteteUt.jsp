@@ -1,4 +1,4 @@
-
+<%-- 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
@@ -54,3 +54,38 @@
 	</div>
 
 </nav>
+ --%>
+
+<div class="sidebar">
+	<div class="logo">
+		<a href="charts.jsp" class="simple-text">
+			<div class="logo-img">
+				<img src="images/chu.png" />
+			</div> CHU FES
+		</a>
+	</div>
+	<div class="sidebar-wrapper">
+		<ul class="nav">
+			<li class="nav-item"><a class="active nav-link" href="charts.jsp"> 
+			<i class="material-icons">dashboard</i>
+					<p>Tableau de Bord</p>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" href="espaceUtilisateur.jsp"> 
+			<i class="material-icons">people_outline</i>
+					<p>Gestion des familles</p>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" href="gestionDossier.jsp"> 
+			<i class="material-icons">folder_shared</i>
+					<p>Gestion des dossiers</p>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" href="ajoutRendezVous.jsp"> 
+			<i class="material-icons">notifications</i>
+					<p>Gestions des rendez-vous</p>
+			</a></li>
+			
+		</ul>
+		
+</div>
+<div class="sidebar-background"
+			style="background-image: url(images/sidebar-4.jpg)"></div>
+	</div>
