@@ -30,7 +30,6 @@
 	<!-- Morris Charts CSS -->
 	<link href="css/plugins/morris.css" rel="stylesheet">
 
-
 	<!-- <style type="text/css">
 		.navbar-nav>li {
 			float: none !important;
@@ -39,13 +38,15 @@
 		}
 	</style> -->
 	<!--  -->
-	<!-- <script src="assetss/js/scripts.js"></script> -->
+
+	<!--Scripts-->
+	<script src="assetss/js/scripts.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
 <body>
-
+	<!--principal wrapper-->
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
 		<div class="container-fluid">
@@ -77,18 +78,7 @@
 									<button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal"
 										data-target="#myModal">Ajouter</button>
 								</div>
-								</br> </br>
-								<!-- <div class="panel panel-default">
-									<div class="panel-heading">
-										<h3 class="panel-title">Liste des familles</h3>
-									</div> -->
-
-								<!-- <div class="panel-body">
-									<%
-										FamilleDAO famDAO = new FamilleDAO();
-										List<Famille> familles = new ArrayList<>();
-										familles = famDAO.lister();
-									%> -->
+								</br>
 							</div>
 						</div>
 						<div class="row">
@@ -140,72 +130,71 @@
 								</div>
 							</div>
 						</div>
-							<!-- panel -->
+						<!-- panel -->
 
-							<!-- End row -->
-
-						</div>
-						<!-- /.container-fluid -->
+						<!-- End row -->
 
 					</div>
-					<!-- /#page-wrapper -->
+					<!-- /.container-fluid -->
 
 				</div>
-				<!-- /#wrapper -->
+				<!-- /#page-wrapper -->
 
-				<!-- Modal -->
-				<div class="modal fade" id="myModal" role="dialog">
-					<div class="modal-dialog">
+			</div>
+			<!-- /#wrapper -->
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
 
-						<!-- Modal content-->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Ajout d'une famille</h4>
-							</div>
-							<div class="modal-body">
-								<form role="form" action="ajoutFamille.chu" method="post">
-									<div class="form-group">
-										<label for="nomFamille">Nom de la famille</label> <input type="text"
-											class="form-control" name="nomFamille"
-											placeholder="Entrer le nom de la famille">
-									</div>
-									<div class="form-group">
-										<label class="col-sm-4 control-label">Dignostic:</label>
-										<div class="col-sm-8">
-											<%
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Ajout d'une famille</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form" action="ajoutFamille.chu" method="post">
+						<div class="form-group">
+							<label for="nomFamille">Nom de la famille</label> <input type="text" class="form-control"
+								name="nomFamille" placeholder="Entrer le nom de la famille">
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Dignostic:</label>
+							<div class="col-sm-8">
+								<%
 										SyndromeFamilleDAO diagDAO = new SyndromeFamilleDAO();
 										List<SyndromeFamille> diagnostics = new ArrayList<>();
 										diagnostics = diagDAO.listerDiagnostic();
 									%>
-											<select class="form-control" name="diagnostic">
-												<%
+								<select class="form-control" name="diagnostic">
+									<%
 											for (SyndromeFamille diag : diagnostics) {
 										%>
 
-												<option value="<%=diag.getId()%>"><%=diag%></option>
-												<%
+									<option value="<%=diag.getId()%>"><%=diag%></option>
+									<%
 											}
 										%>
-											</select>
-										</div>
-									</div>
-									</br> </br>
-									<button type="submit"
-										class="btn btn-purple waves-effect waves-light">Enregistrer</button>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</select>
 							</div>
 						</div>
-
-					</div>
+						</br> </br>
+						<button type="submit" class="btn btn-purple waves-effect waves-light">Enregistrer</button>
+					</form>
 				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
-				<script src="assetss/js/common/jquery.min.js"></script>
-				<script src="assetss/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assetss/js/common/jquery.min.js"></script>
+	<script src="assetss/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 <%@include file="piedUt.jsp"%>
