@@ -19,21 +19,19 @@
 
 <title>Dossiers médicaux</title>
 
-<!-- Bootstrap Core CSS -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-
-
 <!-- Custom CSS -->
 <link href="css/sb-admin.css" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="css/plugins/morris.css" rel="stylesheet">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Custom Fonts -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
+
 
 
 </head>
@@ -42,26 +40,18 @@
 
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
-
-		<div id="page-wrapper">
-
 			<div class="container-fluid">
+			<%@include file="navbar.jsp"%>
 
-				<!-- Page Heading -->
-				<div class="row">
-					<h3 class="page-header" style="text-align: center">
-						<img class="img" src="images\logo.png " width="" height=""
-							alt="logo" /><small></small>
-					</h3>
-					<h3 class="page-header">
-						Gestion des dossiers médicaux <small></small>
-					</h3>
+				
 					<!-- /.row -->
 					<div class="row">
-						<div class="col-md-10 col-lg-offset-1">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Liste des individus</h3>
+						<div class="col-md-12">
+						<div class="card">
+							<div class="card-header card-header-info card-header-icon">
+						<div class="card-icon" style="float: none !important;">
+									<h4>Liste des individus</h4>
+								</div>
 								</div>
 								<%
 									String id_Famille = (String) session.getAttribute("idFamille");
@@ -69,14 +59,14 @@
 									IndividuDAO indDAO = new IndividuDAO();
 									List<Individu> individus = indDAO.listIndividuByFamille(idFamille);
 								%>
-								<div class="panel-body">
-									<table class="table table-striped">
-										<thead>
+								<div class="card-body table-responsive">
+									<table class="table table-hover" id="idDataTable">										<thead class="text-warning">
 											<tr>
 												<th></th>
 												<th>Nom</th>
 												<th>Prenom</th>
 												<th>Date de Naissance</th>
+												<th></th>
 
 											</tr>
 										</thead>
@@ -98,8 +88,7 @@
 												<td><%=ind.getNom()%></td>
 												<td><%=ind.getPrenom()%></td>
 												<td><%=dateFormatee%></td>
-												<td><a href="dossier.chu?id=<%=ind.getId()%>"><i
-														class="fa fa-pencil-square-o"></i> Ajouter Dossier</a></td>
+												<td><a href="dossier.chu?id=<%=ind.getId()%>"><i class="material-icons preced" title="Ajouter dossier">add_circle_outline</i></a></td>
 											</tr>
 
 											<%
@@ -111,13 +100,11 @@
 												<td><%=ind.getPrenom()%></td>
 												<td><%=dateFormatee%></td>
 												<td><a
-													href="modifier.chu?id=<%=ind.getDossier().getId()%>"><i
-														class="fa fa-pencil-square-o"></i> Modifier Dossier</a> <a
-													href="examen.chu?id=<%=ind.getDossier().getId()%>"><i
-														class="fa fa-eye"> </i> Consulter Dossier</a><a
+													href="modifier.chu?id=<%=ind.getDossier().getId()%>"><i class="material-icons warn" title="modifier le dossier">edit</i></a> <a
+													href="examen.chu?id=<%=ind.getDossier().getId()%>">
+													<i class="material-icons" title="consulter le dossier">remove_red_eye</i></a><a
 													href="rapportMedical.chu?id=<%=ind.getDossier().getId()%>">
-														<i class="fa fa-file-o" aria-hidden="true"></i> Rapport
-														Médicale
+														 <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Rapport médicale</button>
 												</a></td>
 											</tr>
 											<%
@@ -140,8 +127,7 @@
 				</div>
 				<!-- /.container-fluid -->
 
-			</div>
-			<!-- /#page-wrapper -->
+			
 
 		</div>
 		<!-- /#wrapper -->

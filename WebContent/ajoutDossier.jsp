@@ -15,22 +15,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	
-    <title>Espace Utilisateur</title>
+   <title>Dossiers médicaux</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	
-	
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -43,25 +42,19 @@
 
             <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="row">
-                  <h3 class="page-header" style="text-align:center">
-                            <img class="img"  src="images\logo.png " width="" height="" alt="logo"/><small></small>
-                   </h3>
-                <!-- /.row -->
+             <%@include file="navbar.jsp"%>
 				<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><h3 class="panel-title">Creation d'un nouveau dossier</h3></div>
-                        <div class="panel-body">
+						<div class="col-md-8 col-md-offset-2">
+						<div class="card">
+							<div class="card-header card-header-info card-header-icon">
+						<div class="card-icon" style="float: none !important;"><h4>Création d'un nouveau dossier</h4></div></div>
+                        <div class="card-body table-responsive">
                              <form class="form-horizontal" role="form" action="ajoutDossier.chu" method="post">
 											<div class="form-group">
-                                                <label for="date" class="col-sm-3 control-label">Date de creation:</label>
-                                                <div class="col-sm-9">
-                                                  <input type="text" name="dateDossier" placeholder="jj/mm/aaaa" class="form-control" id="dateCreat" style="width:250px">
+                                                <label for="">Date de création:</label>
+                                                  <input type="date" name="dateDossier" placeholder="jj/mm/aaaa" class="form-control" id="dateCreat">
                                                 </div>
-                                            </div>
+                                           
                                             	<%
                                             	String idInd= (String)session.getAttribute("Individu");
                                             	int idIndividu =Integer.parseInt(idInd);
@@ -70,11 +63,9 @@
 		                                    <div class="form-group">
 		                                         <input type="hidden" class="form-control" name="patient" value="<%=idIndividu %>"  style="width:250px">
 		                                    </div>
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                  <button type="submit" class="btn btn-info waves-effect waves-light">Enregistrer</button>
-                                                </div>
-                                            </div>
+                                            
+                                                  <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Enregistrer</button>
+                                            
                                         </form>
                         </div><!-- panel-body -->
 						
@@ -93,7 +84,7 @@
     </div>
     <!-- /#wrapper -->
     
-    </div>
+
     </body>
     
 	

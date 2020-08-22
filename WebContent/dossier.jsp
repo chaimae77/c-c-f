@@ -15,40 +15,38 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	
-    <title>Espace Utilisateur</title>
+    <title>Dossiers médicaux</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	
 	
-
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     
 <!--     <link href="asset/css/style.css" type="text/css" rel="stylesheet"> -->
+
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 
 </head>
 <body>
 
     <div id="wrapper">
 	<%@include file="enteteUt.jsp" %>
-
-        <div id="page-wrapper">
-
             <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                  <h3 class="page-header" style="text-align:center">
-                            <img class="img"  src="images\logo.png " width="" height="" alt="logo"/><small></small>
-                   </h3>
+            <%@include file="navbar.jsp"%>
               <%
 				String id_Dossier = (String)session.getAttribute("idDossier");
 				int  idDossier = Integer.parseInt(id_Dossier);
@@ -59,11 +57,17 @@
                 <!-- /.row -->
 				
 				 
-			<div class="container">
-			  <h2>Dossier médical de <%=dos.getPatient() %></h2>
+			<div class="row">
+						<div class="col-md-12">
+						<div class="card">
+							<div class="card-header card-header-info card-header-icon">
+						<div class="card-icon" style="float: none !important;">
+									<h4>Dossier médical de <%=dos.getPatient() %></h4>
+								</div>
+								</div>
 			  <ul class="nav nav-tabs">
 			    <li class="active"><a data-toggle="tab" href="#home">Statut</a></li>
-			    <li><a data-toggle="tab" href="#menu1">Examen Clinique</a></li>
+			    <li><a data-toggle="tab" href="ExamenClinique.jsp">Examen Clinique</a></li>
 			    <li><a data-toggle="tab" href="#menu2">Endoscopie</a></li>
 			    <li><a data-toggle="tab" href="#menu3">Anatomie Pathologique</a></li>
 			    <li><a data-toggle="tab" href="#menu4">Imagerie</a></li>
@@ -565,8 +569,7 @@
             </div>
             <!-- /.container-fluid -->
 			
-        </div>
-        <!-- /#page-wrapper -->
+    
         
 	<%@include file="piedUt.jsp" %>
     </div>
