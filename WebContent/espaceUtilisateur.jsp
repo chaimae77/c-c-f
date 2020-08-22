@@ -81,63 +81,65 @@
 								</br>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="card">
-									<div class="card-header card-header-info card-header-icon">
-										<div class="card-icon" style="float: none !important;">
-											<h4>Liste des familles</h4>
-										</div>
-									</div>
-									<div class="card-body table-responsive">
-										<table class="table table-hover" id="idDataTable">
-											<thead class="text-warning">
-												<tr>
-													<th></th>
-													<th>Nom de Famille</th>
-													<th>Cas Index</th>
-													<th>Diagnostic</th>
-												</tr>
-											</thead>
-											<tbody>
-												<%
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header card-header-info card-header-icon">
+								<div class="card-icon" style="float: none !important;">
+									<h4>Liste des familles</h4>
+								</div>
+							</div>
+							<div class="card-body table-responsive">
+								<table class="table table-hover" id="idDataTable">
+									<thead class="text-warning">
+										<tr>
+											<th></th>
+											<th>Nom de Famille</th>
+											<th>Cas Index</th>
+											<th>Diagnostic</th>
+										</tr>
+									</thead>
+									<tbody>
+										<%
 												int i = 1;
 												for (Famille famille : familles) {
 											%>
-												<tr>
-													<td><%=i%></td>
-													<td><%=famille.getNomFamille()%></td>
-													<td><%=famille.getCasIndex()%></td>
-													<td><%=famille.getDiagnostic()%></td>
-													<td><a href="listInd.chu?id=<%=famille.getId()%>">
-															<i class="fa fa-eye"> </i> Consulter
-														</a> <a href="modFamille.chu?id=<%=famille.getId()%>"><i
-																class="fa fa-pencil-square-o"></i> Modifier </a>
-														<a href="arbre.chu?id=<%=famille.getId()%>"><i
-																class="fa fa-eye"></i> Arbre Genealogique</a>
-													</td>
-												</tr>
+										<tr>
+											<td><%=i%></td>
+											<td><%=famille.getNomFamille()%></td>
+											<td><%=famille.getCasIndex()%></td>
+											<td><%=famille.getDiagnostic()%></td>
+											<td><a href="listInd.chu?id=<%=famille.getId()%>">
+													<i class="fa fa-eye"> </i> Consulter
+												</a> <a href="modFamille.chu?id=<%=famille.getId()%>"><i
+														class="fa fa-pencil-square-o"></i> Modifier </a>
+												<a href="arbre.chu?id=<%=famille.getId()%>"><i class="fa fa-eye"></i>
+													Arbre Genealogique</a>
+											</td>
+										</tr>
 
-												<%
+										<%
 												i++;
 												}
 											%>
-											</tbody>
-										</table>
-									</div>
-									<!-- panel-body -->
-
-								</div>
+									</tbody>
+								</table>
 							</div>
+							<!-- panel-body -->
+
 						</div>
-						<!-- panel -->
-
-						<!-- End row -->
-
 					</div>
-					<!-- /.container-fluid -->
-
 				</div>
+				<!-- panel -->
+
+				<!-- End row -->
+
+
+
+
 				<!-- /#page-wrapper -->
 
 			</div>
