@@ -13,3 +13,13 @@
 		$('#idDataTable').DataTable();
 	});
 </script>
+<!-- <script type="text/javascript">
+
+		/* $(".nav-item a").on("click", function() {
+			$(".nav-item a").removeClass("active");
+			$(this).addClass("active");
+		}); */
+		$('.nav-item a').trigger('click');
+		$(".nav-item a").removeClass("active");
+		$(this).addClass("active");
+</script> -->

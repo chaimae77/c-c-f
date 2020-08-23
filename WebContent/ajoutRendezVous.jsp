@@ -43,7 +43,7 @@
 		<%@include file="enteteUt.jsp"%>
 
 		<div class="container-fluid">
-		<%@include file="navbar.jsp"%>
+			<%@include file="navbar.jsp"%>
 			<%
 				RendezDAO rd = new RendezDAO();
 				List<RendezVous> rdv = new ArrayList<>();
@@ -136,12 +136,12 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="">Date Rendez-vous:</label>
-								<input type="date" class="form-control" name="dateRDV">
+								<label for="">Date Rendez-vous:</label> <input type="date"
+									class="form-control" name="dateRDV">
 							</div>
 							<div class="form-group">
-								<label for="">Heure Rendez-vous:</label>
-								<input type="time" class="form-control" name="hrRDV">
+								<label for="">Heure Rendez-vous:</label> <input type="time"
+									class="form-control" name="hrRDV">
 							</div>
 							<div class="form-group">
 								<label for="">Objet</label>
@@ -159,11 +159,8 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-	
+	<%@include file="piedUt.jsp"%>
 </body>
-
-<%@include file="piedUt.jsp"%>
 </html>
 

@@ -8,7 +8,7 @@
 		<div class="collapse navbar-collapse justify-content-end"
 			id="navigation">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="charts.jsp">
+				<li class="nav-item"><a class="nav-link" href="javascript:void(0)">
 						<i class="material-icons" title="Tableau de Bord">dashboard</i>
 				</a></li>
 				<li class="nav-item dropdown"><a class="nav-link"

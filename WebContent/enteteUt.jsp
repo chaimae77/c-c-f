@@ -65,27 +65,42 @@
 		</a>
 	</div>
 	<div class="sidebar-wrapper">
-		<ul class="nav">
-			<li class="nav-item"><a class="active nav-link" href="charts.jsp"> 
-			<i class="material-icons">dashboard</i>
+		<ul class="nav" id="nav">
+			<li class="nav-item"><a class="nav-link"
+				href="charts.jsp"> <i class="material-icons">dashboard</i>
 					<p>Tableau de Bord</p>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="espaceUtilisateur.jsp"> 
-			<i class="material-icons">people_outline</i>
+			<li class="nav-item"><a class="nav-link"
+				href="espaceUtilisateur.jsp"> <i class="material-icons">people_outline</i>
 					<p>Gestion des familles</p>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="gestionDossier.jsp"> 
-			<i class="material-icons">folder_shared</i>
+			<li class="nav-item"><a class="nav-link"
+				href="gestionDossier.jsp"> <i class="material-icons">folder_shared</i>
 					<p>Gestion des dossiers</p>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="ajoutRendezVous.jsp"> 
-			<i class="material-icons">notifications</i>
+			<li class="nav-item"><a class="nav-link"
+				href="ajoutRendezVous.jsp"> <i class="material-icons">notifications</i>
 					<p>Gestions des rendez-vous</p>
 			</a></li>
-			
+
 		</ul>
-		
-</div>
-<div class="sidebar-background"
-			style="background-image: url(images/sidebar-4.jpg)"></div>
+		<script>
+			$(function() {
+				var current = location.pathname;
+				var searchTerm = '/cancer-colorectal/';
+				var searchIndex = current.indexOf(searchTerm);
+				var strOut = current.substr(searchIndex + searchTerm.length);
+				 $('.nav-item a').each(function() {
+					var $this = $(this);
+					// if the current path is like this link, make it active
+					 if ($this.attr('href').indexOf(strOut) !== -1) {
+						$this.addClass('active');
+					}
+				}) 
+			})
+		</script>
+
 	</div>
+	<div class="sidebar-background"
+		style="background-image: url(images/sidebar-4.jpg)"></div>
+</div>

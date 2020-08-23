@@ -17,7 +17,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Dossiers médicaux</title>
+<title>Dossiers mï¿½dicaux</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
@@ -30,7 +37,6 @@
 	rel='stylesheet' type='text/css'>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 
 
 
@@ -104,7 +110,7 @@
 													href="examen.chu?id=<%=ind.getDossier().getId()%>">
 													<i class="material-icons" title="consulter le dossier">remove_red_eye</i></a><a
 													href="rapportMedical.chu?id=<%=ind.getDossier().getId()%>">
-														 <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Rapport médicale</button>
+														 <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Rapport mï¿½dicale</button>
 												</a></td>
 											</tr>
 											<%
@@ -132,7 +138,6 @@
 		</div>
 		<!-- /#wrapper -->
 	</div>
+	<%@include file="piedUt.jsp"%>
 </body>
-
-<%@include file="piedUt.jsp"%>
 </html>

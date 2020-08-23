@@ -84,7 +84,6 @@
 				</div>
 			</div>
 		</div>
+	<%@include file="piedUt.jsp"%>
 </body>
-
-<%@include file="piedUt.jsp"%>
 </html>
