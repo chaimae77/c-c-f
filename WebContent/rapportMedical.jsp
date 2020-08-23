@@ -25,7 +25,9 @@
 <!-- Custom Fonts -->
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
-
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
 <link href="css/sb-admin.css" rel="stylesheet">
 <style type="text/css">
 .container {
@@ -35,6 +37,9 @@
 @media print {
 	#printPageButton {
 		display: none;
+	}
+	.material-icons, .back{
+	display: none;
 	}
 	.card-header-info {
 		background: linear-gradient(60deg, #26c6da, #00acc1) !important;
@@ -73,6 +78,11 @@
 
 
 			<!-- <div id="content"> -->
+			<div class="row">
+				<div class="col-md-1 col-lg-offset-0">
+					<a class="back" href="listIndDoss.chu?id=<%=dos.getPatient().getFamille().getId()%>"><i class="material-icons preced">arrow_back</i></a>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-md-3 col-md-offset-1">
 					<img src="images/CHU_Images/<%=dos.getPatient().getImage()%>"

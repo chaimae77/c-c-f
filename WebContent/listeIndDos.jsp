@@ -52,11 +52,16 @@
 				
 					<!-- /.row -->
 					<div class="row">
+				<div class="col-md-1 col-lg-offset-0">
+					<a href="gestionDossier.jsp"><i class="material-icons preced">arrow_back</i></a>
+				</div>
+			</div>
+					<div class="row">
 						<div class="col-md-12">
 						<div class="card">
 							<div class="card-header card-header-info card-header-icon">
 						<div class="card-icon" style="float: none !important;">
-									<h4>Liste des individus</h4>
+									<h4>Liste des individus de la famille : </h4>
 								</div>
 								</div>
 								<%
@@ -94,7 +99,7 @@
 												<td><%=ind.getNom()%></td>
 												<td><%=ind.getPrenom()%></td>
 												<td><%=dateFormatee%></td>
-												<td><a href="dossier.chu?id=<%=ind.getId()%>"><i class="material-icons preced" title="Ajouter dossier">add_circle_outline</i></a></td>
+												<td><a href="dossier.chu?id=<%=ind.getId()%>"><i class="material-icons" title="Ajouter dossier">library_add</i></a></td>
 											</tr>
 
 											<%
@@ -106,11 +111,11 @@
 												<td><%=ind.getPrenom()%></td>
 												<td><%=dateFormatee%></td>
 												<td><a
-													href="modifier.chu?id=<%=ind.getDossier().getId()%>"><i class="material-icons warn" title="modifier le dossier">edit</i></a> <a
+													href="modifier.chu?id=<%=ind.getDossier().getId()%>"><i class="material-icons " title="modifier le dossier">edit</i></a> <a
 													href="examen.chu?id=<%=ind.getDossier().getId()%>">
 													<i class="material-icons" title="consulter le dossier">remove_red_eye</i></a><a
 													href="rapportMedical.chu?id=<%=ind.getDossier().getId()%>">
-														 <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Rapport m�dicale</button>
+													<i class="material-icons" title="consulter le rapport">text_snippet</i>
 												</a></td>
 											</tr>
 											<%
