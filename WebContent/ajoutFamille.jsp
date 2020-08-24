@@ -50,13 +50,14 @@
                         <small></small>
                     </h3>
                     <!-- /.row -->
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-6 col-lg-offset-3">
                             <h3 class="page-header">
                                 Ajouter une famille<small></small>
                             </h3>
                         </div>
-                    </div> <!-- End row -->
+                    </div> -->
+                     <!-- End row -->
 
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">

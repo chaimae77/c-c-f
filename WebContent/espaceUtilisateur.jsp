@@ -16,9 +16,11 @@
 	<meta name="author" content="">
 
 	<title>Gestion des familles</title>
+
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
 		type='text/css'>
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 	<!-- Bootstrap Core CSS -->
 	<link href="assetss/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,15 +32,6 @@
 	<!-- Morris Charts CSS -->
 	<link href="css/plugins/morris.css" rel="stylesheet">
 
-	<!-- <style type="text/css">
-		.navbar-nav>li {
-			float: none !important;
-			display: flex;
-			justify-content: center;
-		}
-	</style> -->
-	<!--  -->
-
 	<!--Scripts-->
 	<script src="assetss/js/scripts.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -49,6 +42,7 @@
 	<!--principal wrapper-->
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
+
 		<div class="container-fluid">
 			<%@include file="navbar.jsp"%>
 
@@ -57,6 +51,7 @@
 				List<Famille> familles = new ArrayList<>();
 				familles = famDAO.lister();
 			%>
+
 			<div id="page-wrapper">
 
 				<div class="container-fluid">
@@ -71,6 +66,7 @@
 								Gestion des familles <small></small>
 							</h3>
 						</div>
+
 						<!-- /.row -->
 						<div class="row">
 							<div class="col-lg-12">
@@ -83,15 +79,18 @@
 						</div>
 					</div>
 				</div>
-				<!-- /.container-fluid -->
+
+			
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
+
 							<div class="card-header card-header-info card-header-icon">
 								<div class="card-icon" style="float: none !important;">
 									<h4>Liste des familles</h4>
 								</div>
 							</div>
+							
 							<div class="card-body table-responsive">
 								<table class="table table-hover" id="idDataTable">
 									<thead class="text-warning">
@@ -128,24 +127,16 @@
 									</tbody>
 								</table>
 							</div>
-							<!-- panel-body -->
-
 						</div>
 					</div>
-				</div>
-				<!-- panel -->
-
-				<!-- End row -->
-
-
-
-
-				<!-- /#page-wrapper -->
+				</div><!-- /.row -->
 
 			</div>
-			<!-- /#wrapper -->
+			
 		</div>
-	</div>
+	</div><!-- /#wrapper -->
+
+
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
