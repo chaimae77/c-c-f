@@ -124,15 +124,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.container-fluid -->
 
-            </div>
-            <!-- /#page-wrapper -->
-
-        </div>
-        <!-- /#wrapper -->
-    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div><!-- /#wrapper -->  
+    </div><!-- /#wrapper -->
 </body>
 
 <%@include file="piedUt.jsp" %>

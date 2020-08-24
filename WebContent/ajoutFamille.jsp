@@ -45,10 +45,10 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="row">
+                <!-- <div class="row">
                     <h3 class="page-header">
-                        <small></small>
-                    </h3>
+                        <small></small> -->
+                    <!-- </h3> -->
                     <!-- /.row -->
                     <!-- <div class="row">
                         <div class="col-md-6 col-lg-offset-3">
@@ -106,20 +106,10 @@
                                 </div><!-- panel-body -->
                             </div>
                         </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-            <!-- /.container-fluid -->
-
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-    </div>
+                    </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div><!-- /#page-wrapper --> 
+    </div><!-- /#wrapper -->
 </body>
 
 <%@include file="piedUt.jsp" %>

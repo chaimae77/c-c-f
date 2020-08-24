@@ -75,20 +75,22 @@
 						IndividuDAO indDAO = new IndividuDAO();
 						List<Individu> individus = indDAO.listIndividuByFamille(idFamille);
                         %>
-                            <div class="col-md-10 col-lg-offset-1">
+                            <div class="col-md-6 col-lg-offset-3">
                                 <h3 class="page-header">
                                     Consultation<small></small>
                                 </h3>
-
-                                <div class="panel-actions">
-                                    <button onclick="location.href='ajoutIndividu.jsp?id=<%=idFamille  %>'"
-                                        type="button" class="btn btn-info btn-sm pull-right">Ajouter</button>
-                                </div>
-                                <br>
-                                <br>
                             </div>
+                        </div><!-- /.div row -->
+                        
+                        <div class="panel-actions">
+                            <button onclick="location.href='ajoutIndividu.jsp?id=<%=idFamille  %>'" type="button"
+                                class="btn btn-info btn-sm pull-right">Ajouter</button>
                         </div>
-                    </div>
+                        <br>
+                        <br>
+
+                    </div><!-- /.div row -->
+
                 </div><!-- /.container-fluid -->
             </div><!-- /.div wrapper -->
 
@@ -141,12 +143,10 @@
                                 </tbody>
                             </table>
                         </div><!-- card header -->
-
                     </div> <!-- panel -->
-
-
                 </div>
             </div><!-- /.row -->
+
 
         </div> <!-- /.container-fluid -->
 
