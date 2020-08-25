@@ -13,19 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<title>Ajouter Un individu</title>
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<title>Ajout d'un individu</title>
+	
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	
-	
-
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
@@ -34,8 +27,16 @@
     <link href="css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
+        type='text/css'>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -57,10 +58,12 @@
                 <div class="row">
                 	<h3 class="page-header" style="text-align:center">
                             <img class="img"  src="images\logo.png " width="" height="" alt="logo"/><small></small>
-                   </h3>
+				   </h3>
+				   
                   <h3 class="page-header">
                       Ajouter un individu dans la famille  <%=famille.getNomFamille() %><small></small>
-                   </h3>
+				   </h3>
+				   
                 <!-- /.row -->
 				<div class="container">
 						<form class="form-horizontal" role="form"  action="ajoutIndividu.chu" method="post" enctype='multipart/form-data'>
@@ -76,7 +79,7 @@
 		                                         <input type="hidden" class="form-control" name="famille" value="<%=idFamille%>"  style="width:250px">
 		                        </div>
 							    <div class="form-group">
-							      <label class="control-label col-sm-2" for="prenom">Prénom:</label>
+							      <label class="control-label col-sm-2" for="prenom">Prï¿½nom:</label>
 							      <div class="col-sm-10">
 							        <input type="text" class="form-control" name ="prenom" id="prenom" placeholder="Entrer le prenom" style="width:250px" required >
 							      </div>
@@ -98,7 +101,7 @@
 							      <div class="col-sm-10">
                                                     <select class="form-control" name="sexe" style="width:250px" required >
                                                         <option>Masculin</option>
-                                                        <option>Féminin</option> 
+                                                        <option>Fï¿½minin</option> 
                                                     </select>
                                   </div>
 							    </div>
@@ -177,7 +180,7 @@
                                                         <option><%=CouvertureMedicale.Aucune %></option>
                                                         <option><%=CouvertureMedicale.Cnops %></option>
                                                         <option><%=CouvertureMedicale.Cnss %></option> 
-                                                        <option><%=CouvertureMedicale.Privée %></option>
+                                                        <option><%=CouvertureMedicale.Privï¿½e %></option>
                                                         <option><%=CouvertureMedicale.Ramed %></option>
                                                         <option><%=CouvertureMedicale.Autre%></option>
                                                     </select>
@@ -190,7 +193,7 @@
 							      </div>
 							    </div>
 							    <div class="form-group">
-							      <label class="control-label col-sm-2" for="">Réside:</label>
+							      <label class="control-label col-sm-2" for="">Rï¿½side:</label>
 							      <div class="col-sm-10">
 							        <div class="checkbox checkbox-info checkbox-circle col-sm-10 col-sm-offeset-1">
 														<input id="urbain" type="checkbox"  name="urbain" >

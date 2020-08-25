@@ -111,11 +111,7 @@
                                         </div>
                                         <br>
                                         <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <button type="submit"
-                                            class="btn btn-info waves-effect waves-light btnCardInfo">Modifier</button>
+                                        <button type="submit" class="btn btn-info waves-effect waves-light">Modifier</button>
                                     </form>
                                 </div><!-- panel-body -->
 

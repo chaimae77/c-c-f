@@ -95,13 +95,10 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">
-                                            Enregistrer</button>
+                                    </br>
+                                </br>
+                                <button type="submit" class="btn btn-info waves-effect waves-light">Enregistrer</button>
+                                           
                                     </form>
                                 </div><!-- panel-body -->
                             </div>

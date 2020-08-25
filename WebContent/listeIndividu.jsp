@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+z<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*" %>
 <%@ page import="dao.*" %>
 <%@ page import="dao.entities.*" %>
@@ -20,54 +20,40 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="assetss/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
+        type='text/css'>
 
     <!-- Morris Charts CSS -->
     <link href="css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
-        type='text/css'>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
 
-    <!--Scripts-->
-    <script src="assetss/js/scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="assetss/js/common/jquery.min.js"></script>
+    <script src="assetss/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
     <div id="wrapper">
-        <div class="container-fluid">
-            <%@include file="enteteUt.jsp" %>
+        <%@include file="enteteUt.jsp" %>
 
-            <%
-         int i=1;
-        
-         for(Individu ind : individus){	
-            Date date = ind.getDateNaissance();
-            SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
-            SimpleDateFormat formatDateJour = new SimpleDateFormat("dd/MM/yyyy"); 
-            String dateFormatee = formatDateJour.format(date); 
-            %>
+        <div id="page-wrapper">
 
-            <div id="page-wrapper">
+            <div class="container-fluid">
 
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="row">
-                        <h3 class="page-header" style="text-align:center">
-                            <img class="img" src="images\logo.png " width="" height="" alt="logo" /><small></small>
-                        </h3>
-                        <!-- /.row -->
-                        <div class="row">
-                            <%
+                <!-- Page Heading -->
+                <div class="row">
+                    
+                    <h3 class="page-header" style="text-align:center">
+                        <img class="img" src="images\logo.png " width="" height="" alt="logo" /><small></small>
+                    </h3>
+                    <%
                         String id_Famille = (String)session.getAttribute("idFamille");
 						int  idFamille = Integer.parseInt(id_Famille);
 						FamilleDAO famDAO = new FamilleDAO();
@@ -75,83 +61,101 @@
 						IndividuDAO indDAO = new IndividuDAO();
 						List<Individu> individus = indDAO.listIndividuByFamille(idFamille);
                         %>
-                            <div class="col-md-6 col-lg-offset-3">
-                                <h3 class="page-header">
-                                    Consultation<small></small>
-                                </h3>
-                            </div>
-                        </div><!-- /.div row -->
-                        
+                    <div class="col-md-10 col-lg-offset-1">
+                        <h3 class="page-header">
+                            Consultation<small></small>
+                        </h3>
+                    </div>
+                    <!-- <div class="panel-actions">
+                                <button onclick="location.href='ajoutIndividu.jsp?id=<%=idFamille  %>'" type="button"
+                                    class="btn btn-info btn-sm pull-right">
+                                    Ajouter</button>
+                            </div></br> -->
+
+
+                    <!-- <div class="row"> -->
+                    <div class="col-lg-12">
                         <div class="panel-actions">
-                            <button onclick="location.href='ajoutIndividu.jsp?id=<%=idFamille  %>'" type="button"
-                                class="btn btn-info btn-sm pull-right">Ajouter</button>
+                            <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal"
+                                data-target="#myModal">Ajouter</button>
                         </div>
-                        <br>
-                        <br>
+                        </br>
+                    </div>
+                    <!-- </div> -->
 
-                    </div><!-- /.div row -->
+                    <!-- <div class="panel panel-default"> -->
 
-                </div><!-- /.container-fluid -->
-            </div><!-- /.div wrapper -->
+                </div> <!-- End row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
 
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-
-                        <div class="card-header card-header-info card-header-icon">
-                            <div class="card-icon" style="float: none !important;">
-                                <h4>Liste des individus de la famille
-                                    <%=famille.getNomFamille() %></h4>
+                            <div class="card-header card-header-info card-header-icon">
+                                <div class="card-icon" style="float: none !important;">
+                                    <!-- <div class="panel-heading"> -->
+                                    <h4>Liste des individus de la famille
+                                        <%=famille.getNomFamille() %>
+                                    </h4>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="card-body table-responsive">
-                            <table class="table table-hover" id="idDataTable">
-                                <thead class="text-warning">
-                                    <tr>
-                                        <th></th>
-                                        <th>Nom</th>
-                                        <th>Pr&eacute;nom</th>
-                                        <th>Date de Naissance</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover" id="idDataTable">
+                                    <thead class="text-warning">
+                                        <tr>
+                                            <th></th>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>Date de Naissance</th>
+                                            <th></th>
 
-                                    <tr>
-                                        <td><%=i %></td>
-                                        <td><%=ind.getNom()%></td>
-                                        <td><%=ind.getPrenom()%></td>
-                                        <td><%=dateFormatee%></td>
-                                        <td><a href="suppInd.chu?id=<%=ind.getId()%>"
-                                                onclick="return(confirm('Etes-vous s�r de vouloir supprimer cet individu?'));">
-                                                <i class="fa fa-times"> </i> Supprimer </a> <a
-                                                href="modIndividu.chu?id=<%=ind.getId()%>"><i
-                                                    class="fa fa-pencil-square-o"></i> Modifier </a> <a
-                                                href="compInd.chu?id=<%=ind.getId()%>"><i
-                                                    class="fa fa-pencil-square-o"></i>
-                                                Completer info</a>
-                                        </td>
-                                    </tr>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%
+												int i=1;
+												
+												for(Individu ind : individus){	
+													Date date = ind.getDateNaissance();
+													SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
+													SimpleDateFormat formatDateJour = new SimpleDateFormat("dd/MM/yyyy"); 
+													String dateFormatee = formatDateJour.format(date); 
+				                               %>
+                                        <tr>
+                                            <td><%=i %></td>
+                                            <td><%=ind.getNom()%></td>
+                                            <td><%=ind.getPrenom()%></td>
+                                            <td><%=dateFormatee%></td>
+                                            <td><a href="suppInd.chu?id=<%=ind.getId()%>"
+                                                    onclick="return(confirm('Etes-vous s�r de vouloir supprimer cet individu?'));">
+                                                    <i class="fa fa-times"> </i> Supprimer </a> <a
+                                                    href="modIndividu.chu?id=<%=ind.getId()%>"><i
+                                                        class="fa fa-pencil-square-o"></i> Modifier </a>
+                                                <a href="compInd.chu?id=<%=ind.getId()%>"><i
+                                                        class="fa fa-pencil-square-o"></i>
+                                                    Compl&eacute;ter
+                                                    info</a></td>
+                                        </tr>
 
-                                    <% 
+                                        <% 
 													i++;
                                         			}
 												
 													%>
-                                </tbody>
-                            </table>
-                        </div><!-- card header -->
-                    </div> <!-- panel -->
-                </div>
-            </div><!-- /.row -->
+                                    </tbody>
+                                </table>
+                            </div><!-- panel-body -->
+
+                        </div>
+                    </div>
+                </div> <!-- End row -->
 
 
-        </div> <!-- /.container-fluid -->
 
-    </div>
 
+            </div><!-- /.container-fluid -->
+        </div><!-- /#page-wrapper -->
+    </div> <!-- /#wrapper -->
 </body>
 
 <%@include file="piedUt.jsp" %>
