@@ -87,6 +87,7 @@
 
 
 													<div class="form-group">
+
 														<input type="hidden" class="form-control" name="famille"
 															value="<%=idFamille%>" style="width:250px">
 													</div>
@@ -166,6 +167,7 @@
 														</div>
 													</div>
 												</div>
+
 												<div class="col-md-6 col-md-offset-0">
 
 													<div class="form-group">

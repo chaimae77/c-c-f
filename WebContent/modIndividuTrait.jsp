@@ -9,7 +9,6 @@
 <html lang="fr">
 
 <head>
-	<title>Ajouter Un individu</title>
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +17,11 @@
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<title>Ajouter Un individu</title>
+
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+
 	<!-- Custom CSS -->
 	<link href="css/sb-admin.css" rel="stylesheet">
 
@@ -31,12 +33,12 @@
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
 		type='text/css'>
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-	<!-- Scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- 	
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 
 </head>
 
@@ -56,24 +58,24 @@
 				<!-- Page Heading -->
 				<div class="row">
 
-					<div class="row">
-						<h3 class="page-header" style="text-align:center">
-							<img class="img" src="images\logo.png " width="" height="" alt="logo" /><small></small>
-						</h3>
-						<div class="col-md-6 col-lg-offset-3">
-							<h3 class="page-header">
-								Modifier les donn&eacute;es de <%=ind %><small></small>
-							</h3>
-						</div>
-					</div>
+					<h3 class="page-header" style="text-align:center">
+						<img class="img" src="images\logo.png " width="" height="" alt="logo" /><small></small>
+					</h3>
+
+					<h3 class="page-header">
+						Modifier les donn&eacute;es de <%=ind %><small></small>
+					</h3>
 
 					<!-- /.row -->
-					<div class="row">
-						<!-- <div class="col-md-8 col-md-offset-2"> -->
-						<div class="card">
-							<div class="container">
+					<div class="container">
+
+						<div class="row">
+
+							<div class="card">
+
+
 								<form class="form-horizontal" role="form" action="modIndividuTrait.chu" method="post">
-									<!-- <div class="col-md-11  "> -->
+									<div class="col-md-11  ">
 										<div class="panel panel-default">
 
 											<div class="card-header card-header-info card-header-icon">
@@ -84,7 +86,7 @@
 
 											<div class="panel-body">
 
-												<div class="col-md-6 col-md-offset-0">
+												<div class="col-md-6 ">
 
 													<div class="form-group">
 														<input type="hidden" class="form-control" name="idIndividu"
@@ -103,6 +105,7 @@
 																style="width:250px" required>
 														</div>
 													</div>
+
 													<div class="form-group">
 														<label class="control-label col-sm-2" for="nom">Nom:</label>
 														<div class="col-sm-10">
@@ -115,18 +118,17 @@
 													<div class="form-group">
 														<label class="control-label col-sm-2" for="">Naissance:</label>
 														<%
-							     	         		Date date = ind.getDateNaissance();
-									          		SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
-													SimpleDateFormat formatDateJour = new SimpleDateFormat("dd/MM/yyyy"); 
-													String dateFormatee = formatDateJour.format(date);
-							     				 	%>
+							     	 					Date date = ind.getDateNaissance();
+														SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
+														SimpleDateFormat formatDateJour = new SimpleDateFormat("dd/MM/yyyy"); 
+														String dateFormatee = formatDateJour.format(date);
+							     						 %>
 														<div class="col-sm-10">
 															<input type="text" name="dateNais"
 																placeholder="<%=dateFormatee%>" class="form-control"
 																id="dateNais" style="width:250px" required>
 														</div>
-													</div
-													>
+													</div>
 													<div class="form-group">
 														<label class="control-label col-sm-2" for="">Sexe:</label>
 														<div class="col-sm-10">
@@ -163,7 +165,7 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-sm-2" for="">Region:</label>
+														<label class="control-label col-sm-2" for="">R&eacute;gion:</label>
 														<div class="col-sm-10">
 															<input type="text" class="form-control" name="region"
 																id="region" placeholder="<%=ind.getRegion() %>"
@@ -171,9 +173,7 @@
 														</div>
 													</div>
 												</div>
-
-
-
+												
 												<div class="col-md-6 col-md-offset-0">
 
 													<div class="form-group">
@@ -193,7 +193,7 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-sm-2" for="">Education:</label>
+														<label class="control-label col-sm-2" for="">&Eacute;ducation:</label>
 														<div class="col-sm-10">
 															<select class="form-control" name="education"
 																style="width:250px" required>
@@ -246,14 +246,14 @@
 																class="checkbox checkbox-info checkbox-circle col-sm-10 col-sm-offeset-1">
 																<input id="urbain" type="checkbox" name="urbain">
 																<label for="urbain">
-																	Urbain
+																	Urbaine
 																</label>
 															</div>
 															<div
 																class="checkbox checkbox-primary checkbox-circle col-sm-10 col-sm-offeset-1">
 																<input id="rural" type="checkbox" name="rural">
 																<label for="rural">
-																	Rural
+																	Rurale
 																</label>
 															</div>
 														</div>
@@ -261,25 +261,27 @@
 													<div class="form-group">
 														<div class="col-sm-offset-2 col-sm-10">
 															<button type="submit"
-                                            class="btn btn-info waves-effect waves-light btnCardInfo">Modifier</button>
+																class="btn btn-info waves-effect waves-light">Modifier</button>
 														</div>
 													</div>
 
-												</div><!-- /.col-md-6-->
-												
+												</div>
 											</div><!-- /.panel-body -->
-										</div><!-- /.panel panel-default -->
-									<!-- </div> -->
-									<!-- /.col-md-11 -->
+
+										</div>
+									</div>
 								</form>
 							</div>
-						</div><!-- /.card -->
-						<!-- </div>   -->
-						<!-- /.col-md-8-->
-					</div><!-- /.row -->
+						</div>
+					</div><!-- /.container -->
+
 				</div><!-- /.row -->
+
+
 			</div><!-- /.container-fluid -->
+
 		</div><!-- /#page-wrapper -->
+
 	</div><!-- /#wrapper -->
 </body>
 
