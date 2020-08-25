@@ -225,7 +225,7 @@
 																<option><%=CouvertureMedicale.Aucune %></option>
 																<option><%=CouvertureMedicale.Cnops %></option>
 																<option><%=CouvertureMedicale.Cnss %></option>
-																<option><%=CouvertureMedicale.Priv�e %></option>
+																<option><%=CouvertureMedicale.Prive %></option>
 																<option><%=CouvertureMedicale.Ramed %></option>
 																<option><%=CouvertureMedicale.Autre%></option>
 															</select>

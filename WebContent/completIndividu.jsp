@@ -51,23 +51,29 @@
 			            	int  idFamille = ind.getFamille().getId();
 			    %>
                 <!-- Page Heading -->
-                <div class="row">
+                <!-- <div class="row"> -->
+
                     <h3 class="page-header" style="text-align:center">
                         <img class="img" src="images\logo.png " width="" height="" alt="logo" /><small></small>
                     </h3>
+
                     <h3 class="page-header">
                         Compl&eacute;ter les informations sur <%=ind.toString() %> <small></small>
                     </h3>
+
                     <!-- /.row -->
 
                     <div class="row">
 
                         <div class="col-md-6 ">
-                            
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">D&eacute;clarer un cas de d&eacute;c&egrave;s</h3>
+
+                            <div class="card">
+                                <div class="card-header card-header-info card-header-icon">
+                                    <div class="card-icon" style="float: none !important;">
+                                        <h4>D&eacute;clarer un cas de d&eacute;c&egrave;s</h4>
+                                    </div>
                                 </div>
+
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" action="ajoutDecces.chu" method="post">
                                         <div class="form-group">
@@ -106,15 +112,21 @@
                                             </div>
                                         </div>
                                         <div class="form-group m-b-0">
-                                            <div class="col-sm-offset-6 col-sm-9">
+                                            <div class="col-sm-9">
                                                 <button type="submit"
                                                     class="btn btn-info waves-effect waves-light">Enregistrer</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">D&eacute;clarer une consanguinit&eacute;</h3>
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-header card-header-info card-header-icon">
+                                    <div class="card-icon" style="float: none !important;">
+                                        <h4>D&eacute;clarer une consanguinit&eacute;</h4>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" action="ajoutConsang.chu" method="post">
@@ -133,15 +145,21 @@
                                                 placeholder="degre" style="width:250px">
                                         </div>
                                         <div class="form-group m-b-0">
-                                            <div class="col-sm-offset-6 col-sm-9">
+                                            <div class="col-sm-9">
                                                 <button type="submit"
                                                     class="btn btn-info waves-effect waves-light">Enregistrer</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Enregistrer le consentement sign&eacute;</h3>
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-header card-header-info card-header-icon">
+                                    <div class="card-icon" style="float: none !important;">
+                                        <h4>nregistrer le consentement sign&eacute;</h4>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" action="ajoutConsentement.chu"
@@ -164,7 +182,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group m-b-0">
-                                            <div class="col-sm-offset-6 col-sm-9">
+                                            <div class="col-sm-9">
                                                 <button type="submit"
                                                     class="btn btn-info waves-effect waves-light">Enregistrer</button>
                                             </div>
@@ -172,12 +190,17 @@
                                     </form>
                                 </div>
                             </div>
+                            <!-- </div> -->
                         </div>
 
+
                         <div class="col-md-6 ">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Ajouter un couple</h3>
+
+                            <div class="card">
+                                <div class="card-header card-header-info card-header-icon">
+                                    <div class="card-icon" style="float: none !important;">
+                                        <h4>Ajouter un couple</h4>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" action="ajoutCouple.chu" method="post">
@@ -226,15 +249,21 @@
                                             </div>
                                         </div>
                                         <div class="form-group m-b-0">
-                                            <div class="col-sm-offset-6 col-sm-9">
+                                            <div class="col-sm-9">
                                                 <button type="submit"
                                                     class="btn btn-info waves-effect waves-light">Enregistrer</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Compl&eacute;ter un couple</h3>
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-header card-header-info card-header-icon">
+                                    <div class="card-icon" style="float: none !important;">
+                                        <h4>Compl&eacute;ter un couple</h4>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" action="ajoutMembre.chu" method="post">
@@ -272,15 +301,20 @@
                                             </div>
                                         </div>
                                         <div class="form-group m-b-0">
-                                            <div class="col-sm-offset-3 col-sm-9">
+                                            <div class="col-sm-9">
                                                 <button type="submit"
                                                     class="btn btn-info waves-effect waves-light">Enregistrer</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">D&eacute;clarer un fils d'un couple</h3>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header card-header-info card-header-icon">
+                                    <div class="card-icon" style="float: none !important;">
+                                        <h4>D&eacute;clarer un fils d'un couple</h4>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <form class="form-horizontal" role="form" action="ajoutFils.chu" method="post">
@@ -317,7 +351,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group m-b-0">
-                                            <div class="col-sm-offset-3 col-sm-9">
+                                            <div class="col-sm-9">
                                                 <button type="submit"
                                                     class="btn btn-info waves-effect waves-light">Enregistrer</button>
                                             </div>
@@ -328,15 +362,18 @@
                         </div>
                     </div>
 
-                </div>
-                <!-- /.container-fluid -->
 
-            </div>
-            <!-- /#page-wrapper -->
 
-        </div>
-        <!-- /#wrapper -->
-    </div>
+
+                <!-- </div>  -->
+                <!-- /.row -->
+
+            </div> <!-- /.container-fluid -->
+
+
+        </div> <!-- /#page-wrapper -->
+
+    </div> <!-- /#wrapper -->
 </body>
 
 <%@include file="piedUt.jsp" %>
