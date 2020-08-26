@@ -77,6 +77,7 @@
 
 											<div class="card-header card-header-info card-header-icon">
 												<div class="card-icon" style="float: none !important;">
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
 													<h4>Nouvel Individu</h4>
 												</div>
 											</div>

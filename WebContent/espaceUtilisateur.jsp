@@ -201,7 +201,8 @@
 
 			<script src="assetss/js/common/jquery.min.js"></script>
 			<script src="assetss/bootstrap/js/bootstrap.min.js"></script>
-
+		</div>
+	</div>
 </body>
 <%@include file="piedUt.jsp"%>
 
