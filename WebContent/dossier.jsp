@@ -15,23 +15,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	
-    <title>Dossiers médicaux</title>
+    <title>Espace Utilisateur</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	
 	
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
-
-
-    
-<!--     <link href="asset/css/style.css" type="text/css" rel="stylesheet"> -->
-
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
 	rel='stylesheet' type='text/css'>
@@ -40,13 +33,17 @@
 
 
 
+   
+<!--     <link href="asset/css/style.css" type="text/css" rel="stylesheet"> -->
+
 </head>
 <body>
 
     <div id="wrapper">
 	<%@include file="enteteUt.jsp" %>
             <div class="container-fluid">
-            <%@include file="navbar.jsp"%>
+               <%@include file="navbar.jsp"%>
+            
               <%
 				String id_Dossier = (String)session.getAttribute("idDossier");
 				int  idDossier = Integer.parseInt(id_Dossier);
@@ -54,20 +51,19 @@
 				DossierMedicale dos = dosDAO.trouverDossierById(idDossier);
 				int idPatient = dos.getPatient().getId();
 			 %>
-                <!-- /.row -->
+           
 				
 				 
-			<div class="row">
+			<!-- /.row -->
+					<div class="row">
 						<div class="col-md-12">
 						<div class="card">
 							<div class="card-header card-header-info card-header-icon">
 						<div class="card-icon" style="float: none !important;">
-									<h4>Dossier médical de <%=dos.getPatient() %></h4>
-								</div>
-								</div>
-			  <ul class="nav nav-tabs">
+						<h4>Dossier médical de <%=dos.getPatient() %></h4></div>
+			  <ul class="nav nav-tabs col-md-10 col-md-offset-1">
 			    <li class="active"><a data-toggle="tab" href="#home">Statut</a></li>
-			    <li><a data-toggle="tab" href="ExamenClinique.jsp">Examen Clinique</a></li>
+			    <li><a data-toggle="tab" href="#menu1">Examen Clinique</a></li>
 			    <li><a data-toggle="tab" href="#menu2">Endoscopie</a></li>
 			    <li><a data-toggle="tab" href="#menu3">Anatomie Pathologique</a></li>
 			    <li><a data-toggle="tab" href="#menu4">Imagerie</a></li>
@@ -78,14 +74,14 @@
 			
 			  <div class="tab-content">
 			    <div id="home" class="tab-pane fade in active">
-			      <h3></h3>
+			  
 			      <div class="col-md-6 col-md-offset-3">
 			      <div class="panel-actions">
                         			<button type="button" class="btn btn-info btn-sm pull-right" onclick="location.href='ajoutStatut.jsp?id=<%=dos.getPatient().getId()%>'" >Ajouter</button>
                     			</div></br></br>
                                 <div class="panel panel-default">
 									<div class="panel-heading"><h3 class="panel-title">Statuts  de  <%=dos.getPatient() %></h3></div>
-										 <div >
+										 <div>
 										 	<%StatutDAO statDAO = new StatutDAO();
 											List<StatutCancereux> statuts = new ArrayList<>();
 											statuts = statDAO.listerStatutParIndividu(idPatient);
@@ -569,7 +565,8 @@
             </div>
             <!-- /.container-fluid -->
 			
-    
+        </div>
+        <!-- /#page-wrapper -->
         
 	<%@include file="piedUt.jsp" %>
     </div>

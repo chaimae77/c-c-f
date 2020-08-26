@@ -17,7 +17,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Dossiers mï¿½dicaux</title>
+<title>Dossiers médicaux</title>
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet"

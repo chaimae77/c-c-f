@@ -16,57 +16,59 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Espace Utilisateur</title>
-
-<!-- Bootstrap Core CSS -->
+<title>Détail génétique</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-
-
 <!-- Custom CSS -->
 <link href="css/sb-admin.css" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="css/plugins/morris.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-
-
-
-
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
-
-		<div id="page-wrapper">
-
+	
 			<div class="container-fluid">
-
-				<!-- Page Heading -->
-				<div class="row">
-					<h3 class="page-header" style="text-align: center">
-						<img class="img" src="images\logo.png " width="" height=""
-							alt="logo" /><small></small>
-					</h3>
-					<!-- /.row -->
+			 <%@include file="navbar.jsp"%>
+			 	<div class="col-lg-12 ">
+                    <div class="panel-body">
+                        <a href="statut.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Satut</button></a>
+                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
+                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
+                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
+                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
+						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
+						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
+						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
+                    </div>                       
+                </div>
+                
+         
+				
+			
 					<div class="row">
-						<div class="col-lg-10 col-lg-offset-1">
-							<h3 class="page-header">Détail des Genetiques</h3>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Detail de Genetique</h3>
-								</div>
+					<div class="col-md-8 col-md-offset-2">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Détail de génétiques</h4>
+							</div>
+						</div>
 
 								<div class="panel-body">
 									<%
 										Genetique gen = (Genetique)session.getAttribute("Genetique");
 										System.out.println("genetique "+gen);
 									%>
-									<table id="basic-datatables" class="table table-striped">
-										<thead>
+									<div class="card-body table-responsive">
+							<table class="table table-hover">
+								<thead class="text-warning">
 											<tr>
 										        <th>Hopital</th>
 												<th>Numero Dossier Genetique</th>

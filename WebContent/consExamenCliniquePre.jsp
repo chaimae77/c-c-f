@@ -16,8 +16,39 @@
 <script src="js/jquery.min.js">  </script>
 <script src="js/bootstrap.js">  </script>
 <title>Gestion des examens Cliniques</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+
+	<div id="wrapper">
+		<%@include file="enteteUt.jsp"%>
+	
+			<div class="container-fluid">
+			 <%@include file="navbar.jsp"%>
+			 	<div class="col-lg-12 ">
+                    <div class="panel-body">
+                        <a href="statut.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Satut</button></a>
+                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
+                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
+                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
+                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
+						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
+						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
+						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
+                    </div>                       
+                </div>
+                
+     <!--             
 	<div class="container">
 		<div    class="row" >
 			<div  class="col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 col-xs-1 col-xs-offset-1" id="logo">
@@ -58,13 +89,12 @@
                         <a href="Endoscopie.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:150px">Endoscopie</button></a>
                         <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-warning btn-rounded waves-effect waves-light m-b-5" style="width:200px">Anatomie Pathologique</button></a>
                         <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
-						<a href="tBiologie.jsp"><button type="button" class="btn btn-primary btn-rounded waves-effect waves-light m-b-5" style="width:100px">Biologie</button></a>
+						<a href="Biologie.jsp"><button type="button" class="btn btn-primary btn-rounded waves-effect waves-light m-b-5" style="width:100px">Biologie</button></a>
 						<a href="Genetique.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Génétique</button></a>
 						<a href="Traitement.jsp"><button type="button" class="btn btn-warning btn-rounded waves-effect waves-light m-b-5" style="width:150px">Traitement</button></a>
                     </div>                       
-                </div>
+                </div> -->
 				<div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
                         	<%
 												String id_Dossier = (String)session.getAttribute("idDossier");
 												int  idDossier = Integer.parseInt(id_Dossier);
@@ -80,30 +110,45 @@
 											SimpleDateFormat formatDateJour = new SimpleDateFormat("dd/MM/yyyy"); 
 											String dateFormatee = formatDateJour.format(date);
 											%>
-                        	<div class="panel panel-default">
-								<div class="panel-heading"><h3 class="panel-title">Examen Clinique</h3></div>
-								<table border = 1 >
-									<tr><td>Hopital</td><td><%=examen.getHopital()%></td></tr>
-									<tr><td>Date:</td><td><%=dateFormatee %></td></tr>
-									<tr><td>Poids:</td><td><%=examen.getPoids() %></td></tr>
-									<tr><td>Taille:</td><td><%=examen.getTaille() %></td></tr>
-									<tr><td>OMS:</td><td><%=examen.getOMS() %></td></tr>
-									<tr><td>IMC</td><td><%=examen.getIMC() %></td></tr>
-									<tr><td>Type d'examen</td><td><%=examen.getTypeExamen() %></td></tr>
+                        	  <div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Examen clinique pré-opératoire</h4>
+							</div>
+						</div>
+						<div class="card-body table-responsive">
+							<table class="table table-hover">
+								<thead class="text-warning">
+								
+								<th>Hopital</th>
+									<th>Date</th>
+									<th>Poids</th>
+									<th>Taille</th>
+									<th>OMS</th>
+									<th>IMC</th>
+									<th>Type d'examen</th>
+								
+								</thead>
+								<tbody>
+								<tr>
+									<td><%=examen.getHopital()%></td>
+								    <td><%=dateFormatee %></td>
+									<td><%=examen.getPoids() %></td>
+									<td><%=examen.getTaille() %></td>
+									<td><%=examen.getOMS() %></td>
+									<td><%=examen.getIMC() %></td>
+									<td><%=examen.getTypeExamen() %></td>
+								
 								</table>
+						
                                     
-               </div> <!-- col -->
-				
+              </div> 
 				
 				
         </div>
     </div>	
 </body>
-<footer>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xs-4 col-xs-offset-4" id="foot">
-      			<p>Copyright &copy; Registe@CRF </p> 
-      		</div>
-		</div>        
-</footer>
+
 </html>

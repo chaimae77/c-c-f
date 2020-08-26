@@ -18,68 +18,49 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Espace Utilisateur</title>
+<title>Modification de statut</title>
 
-<!-- Bootstrap Core CSS -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-
-
 <!-- Custom CSS -->
 <link href="css/sb-admin.css" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="css/plugins/morris.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-
-
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
 <body>
-
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
-
 		<div id="page-wrapper">
-
 			<div class="container-fluid">
-
-				<!-- Page Heading -->
-				<div class="row">
-					<h3 class="page-header" style="text-align: center">
-						<img class="img" src="images\logo.png " width="" height=""
-							alt="logo" /><small></small>
-					</h3>
-
-					<!-- /.row -->
-					<div class="row">
-						<div class="col-md-6 col-lg-offset-3">
-							<%
+			 <%@include file="navbar.jsp"%>
+                <div class="row">
+										<%
 								String idStatut = (String) session.getAttribute("idStatut");
 								int id = Integer.parseInt(idStatut);
 								StatutDAO type = new StatutDAO();
 								StatutCancereux statut = type.trouverStautById(id);
 							%>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">
-										Modifier le Statut
-										<%=statut.getTypeStatut()%></h3>
-								</div>
-								<div class="panel-body">
+						<div class="col-md-8 col-md-offset-2">
+						<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+						<div class="card-icon" style="float: none !important;"><h4>	Modifier le Statut
+										<%=statut.getTypeStatut()%></h4></div></div>
+									
+
 									<form role="form" action="modifierStatut.chu" method="post">
-										<div class="form-group">
+										<div class="card-body table-responsive">
 											<input type="hidden" class="form-control" name="statut"
 												value="<%=statut.getId()%>" style="width: 250px">
-										</div>
-										<div class="panel-body">
+										
+						
 											<div class="form-group">
-												<label class="col-sm-4 control-label">Type de Cancer</label>
-												<div class="col-sm-8">
+												<label for="">Type de Cancer :</label>
+												
 													<%
 														TypeStatutDAO staDAO = new TypeStatutDAO();
 														List<TypeStatut> statuts = new ArrayList<>();
@@ -98,30 +79,30 @@
 															}
 														%>
 													</select>
-												</div>
+												
 											</div>
-											</br> </br>
+											
 											<div class="form-group">
-												<label class="col-sm-4 control-label">Année</label>
-												<div class="col-sm-8">
+												<label for="">Année :</label>
+												
 													<input type="text" name="annee" placeholder="aaaa"
 														class="form-control" id="annee" style="width: 250px"
 														value="<%=statut.getAnnee()%>">
-												</div>
+											
 											</div>
-											</br> </br>
+											
 											<div class="form-group">
-												<label class="col-sm-4 control-label">Age</label>
-												<div class="col-sm-8">
+												<label for="">Age</label>
+												
 													<input type="text" class="form-control" name="age" id="age"
 														placeholder="age" style="width: 250px"
 														value="<%=statut.getAge()%>">
 												</div>
-												</br> </br>
+												
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Site</label>
+													<label for="">Site :</label>
 
-													<div class="col-sm-8">
+													
 														<%
 															SiteDAO siteDAO = new SiteDAO();
 															List<Site> sites = new ArrayList<>();
@@ -140,12 +121,12 @@
 																}
 															%>
 														</select>
-													</div>
+													
 												</div>
-												</br> </br>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Type:</label>
-													<div class="col-sm-8">
+													<label for="">Type :</label>
+												
 
 														<%
 															TypeDAO typeDAO = new TypeDAO();
@@ -165,12 +146,12 @@
 																}
 															%>
 														</select>
-													</div>
+													
 												</div>
-												</br> </br>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">T:</label>
-													<div class="col-sm-8">
+													<label for="">T :</label>
+													
 														<select class="form-control" name="t">
 															<option><%=statut.getT()%></option>
 															<option><%=T.T0%></option>
@@ -180,24 +161,24 @@
 															<option><%=T.Tis%></option>
 															<option><%=T.Tx%></option>
 														</select>
-													</div>
+													
 												</div>
-												</br> </br>
+												
 												<div class="form-group">
-													<label class="col-sm-4 control-label">M:</label>
-													<div class="col-sm-8">
+													<label for="">M :</label>
+												
 														<select class="form-control" name="m">
 															<option><%=statut.getM()%></option>
 															<option><%=M.M0%></option>
 															<option><%=M.M1%></option>
 															<option><%=M.Mx%></option>
 														</select>
-													</div>
+												
 												</div>
-												</br> </br>
+												
 												<div class="form-group">
-													<label class="col-sm-4 control-label">N:</label>
-													<div class="col-sm-8">
+													<label for="">N :</label>
+												
 														<select class="form-control" name="n">
 															<option><%=statut.getN()%></option>
 															<option><%=N.N0%></option>
@@ -206,12 +187,12 @@
 															<option><%=N.N3%></option>
 															<option><%=N.NX%></option>
 														</select>
-													</div>
+												
 												</div>
-												</br> </br>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Prise en
-														charge:</label> </br> </br>
+													<label for="">Prise en charge :</label> 
+													</br>
 													<%
 														PriseEnChargeDAO priseDAO = new PriseEnChargeDAO();
 														List<PriseEnCharge> prises = new ArrayList<>();
@@ -220,32 +201,32 @@
 														for (PriseEnCharge prise : prises) {
 													%>
 													<div class="col-md-6">
-														<div class="panel-body">
+													
 															<div class="checkbox">
 																<input id="checkbox" type="checkbox"
 																	name="priseEnCharge" value="<%=prise.getId()%>">
 																<label for="checkbox"> <%=prise%>
 																</label>
 															</div>
-														</div>
+													
 													</div>
 													<%
 														}
 													%>
 												</div>
 
-											</div>
-											<!-- panel-body -->
-											<button type="submit"
-												class="btn btn-purple waves-effect waves-light">Modifier</button>
-											</br> </br>
-									</form>
+											<!-- form-group -->
+									
+						                  <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Modifier</button>
+						                  </div>
+						                  </form>
+										
+									</div>
 								</div>
-								<!-- panel-body -->
+							
 
-							</div>
-							<!-- panel -->
-						</div>
+
+
 
 
 					</div>
@@ -259,7 +240,7 @@
 
 		</div>
 		<!-- /#wrapper -->
-	</div>
+	
 </body>
 
 <%@include file="piedUt.jsp"%>

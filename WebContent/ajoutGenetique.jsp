@@ -17,9 +17,21 @@
 <script src="js/bootstrap.js">
 	
 </script>
-<title>Gestion des examens Cliniques</title>
+<title>Ajout génétique</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<!--  
 	<div class="container">
 		<div class="row">
 			<div
@@ -98,19 +110,38 @@
 								class="btn btn-default btn-rounded waves-effect m-b-5"
 								style="width: 150px">Traitement</button></a>
 					</div>
-				</div>
+				</div> -->
+				
+				
+			<div id="wrapper">
+		<%@include file="enteteUt.jsp"%>
+	
+			<div class="container-fluid">
+			 <%@include file="navbar.jsp"%>
+			 	<div class="col-lg-12 ">
+                    <div class="panel-body">
+                        <a href="statut.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Satut</button></a>
+                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
+                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
+                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
+                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
+						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
+						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
+						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
+                    </div>                       
+                </div>
+                
 				<div class="row">
-					<div class="col-sm-12">
+					
 
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">Radiologie</h3>
-							</div>
-							<form class="form-horizontal" role="form"
+						<div class="col-md-8 col-md-offset-2">
+						<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+						<div class="card-icon" style="float: none !important;"><h4>Radiologie</h4></div></div>
+							<form role="form"
 								action="ajoutGenetique.chu" method="post">
-								<div class="row">
-									<div class="col-md-7 col-lg-offset-3">
-										<div class="panel-body">
+								
+									<div class="card-body table-responsive">
 											<%
 												String id_Dossier = (String) session.getAttribute("idDossier");
 												int idDossier = Integer.parseInt(id_Dossier);
@@ -119,12 +150,12 @@
 											%>
 											<div class="form-group">
 												<input type="hidden" class="form-control" name="dossier"
-													value="<%=dos.getId()%>" style="width: 250px">
+													value="<%=dos.getId()%>" >
 											</div>
 
 											<div class="form-group">
-												<label for="hopital" class="col-sm-4 form-control-label">Hopital:</label>
-												<div class="col-sm-8">
+												<label for="hopital" for="">Hopital:</label>
+											
 													<%
 														HopitalDAO hopDAO = new HopitalDAO();
 														List<Hopital> hopitaux = new ArrayList<>();
@@ -132,7 +163,7 @@
 													%>
 
 													<select class="form-control" name="hopital" id="hoptal"
-														style="width: 250px" required>
+													>
 														<%
 															for (Hopital hop : hopitaux) {
 														%>
@@ -142,35 +173,34 @@
 														%>
 													</select>
 												</div>
-											</div>
+										
 											<div class="form-group">
-												<label for="numero" class="col-sm-4 form-control-label">Numero
-													de dossier genetique:</label> <input type="text" name="numero"
-													class="form-control" id="numero" style="width: 250px"
-													required>
+												<label for="numero" for="">Numéro
+													du dossier génétique:</label> <input type="text" name="numero"
+													class="form-control" id="numero">
 
 											</div>
 											<div class="form-group">
 												<label for="instabiliteMacroscopique"
-													class="col-sm-4 form-control-label">Instabilité des
-													microsatellites:</label>
-												<div class="col-sm-8">
+													for="">Instabilité des
+													microsatéllites:</label>
+											
 													<select class="form-control" id="instabiliteMacroscopique"
-														name="instabiliteMacroscopique" style="width: 250px">
+														name="instabiliteMacroscopique">
 
 														<option value=""><%=InstMacro.MSI%></option>
 														<option value=""><%=InstMacro.MSS%></option>
 
 													</select>
-												</div>
+										
 											</div>
 
 											<div class="form-group">
-												<label for="mutaBRAF" class="col-sm-4 form-control-label">Mutation
+												<label for="mutaBRAF" for="">Mutation
 													VC00E du gène BRAF:</label>
-												<div class="col-sm-8">
+											
 													<select class="form-control" id="mutaBRAF" name="mutaBRAF"
-														style="width: 250px">
+													>
 
 														<option value="">OUI</option>
 														<option value="">NON</option>
@@ -178,13 +208,13 @@
 													</select>
 												</div>
 
-											</div>
+									
 											<div class="form-group">
-												<label for="mutaKras" class="col-sm-4 form-control-label">Mutation
+												<label for="mutaKras" for="">Mutation
 													du gène K-ras:</label>
-												<div class="col-sm-8">
+											
 													<select class="form-control" id="mutaKras" name="mutaKras"
-														style="width: 250px">
+														>
 
 														<option value=""><%=Resultat.OUI%></option>
 														<option value=""><%=Resultat.NON%></option>
@@ -192,42 +222,42 @@
 
 													</select>
 												</div>
-											</div>
+									
 
 											<div class="form-group">
-												<label for="mutaAPC" class="col-sm-4 form-control-label">Mutation
+												<label for="mutaAPC" for="">Mutation
 													du gène APC:</label>
-												<div class="col-sm-8">
+											
 													<select class="form-control" id="mutaAPC" name="mutaAPC"
-														style="width: 250px">
+														>
 
 														<option value="">OUI</option>
 														<option value="">NON</option>
 
 													</select>
-												</div>
+												
 											</div>
 
 											<div class="form-group">
-												<label for="mutaMYH" class="col-sm-4 form-control-label">Mutation
+												<label for="mutaMYH" for="">Mutation
 													du gène MYH:</label>
-												<div class="col-sm-8">
-													<select class="form-control" id="mutaMYH" name="mutaMYH" style="width: 250px">
+												
+													<select class="form-control" id="mutaMYH" name="mutaMYH" >
 
 														<option value="">OUI</option>
 														<option value="">NON</option>
 
 													</select>
 												</div>
-											</div>
+								
 
 
 											<div class="form-group">
 												<label for="mutaMMR"
-													class="col-sm-4 col-sm-offset-0 form-control-label">Mutation du gène MMR: </label>
-												<div class=" col-sm-8">
+													for="">Mutation du gène MMR: </label>
+											
 													<select class="form-control" id="mutaMMR" name="mutaMMR"
-														style="width: 250px">
+													>
 
 														<option value=""><%=Resultat.OUI%></option>
 														<option value=""><%=Resultat.NON%></option>
@@ -235,25 +265,20 @@
 
 													</select>
 												</div>
-											</div>
+
 
 
 											<div class="form-group">
-												<label for="autre" class="col-sm-4 form-control-label">autre</label>
+												<label for="autre" for="">autre</label>
 												<input type="text" class="form-control" name="autre"
-													id="autre" style="width: 250px" required>
+													id="autre">
 											</div>
 
-										</div>
-									</div>
+							
+						</br>
 
-									<div class="form-group m-b-0">
-										<div class="col-sm-offset-3 col-sm-9">
-											<button type="submit"
-												class="btn btn-info waves-effect waves-light">Enregistrer</button>
-										</div>
-									</div>
-
+									     <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Enregistrer</button>
+		</br>	</div>			</div>
 
 								</div>
 							</form>
@@ -267,13 +292,5 @@
 			</div>
 		</div>
 </body>
-<footer>
-<div class="row">
-	<div
-		class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xs-4 col-xs-offset-4"
-		id="foot">
-		<p>Copyright &copy; Registe@CRF</p>
-	</div>
-</div>
-</footer>
+
 </html>

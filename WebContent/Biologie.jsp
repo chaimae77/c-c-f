@@ -15,9 +15,40 @@
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
 <script src="js/jquery.min.js">  </script>
 <script src="js/bootstrap.js">  </script>
-<title>Statuts</title>
+<title>Biologie</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+
+	
+			<div id="wrapper">
+		<%@include file="enteteUt.jsp"%>
+	
+			<div class="container-fluid">
+			 <%@include file="navbar.jsp"%>
+			 	<div class="col-lg-12 ">
+                    <div class="panel-body">
+                        <a href="statut.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Satut</button></a>
+                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
+                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
+                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
+                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
+						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
+						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
+						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
+                    </div>                       
+                </div>
+                <!--  
 	<div class="container">
 		<div    class="row" >
 			<div  class="col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 col-xs-1 col-xs-offset-1" id="logo">
@@ -62,7 +93,8 @@
 						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
 						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
                     </div>                       
-                </div>
+                </div> -->
+                  <div class="row">
                 <%
 										String id_Dossier = (String)session.getAttribute("idDossier");
 										int  idDossier = Integer.parseInt(id_Dossier);
@@ -80,16 +112,19 @@
 										analyses = dosDAO.listerBiologieParPatient(idPatient);
 									%>
 								<div class="panel-actions">
-                        			<button type="button" class="btn btn-info btn-sm pull-right" onclick="location.href='ajoutBiologie.jsp?id=<%=dos.getId()%>'" >Ajouter</button>
+						<button type="button" 
+						style="float: right; border: none;" onclick="location.href='ajoutBiologie.jsp?id=<%=dos.getId()%>'" ><i class="material-icons preced">add_circle_outline</i></button> 
                     			</div></br></br>
-                                <div class="panel panel-default">
-									<div class="panel-heading"><h3 class="panel-title">Examens Biologiques de <%=dos.getPatient() %></h3></div>
+                    			
+                                      <div class="card">
+                            <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Examens Biologiques de <%=dos.getPatient() %></h4>
+							</div>
+						</div>
 									
-                                    <div class="panel-body">
-                                    	<div class="row">
-                                            <div >
-                                            <table class="table table-striped">
-                                                    <thead>
+                                      <div class="card-body table-responsive">
+							<table class="table table-hover" id="idDataTable">
+								<thead class="text-warning">
                                                         <tr>
                                                             <th></th>
                                                             <th></th>
@@ -109,7 +144,7 @@
                                                     <tr>
                                                     	<td>Analyse médical </td>
                                                      	<td>du <%=dateFormatee %></td> 
-                                                     	<td><a href="consImagerie.chu?id=<%=e.getId()%>" ><i class="fa fa-eye" ></i>Detail</a> <a href="modImagerie.chu?id=<%=e.getId()%>" ><i class="fa fa-pencil-square-o"></i>Modifier</a></td> 
+                                                     	<td><a href="detailBiologie.chu?id=<%=e.getId()%>" ><i class="material-icons" title="Détail de biologie">remove_red_eye</i></a> <a href="modBiologie.chu?id=<%=e.getId()%>" ><i class="material-icons " title="modifier biologie">edit</i></a></td> 
                                                         
                                                         </tr>             
                                                      </tbody>
@@ -127,11 +162,5 @@
         </div>
     </div>	
 </body>
-<footer>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xs-4 col-xs-offset-4" id="foot">
-      			<p>Copyright &copy; Registe@CRF </p> 
-      		</div>
-		</div>        
-</footer>
+
 </html>

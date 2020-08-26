@@ -18,20 +18,42 @@
 	
 </script>
 <title>Gestion des examens Cliniques</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div
-				class="col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 col-xs-1 col-xs-offset-1"
-				id="logo">
-				<img class="img" src="images\logo.png " width="" height=""
-					alt="logo" />
-			</div>
-			<div class="col-lg-12 ">
-				</br>
-				</br>
-			</div>
+
+<div id="wrapper">
+		<%@include file="enteteUt.jsp"%>
+	
+			<div class="container-fluid">
+			 <%@include file="navbar.jsp"%>
+			 	<div class="col-lg-12 ">
+                    <div class="panel-body">
+                        <a href="statut.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Satut</button></a>
+                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
+                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
+                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
+                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
+						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
+						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
+						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
+                    </div>                       
+                </div>
+
+	
+		
+			
+		<!--  
 			<div class="row">
 
 				<div class="pull-left col-lg-1">
@@ -102,33 +124,39 @@
 								class="btn btn-default btn-rounded waves-effect m-b-5"
 								style="width: 150px">Traitement</button></a>
 					</div>
-				</div>
+				</div> -->
+				
+				
 				<div class="row">
-					<div class="col-sm-12">
-
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">Examen Clinique</h3>
+						<div class="col-md-10 col-md-offset-1">
+					<div class="card">
+                            <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Examen Clinique</h4>
 							</div>
-							<form class="form-horizontal" role="form"
+						</div>
+							<form  role="form"
 								action="ajoutExamenClinique.chu" method="post">
-								<div class="row">
-									<div class="col-md-7 col-lg-offset-3">
-										<div class="panel-body">
+							
+								
+										
+                                
 											<%
 												String id_Dossier = (String) session.getAttribute("idDossier");
 												int idDossier = Integer.parseInt(id_Dossier);
 												DossierDAO dosDAO = new DossierDAO();
 												DossierMedicale dos = dosDAO.trouverDossierById(idDossier);
 											%>
+											<div class="col-md-8 col-md-offset-2">
+											    <div class="card-body table-responsive">
+											    	
 											<div class="form-group">
 												<input type="hidden" class="form-control" name="dossier"
-													value="<%=dos.getId()%>" style="width: 250px">
+													value="<%=dos.getId()%>" >
 											</div>
 
 											<div class="form-group">
-												<label class="col-sm-2 form-control-label">Hopital:</label>
-												<div class="col-sm-8">
+												<label for="">Hopital:</label>
+												
 													<%
 														HopitalDAO hopDAO = new HopitalDAO();
 														List<Hopital> hopitaux = new ArrayList<>();
@@ -136,7 +164,7 @@
 													%>
 
 													<select class="form-control" name="hopital"
-														style="width: 250px" required>
+														>
 														<%
 															for (Hopital hop : hopitaux) {
 														%>
@@ -146,17 +174,17 @@
 														%>
 													</select>
 												</div>
-											</div>
+											
 											<div class="form-group">
-												<label class="col-sm-2 form-control-label">Medecin:</label>
-												<div class="col-sm-8">
+												<label for="">Medecin:</label>
+											
 													<%
 														MedecinDAO medDAO = new MedecinDAO();
 														List<Object[]> medecins = medDAO.listerLesMedecin();
 														
 													%>
 													<select class="form-control" name="medecin"
-														style="width: 250px" required>
+														>
 														<%
 														 for (Object[] med : medecins) {
 																
@@ -167,70 +195,67 @@
 														%>
 													</select>
 												</div>
-											</div>
+											
 
 											<div class="form-group">
-												<label for="dateexamen" class="col-sm-2 form-control-label">Date
+												<label for="dateexamen" for="">Date
 													d'examen:</label>
-												<div class="col-sm-9">
+												
 													<input type="text" name="dateexamen"
 														placeholder="jj/mm/aaaa" class="form-control"
-														id="dateexamen" style="width: 250px" required>
+														id="dateexamen" >
 												</div>
-											</div>
+										
 											<div class="form-group">
-												<label for="poids" class="col-sm-2 form-control-label">poids</label>
+												<label for="poids" for="">poids</label>
 												<input type="text" class="form-control" name="poids"
-													id="poids" placeholder="Le poids" style="width: 250px"
-													required>
+													id="poids" placeholder="Le poids" >
 											</div>
+											
 											<div class="form-group">
-												<label for="taille" class="col-sm-2 form-control-label">Taille</label>
+												<label for="taille" for="">Taille</label>
 												<input type="text" class="form-control" name="taille"
-													id="taille" placeholder="La taille" style="width: 250px"
-													required>
+													id="taille" placeholder="La taille" >
 											</div>
 											<div class="form-group">
-												<label for="oms" class="col-sm-2 form-control-label">OMS</label>
+												<label for="oms" for="">OMS</label>
 												<input type="text" class="form-control" name="oms" id="oms"
-													placeholder="OMS" style="width: 250px" required>
+													placeholder="OMS" >
 											</div>
 											<div class="form-group">
-												<label for="imc" class="col-sm-2 form-control-label">IMC</label>
+												<label for="imc" for="">IMC</label>
 												<input type="text" class="form-control" name="imc" id="imc"
-													placeholder="IMC" style="width: 250px" required>
+													placeholder="IMC" >
 											</div>
 										</div>
 									</div>
+									
 									<div class="row">
 										<div class="col-sm-5 col-sm-offset-1">
-
-											<div class="form-box">
-												<div class="form-top">
-													<div class="form-top-right">
-														<i class="fa fa-lock"></i>
-													</div>
-												</div>
+											<div class="form-box">	
 												<div class="form-bottom">
 													<div class="panel panel-default">
-														<div class="panel-heading">
-															<h3 class="panel-title">Examen initial ou de suivi</h3>
-														</div>
+														   <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Examen initial ou de suivi</h4>
+							</div>
+						</div>
 														<div class="panel-body">
 															<div class="form-group">
-																<label class="col-sm-4 control-label">Type
+																<label for="">Type
 																	Examen:</label>
-																<div class="col-sm-8">
+																
 																	<select class="form-control" name="typeExamen" required>
 																		<option><%=TypeExamen.INITIAL%></option>
 																		<option><%=TypeExamen.SUIVI%></option>
 																	</select>
-																</div>
+															
 															</div>
 															<div class="form-group">
-																<label for="residence"> Syndrome Anormal: </label>
-																<div
-																	class="checkbox checkbox-info checkbox-circle col-sm-10 col-sm-offset-4">
+																<label for="residence"> Syndrome Anormal : </label>
+																</br>
+																
+															    <div class="col-md-6">
+																<div class="checkbox">
 																	<%
 																		CategorieSynAnormalDAO catDAO = new CategorieSynAnormalDAO();
 																		List<CategorieSynAnormal> categories = new ArrayList<>();
@@ -249,43 +274,40 @@
 																</div>
 															</div>
 														</div>
-														<!-- panel -->
+													
 													</div>
-													<!-- col -->
+												
 												</div>
 											</div>
-										</div>
+										</div></div>
 
 										<div class="col-sm-5">
 
 											<div class="form-box">
-												<div class="form-top">
-
-													<div class="form-top-right">
-														<i class="fa fa-pencil"></i>
-													</div>
-												</div>
+		
 												<div class="form-bottom">
 													<div class="panel panel-default">
-														<div class="panel-heading">
-															<h3 class="panel-title">Examen Post-Operatoire</h3>
-														</div>
+							<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Examen Post-Opératoire</h4>
+							</div>
+						</div>
+													
 														<div class="panel-body">
 															<div class="form-group">
-																<label for="delai" class="col-sm-4 form-control-label ">Delai</label>
+																<label for="delai" for="">Delai</label>
 																<input type="text" class="form-control" name="delai"
 																	placeholder="le delai" style="width: 250px">
 															</div>
 															<div class="form-group">
 																<label for="nbSelle"
-																	class="col-sm-4  form-control-label">Nombre de
+																	for="">Nombre de
 																	Selles</label> <input type="text" class="form-control"
 																	name="nbSelle" id="nbSelle" style="width: 250px">
 															</div>
 															<div class="form-group">
 																<label for=""> Syndrome de résection rectale: </label>
-																<div
-																	class="checkbox checkbox-info checkbox-circle col-sm-10 col-sm-offset-4">
+																<div class="col-md-12">
+																	<div class="checkbox">
 																	<%
 																		SyndromesPostOpDAO synDAO = new SyndromesPostOpDAO();
 																		List<SyndromesPostOp> syndromes = new ArrayList<>();
@@ -302,11 +324,13 @@
 																		}
 																	%>
 																</div>
-															</div>
+															</div></div>
 															<div class="form-group">
 																<label for="residence"> Toucher Rectal: </label>
+																</br>
+																<div class="col-md-12">
 																<div
-																	class="checkbox checkbox-info checkbox-circle col-sm-10 col-sm-offset-4">
+																	class="checkbox">
 																	<%
 																		ToucherRectalDAO rectDAO = new ToucherRectalDAO();
 																		List<ToucherRectal> touchers = new ArrayList<>();
@@ -325,40 +349,22 @@
 																</div>
 															</div>
 														</div>
-													</div>
-													<!-- panel -->
-												</div>
-											</div>
+															</div>
 
-										</div>
-										<div class="form-group m-b-0">
-											<div class="col-sm-offset-3 col-sm-9">
-												<button type="submit"
-													class="btn btn-info waves-effect waves-light">Enregistrer</button>
-											</div>
-										</div>
-									</div>
-
-								</div>
+								</div></br>
+										  <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Enregistrer</button>
+				
 							</form>
 						</div>
 
 					</div>
 				</div>
-				<!-- col -->
+				
 
 
 
 			</div>
 		</div>
 </body>
-<footer>
-<div class="row">
-	<div
-		class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xs-4 col-xs-offset-4"
-		id="foot">
-		<p>Copyright &copy; Registe@CRF</p>
-	</div>
-</div>
-</footer>
+
 </html>

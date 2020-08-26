@@ -15,46 +15,32 @@
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
 <script src="js/jquery.min.js">  </script>
 <script src="js/bootstrap.js">  </script>
-<title>Statuts</title>
+
+<title>Examens Cliniques</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div    class="row" >
-			<div  class="col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 col-xs-1 col-xs-offset-1" id="logo">
-          		<img  class="img"  src="images\logo.png " width="" height="" alt="logo"/>
-          	</div>
-     		<div class="col-lg-12 ">
-				</br></br>
-            </div>
-			<div class="row">
-				
-                <div class="pull-left col-lg-1">
-                                
+
+	
+			<div id="wrapper">
+		<%@include file="enteteUt.jsp"%>
+	
+			<div class="container-fluid">
+			 <%@include file="navbar.jsp"%>
+			 	<div class="col-lg-12 ">
                     <div class="panel-body">
-                        <a href="espaceUtilisateur.jsp"><button type="button" class="btn btn-primary btn-custom waves-effect waves-light m-b-5" style="width:250px" >Gestion Des Familles</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-                        <a href="gestionDossier.jsp"><button type="button" class="btn btn-success btn-custom waves-effect waves-light m-b-5" style="width:250px">Gestion Des Dossiers Medicales</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-                        <a href="ajoutRendezVous.jsp"><button type="button" class="btn btn-info btn-custom waves-effect waves-light m-b-5" style="width:250px" >Gestion Des Rendez-Vous</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-						<a><button type="button" class="btn btn-purple btn-custom waves-effect waves-light m-b-5" style="width:250px" >Deconnexion</button></a>
-                    </div>
-                                
-                </div>
-				
-                <div class="col-lg-9 col-lg-offset-2">
-                    <div class="panel-body">
-                        <a href="gestionDossier.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:250px">Nouveau Dossier Médical</button></a>
-                        <a href="examens.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:250px">Examens Medicales</button></a>
-                        <a href="consultation.jsp"><button type="button" class="btn btn-warning btn-rounded waves-effect waves-light m-b-5" style="width:250px">Consultation</button></a>
-						</br> </br>
-						<button type="button" class="btn btn-purple btn-rounded waves-effect waves-light m-b-5" style="width:770px; height:150px">Dossier Médical</button>
-                    </div>                       
-                </div>
-				<div class="col-lg-12 ">
-                    <div class="panel-body">
-                        <a href="statut.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Satut</button></a>
-                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:150px">Examen Clinique</button></a>
+                        <a href="statut.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Satut</button></a>
+                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
                         <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
                         <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
                         <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
@@ -63,7 +49,9 @@
 						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
                     </div>                       
                 </div>
-				<div class="col-md-10 col-md-offset-1">
+                
+                
+                  <div class="row">
 				<%
 										String id_Dossier = (String)session.getAttribute("idDossier");
 										int  idDossier = Integer.parseInt(id_Dossier);
@@ -72,8 +60,8 @@
 										int idPatient = dos.getPatient().getId();
 									
 									%>
-                                <div class="row">
-                        <div class="col-sm-10 col-sm-offset-1">
+                              
+                        
                         	<%
 										
 										IndividuDAO indDAO = new IndividuDAO();
@@ -85,16 +73,23 @@
 										 List<ExamenPreOpAnormal> examensAnormal = new ArrayList<>();
 										 examensAnormal =dosDAO.listerExamenPreOpAnormalParPatient(idPatient);
 									%>
-							<div class="panel-actions">
-                        			<button type="button" class="btn btn-info btn-sm pull-right" onclick="location.href='ajoutExamenClinique.jsp'" >Ajouter</button> 
+									
+							<div class="col-md-8 col-md-offset-2">
+                        			<button type="button" 
+						style="float: right; border: none;" onclick="location.href='ajoutExamenClinique.jsp'" >
+						<i class="material-icons preced">add_circle_outline</i></button> 
                     			</div></br></br>
-                        	<div class="panel panel-default">
-								<div class="panel-heading"><h3 class="panel-title">Examen Clinique Pré Opératoire de <%=patient.getPrenom()%> <%=patient.getNom() %></h3></div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div >
-                                            <table class="table table-striped">
-                                                    <thead>
+                    			
+                    		
+                    		<div class="col-md-8 col-md-offset-2">
+					<div class="card">
+                            <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Examen Clinique Pré Opératoire de <%=patient.getPrenom()%> <%=patient.getNom() %></h4>
+							</div>
+						</div>
+                                    <div class="card-body table-responsive">
+							<table class="table table-hover" id="idDataTable">
+								<thead class="text-warning">
                                                         <tr>
                                                             <th></th>
                                                             <th></th>
@@ -114,7 +109,7 @@
                                                     <tr>
                                                     	<td>Examen clinique</td>
                                                      	<td>du <%=dateFormatee%></td> 
-                                                     	<td><a href="consExamenCliniqueNormal.chu?id=<%=e.getId()%>" ><i class="fa fa-eye" ></i>Détail</a>  <a  href="modExamenPre.chu?id=<%=e.getId()%>" ><i class="fa fa-pencil-square-o"></i> Modifier </a></td>
+                                                     	<td><a href="consExamenCliniqueNormal.chu?id=<%=e.getId()%>" ><i class="material-icons" title="Détail de l'examen">remove_red_eye</i></a></td>
                                                         </tr>             
                                                      </tbody>
                                                      <%		
@@ -125,12 +120,15 @@
                                         </div>
                                     </div>
                         	
-                                    <div class="panel-heading"><h3 class="panel-title">Examen Clinique Post Operatoire de <%=patient.getPrenom()%> <%=patient.getNom() %></h3></div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div >
-                                            <table class="table table-striped">
-                                                    <thead>
+                        	<div class="col-md-8 col-md-offset-2">
+					<div class="card">
+                                         <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Examen Clinique Post Operatoire de <%=patient.getPrenom()%> <%=patient.getNom() %></h4>
+							</div>
+						</div>
+                                     <div class="card-body table-responsive">
+							<table class="table table-hover" id="idDataTable">
+								<thead class="text-warning">
                                                         <tr>
                                                             <th></th>
                                                             <th></th>
@@ -150,7 +148,7 @@
                                                     <tr>
                                                     	<td>Examen clinique</td>
                                                      	<td>du <%=dateFormatee%></td> 
-                                                     	<td><a href="consExamenCliniquePost.chu?id=<%=e.getId()%>" ><i class="fa fa-eye" ></i>Détail</a><a  href="modExamenPost.chu?id=<%=e.getId()%>" ><i class="fa fa-pencil-square-o"></i> Modifier </a></td> 
+                                                     	<td><a href="consExamenCliniquePost.chu?id=<%=e.getId()%>" ><i class="material-icons" title="Détail de l'examen">remove_red_eye</i></a></td> 
                                                         
                                                         </tr>             
                                                      </tbody>
@@ -159,34 +157,22 @@
                                         			 %> 
                                                 </table>
                                             </div>
-                                        </div>
-                                    </div>
-                        	</div>
-						
-                </div>		
-               </div> <!-- col -->
+                                     </div>
+                 
 				
-               <div class="col-lg-10 col-lg-offeset-1 ">
-                    <div class="panel-body">
-                       
-                         <a href="modExamenClinique.chu?id=<%=dos.getPatient().getId()%>"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:150px">Modifier</button></a>
-                       
-                    </div>                       
-                </div>
+             
+                         <a href="modExamenClinique.chu?id=<%=dos.getPatient().getId()%>"> <button type="submit" class="btn btn-info waves-effect waves-light btnCardInfo">Modifier</button></a>
+                </br></br></br>
+                                    </div>
                                
 											
-									
-                            </div> <!-- col -->
+						</div>			
+                            </div> 
 				
 				
         </div>
-    </div>	
+   
+   
 </body>
-<footer>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xs-4 col-xs-offset-4" id="foot">
-      			<p>Copyright &copy; Registe@CRF </p> 
-      		</div>
-		</div>        
-</footer>
+
 </html>

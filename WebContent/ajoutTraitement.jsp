@@ -18,8 +18,38 @@
 	
 </script>
 <title>Gestion des Traitements</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+
+	<div id="wrapper">
+		<%@include file="enteteUt.jsp"%>
+	
+			<div class="container-fluid">
+			 <%@include file="navbar.jsp"%>
+			 	<div class="col-lg-12 ">
+                    <div class="panel-body">
+                        <a href="statut.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Satut</button></a>
+                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
+                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
+                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
+                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
+						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
+						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
+						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
+                    </div>                       
+                </div>
+                <!--  
 	<div class="container">
 		<div class="row">
 			<div
@@ -102,18 +132,17 @@
 								class="btn btn-info btn-rounded waves-effect waves-light m-b-5"
 								style="width: 150px">Traitement</button></a>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">Traitement</h3>
+				</div>  -->
+				   		<div class="col-md-8 col-md-offset-2">
+					<div class="card">
+                            <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Traitement</h4>
 							</div>
-							<form class="form-horizontal" role="form"
+						</div>
+							<form role="form"
 								action="ajoutTraitement.chu" method="post">
-								<div class="row">
-									<div class="col-md-7 col-lg-offset-3">
+								
+						
 										<div class="panel-body">
 											<%
 												String id_Dossier = (String) session.getAttribute("idDossier");
@@ -123,24 +152,24 @@
 											%>
 											<div class="form-group">
 												<input type="hidden" class="form-control" name="dossier"
-													value="<%=dos.getId()%>" style="width: 250px">
+													value="<%=dos.getId()%>" >
 											</div>
 											<div class="form-group">
-												<label for="" class="col-sm-4 control-label">Date
+												<label for="" >Date
 													de traitement :</label> <input type="text" class="form-control"
 													name="dateTrait" id="" placeholder="jj/mm/aaaa"
-													style="width: 250px">
+													>
 											</div>
 											<div class="form-group">
-												<label for="" class="col-sm-4 control-label">Indication</label>
+												<label for="">Indication:</label>
 												<input type="text" class="form-control" name="indication"
-													id="" placeholder="" style="width: 250px">
+													id="" placeholder="" >
 
 											</div>
 
 											<div class="form-group">
-												<label class="col-sm-2 form-control-label">Hopital:</label>
-												<div class="col-sm-8">
+												<label for="">Hopital:</label>
+											
 													<%
 														HopitalDAO hopDAO = new HopitalDAO();
 														List<Hopital> hopitaux = new ArrayList<>();
@@ -148,7 +177,7 @@
 													%>
 
 													<select class="form-control" name="hopital"
-														style="width: 250px" required>
+														>
 														<%
 															for (Hopital hop : hopitaux) {
 														%>
@@ -158,34 +187,37 @@
 														%>
 													</select>
 												</div>
-											</div>
-											<div class="panel-heading">
-												<h3 class="panel-title">Chirurgie</h3>
-											</div>
+										
+												<div class="col-md-10 col-md-offset-1">
+					<div class="card">
+                                         <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Chirurgie</h4>
+							</div>
+						</div>
 											<div class="panel-body">
 
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">en
-														temps</label> <input type="text" class="form-control" name="temps"
-														id="" placeholder="" style="width: 250px">
+													<label for="">en
+														temps:</label> <input type="text" class="form-control" name="temps"
+														id="" placeholder="" >
 
 												</div>
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">Date:</label>
+													<label for="">Date:</label>
 													<input type="text" class="form-control" name="date" id=""
-														placeholder="jj/mm/aaaa" style="width: 250px">
+														placeholder="jj/mm/aaaa" >
 												</div>
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">Service:</label>
+													<label for="">Service:</label>
 													<input type="text" class="form-control" name="service"
-														placeholder="service" style="width: 250px">
+														placeholder="service" >
 												</div>
 
 
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Type
+													<label for="">Type
 														d'exerèse</label>
-													<div class="col-sm-8">
+												
 														<select class="form-control" name="typeExerese">
 															<%
 																TypeExereseDAO typeDAO = new TypeExereseDAO();
@@ -201,10 +233,10 @@
 															%>
 														</select>
 													</div>
-												</div>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Elargie à:</label>
-													<div class="col-sm-8">
+													<label for="">Elargie à:</label>
+													
 														<select class="form-control" name="elargissement">
 															<option></option>
 															<%
@@ -221,11 +253,11 @@
 															%>
 														</select>
 													</div>
-												</div>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Gestes
+													<label for="">Gestes
 														Complémentaires:</label>
-													<div class="col-sm-8">
+												
 														<select class="form-control" name="geste">
 															<option></option>
 															<%
@@ -242,10 +274,10 @@
 															%>
 														</select>
 													</div>
-												</div>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">RR scoring:</label>
-													<div class="col-sm-8">
+													<label for="">RR scoring:</label>
+													
 														<select class="form-control" name="scoring">
 															<option></option>
 															<%
@@ -262,15 +294,15 @@
 															%>
 														</select>
 													</div>
-												</div>
+											
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">Ref
+													<label for="">Ref
 														Ana-path:</label> <input type="text" class="form-control"
-														name="refChirg" style="width: 250px">
+														name="refChirg">
 												</div>
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Complication:</label>
-													<div class="col-sm-8">
+													<label for="">Complication:</label>
+													
 														<select class="form-control" name="complicationChirurg">
 															<opition></opition>
 															<%
@@ -287,20 +319,23 @@
 															%>
 														</select>
 													</div>
-												</div>
+											
 
 											</div>
+											
 											</br>
-											</br>
-											<div class="panel-heading">
-												<h3 class="panel-title">Traitement Endoscopique</h3>
-											</div>
+											              
+				
+                                         <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Traitement endoscopique</h4>
+							</div>
+						</div>
 											<div class="panel-body">
 
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Type
-														d'intervention</label>
-													<div class="col-sm-8">
+													<label for="">Type
+														d'intervention:</label>
+												
 														<select class="form-control" name="typeInterv">
 															<option></option>
 															<%
@@ -317,17 +352,17 @@
 															%>
 														</select>
 													</div>
-												</div>
+											
 
 
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">Ref
+													<label for="">Ref
 														Ana-path:</label> <input type="text" class="form-control"
-														name="refTrait" placeholder="degre" style="width: 250px">
+														name="refTrait" placeholder="degre" >
 												</div>
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Complication:</label>
-													<div class="col-sm-8">
+													<label for="">Complication:</label>
+													
 														<select class="form-control" name="complicationTrait">
 															<opition></opition>
 
@@ -340,18 +375,20 @@
 															%>
 														</select>
 													</div>
-												</div>
+											
 
 											</div>
 											</br>
 											</br>
-											<div class="panel-heading">
-												<h3 class="panel-title">Chimiothérapie</h3>
-											</div>
+					
+                                         <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Chimiothérapie</h4>
+							</div>
+						</div>
 											<div class="panel-body">
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Deroulement</label>
-													<div class="col-sm-8">
+													<label for="">Déroulement:</label>
+												
 														<select class="form-control" name="deroulementChim">
 
 															<option value=""><%=Deroulement.ADJUVANTE%></option>
@@ -360,30 +397,30 @@
 
 														</select>
 													</div>
-												</div>
+												
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">Date
+													<label for="">Date
 														de début :</label> <input type="text" class="form-control"
 														name="dateDebutChim" id="" placeholder="jj/mm/aaaa"
-														style="width: 250px">
+														>
 												</div>
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">Date
+													<label for="">Date
 														de fin:</label> <input type="text" class="form-control"
 														name="dateFinChim" id="" placeholder="jj/mm/aaaa"
-														style="width: 250px">
+														>
 												</div>
 
 											</div>
-											</br>
-											</br>
-											<div class="panel-heading">
-												<h3 class="panel-title">Radiothérapie</h3>
-											</div>
+											
+										               <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Radiothérapie</h4>
+							</div>
+						</div>
 											<div class="panel-body">
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Deroulement</label>
-													<div class="col-sm-8">
+													<label for"">Déroulement:</label>
+													
 														<select class="form-control" name="deroulementRadio">
 
 															<option value=""><%=Deroulement.ADJUVANTE%></option>
@@ -392,32 +429,30 @@
 
 														</select>
 													</div>
-												</div>
+										
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">Date
+													<label for="" >Date
 														de début :</label> <input type="text" class="form-control"
 														name="dateDebutRad" id="" placeholder="jj/mm/aaaa"
-														style="width: 250px">
+														>
 												</div>
 												<div class="form-group">
-													<label for="" class="col-sm-4 control-label">Date
+													<label for="">Date
 														de fin:</label> <input type="text" class="form-control"
 														name="dateFinRad" id="" placeholder="jj/mm/aaaa"
-														style="width: 250px">
+														>
 												</div>
 											</div>
 											</br>
-											</br>
+										
 
 										</div>
 									</div>
 
-									<div class="form-group m-b-0">
-										<div class="col-sm-offset-3 col-sm-9">
+									
 											<button type="submit"
-												class="btn btn-info waves-effect waves-light">Enregistrer</button>
-										</div>
-									</div>
+												class="btn btn-info waves-effect waves-light btnCardInfo">Enregistrer</button>
+									
 
 
 								</div>
@@ -433,13 +468,5 @@
 			</div>
 		</div>
 </body>
-<footer>
-<div class="row">
-	<div
-		class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xs-4 col-xs-offset-4"
-		id="foot">
-		<p>Copyright &copy; Registe@CRF</p>
-	</div>
-</div>
-</footer>
+
 </html>
