@@ -62,16 +62,18 @@ a {
     transition: all 150ms ease-in;
 }
 .sidebar .logo-img {
-    width: 35px;
+   /*  width: 35px;
     display: block;
     max-height: 30px;
     margin-left: 13px;
-    margin-right: 15px;
+    margin-right: 15px; */
+    display: block;
 }
 .sidebar .logo-img img {
-    width: 35px;
+    /* width: 35px;
     top: 16px;
-    position: absolute;
+    position: absolute; */
+    width: 100px;
 }
 .sidebar .logo:after {
     content: "";
