@@ -1101,12 +1101,12 @@ table.dataTable thead .sorting:after {
     width: calc(100% - 30px);
     background-color: rgba(180, 180, 180, 0.3);
 }
-.active{
+.nav>li>.active{
 	background: linear-gradient(60deg, #26c6da, #00acc1);
     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);
     color:white !important;
 }
-.active i{
+.nav>li>.active i{
 	color:white !important;
 }
 .nav>li>.active a:focus, .nav>li>.active:hover{
