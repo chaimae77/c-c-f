@@ -530,8 +530,6 @@ public class Controller extends HttpServlet {
 			vue = genetique.consultGenetique();
 		} else if (actionKey.equalsIgnoreCase("modGenetique")) {
 			vue = genetique.modGenetiqueTrait();
-		} else if (actionKey.equalsIgnoreCase("detailUtilisateur")) {
-			vue = actionUser.ConsulterUtilisateur();
 		} else if (actionKey.equalsIgnoreCase("suppUtilisateur")) {
 			vue = actionUser.SupprimerUtilisateur();
 		} else if (actionKey.equalsIgnoreCase("modUser")) {

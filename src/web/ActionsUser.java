@@ -75,19 +75,12 @@ public class ActionsUser {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("nom", user[0]);
 			session.setAttribute("prenom", user[1]);
-			if ("infirmier".equals(user[2])) {
-				return "/charts.jsp";
-			}
-			if ("medecin".equals(user[2])) {
-				return "/espaceMedecin.jsp";
-			}
-			if ("admin".equals(user[2])) {
-				return "/espaceAdmin.jsp";
-			}
+			session.setAttribute("role", user[2]);
+			return "/charts.jsp";
 		} else {
 			return "/index.jsp";
 		}
-		return null;
+		//return null;
 	}
 
 	public String AjouterUtilisateur() {
@@ -146,12 +139,4 @@ public class ActionsUser {
 		return "modUtilisateur.jsp";
 	}
 
-	public String ConsulterUtilisateur() {
-		String ide = request.getParameter("id");
-		int id = Integer.parseInt(ide);
-		Utilisateur user = userDAO.listerUserParId(id);
-		HttpSession sessionMod = request.getSession();
-		sessionMod.setAttribute("Utilisateur", user);
-		return "detailUtilisateur.jsp";
-	}
 }

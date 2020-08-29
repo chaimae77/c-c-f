@@ -22,115 +22,93 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-
-
 <!-- Custom CSS -->
 <link href="css/sb-admin.css" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="css/plugins/morris.css" rel="stylesheet">
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+	rel="stylesheet">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
 
-<!-- Custom Fonts -->
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
 <body>
-
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
-
-		<div id="page-wrapper">
-
-			<div class="container-fluid">
-
-				<!-- Page Heading -->
-				<div class="row">
-					<h3 class="page-header" style="text-align: center">
-						<img class="img" src="images\logo.png " width="" height=""
-							alt="logo" /><small></small>
-					</h3>
-
-					<!-- /.row -->
-					<div class="row">
-						<div class="col-md-6 col-lg-offset-3">
-							<h3 class="page-header">
-								Modification d'un Utilisateur <small></small>
-							</h3>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Modifier un Utilisateur</h3>
-								</div>
-								<div class="panel-body">
-									<form role="form" action="modUtilisateur.chu" method="post">
-										<%
-											Utilisateur user = (Utilisateur)session.getAttribute("user");
-										
-										%>
-										
-										<div class="form-group">
-
-											<input type="hidden" class="form-control" name="idUser"
-												value="<%=user.getId()%>" placeholder="">
-										</div>
-										
-										<div class="form-group">
-										<label class="col-sm-4 control-label">Nom</label> <input
-											type="text" class="form-control" name="nom"
-											value="<%=user.getNom() %>" required>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-4 control-label">Prénom</label> <input
-											type="text" class="form-control" name="prenom" 
-											value="<%=user.getPrenom()%>"required>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-4 control-label">Email</label> <input
-											type="email" class="form-control" name="email" 
-											value="<%=user.getEmail() %>" required>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-4 control-label">Login</label> <input
-											type="text" class="form-control" name="login" 
-											value="<%=user.getLogin() %>" required>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-12 control-label">Role</label> 
-										<select  class="form-control" name="role" style="width:250px" required>
-											<option>Medecin</option>
-											<option>Infirmier</option>
-											<option>Utilisateur</option>
-										</select>
-									</div>
-										</br>
-										<button type="submit"
-											class="btn btn-purple waves-effect waves-light">Modifier</button>
-									</form>
-								</div>
-								<!-- panel-body -->
-
-							</div>
-							<!-- panel -->
-						</div>
-
-
-					</div>
-					<!-- End row -->
-
+		<div class="container-fluid">
+			<%@include file="navbar.jsp"%>
+			<div class="row">
+				<div class="col-md-1 col-lg-offset-0">
+					<a href="gestionUtilisateurs.jsp"><i
+						class="material-icons preced">arrow_back</i></a>
 				</div>
-				<!-- /.container-fluid -->
-
 			</div>
-			<!-- /#page-wrapper -->
+			<div class="row">
+				<div class="col-md-8 col-lg-offset-2">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Modifier un Utilisateur</h4>
+							</div>
+						</div>
+						<div class="card-body table-responsive">
+							<form role="form" action="modUtilisateur.chu" method="post">
+								<%
+									Utilisateur user = (Utilisateur) session.getAttribute("user");
+								%>
+
+								<div class="form-group">
+
+									<input type="hidden" class="form-control" name="idUser"
+										value="<%=user.getId()%>" placeholder="">
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Nom</label> <input
+										type="text" class="form-control" name="nom"
+										value="<%=user.getNom()%>" required>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Prénom</label> <input
+										type="text" class="form-control" name="prenom"
+										value="<%=user.getPrenom()%>" required>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Email</label> <input
+										type="email" class="form-control" name="email"
+										value="<%=user.getEmail()%>" required>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Login</label> <input
+										type="text" class="form-control" name="login"
+										value="<%=user.getLogin()%>" required>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-12 control-label">Role</label> <select
+										class="form-control" name="role" style="width: 250px" required>
+										<option>Medecin</option>
+										<option>Infirmier</option>
+										<option>Utilisateur</option>
+									</select>
+								</div>
+								<button type="submit"
+									class="btn btn-purple waves-effect waves-light btnCardInfo">Modifier</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End row -->
 
 		</div>
 		<!-- /#wrapper -->
 	</div>
 </body>
-
-<%@include file="piedUt.jsp"%>
 </html>

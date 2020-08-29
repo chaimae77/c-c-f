@@ -43,6 +43,7 @@
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
 		<div class="container-fluid">
+		<%@include file="navbar.jsp"%>
 			<div class="row">
 				<div class="col-md-1 col-lg-offset-0">
 					<a href="ajoutRendezVous.jsp" ><i class="material-icons preced">arrow_back</i></a>
