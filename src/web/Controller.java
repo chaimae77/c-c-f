@@ -502,8 +502,6 @@ public class Controller extends HttpServlet {
 			vue = actionIndividu.compInd();
 		} else if (actionKey.equalsIgnoreCase("modRendezVous")) {
 			vue = rendezVous.modRendezVous();
-		} else if (actionKey.equalsIgnoreCase("detailStatut")) {
-			vue = actionStatut.detailStatut();
 		} else if (actionKey.equalsIgnoreCase("modStatut")) { // pour l'affichage du page jsp
 			vue = actionStatut.modStatut();
 		} else if (actionKey.equalsIgnoreCase("consEndoscopieNormal")) {

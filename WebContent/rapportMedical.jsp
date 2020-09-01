@@ -74,22 +74,18 @@
 				DossierMedicale dos = dosDAO.trouverDossierById(idDossier);
 				int idPatient = dos.getPatient().getId();
 			%>
-			<!-- /.row -->
-
-
-			<!-- <div id="content"> -->
 			<div class="row">
 				<div class="col-md-1 col-lg-offset-0">
 					<a class="back" href="listIndDoss.chu?id=<%=dos.getPatient().getFamille().getId()%>"><i class="material-icons preced">arrow_back</i></a>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3 col-md-offset-1">
+				<div class="col-md-3 text-center">
 					<img src="images/CHU_Images/<%=dos.getPatient().getImage()%>"
 						width=100px; height=100px; />
 				</div>
-				<div class="col-md-6">
-					<h2 style="text-align: center;">
+				<div class="col-md-6 text-center">
+					<h2>
 						Rapport médical de
 						<%=dos.getPatient()%></h2>
 				</div>

@@ -68,12 +68,13 @@
 												int  idDossier = Integer.parseInt(id_Dossier);
 												DossierDAO dosDAO = new DossierDAO();
                                             	DossierMedicale dos = dosDAO.trouverDossierById(idDossier);
-                                            	
-                                            	Date date = dos.getDateCreation();
-												SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
+                                            
 												SimpleDateFormat formatDateJour = new SimpleDateFormat("dd/MM/yyyy"); 
-												String dateFormatee = formatDateJour.format(date); 
+												String dateFormatee = formatDateJour.format(dos.getDateCreation()); 
 											%>
+				<div class="col-md-12 col-lg-offset-0">
+					<a class="back" href="listIndDoss.chu?id=<%=dos.getPatient().getFamille().getId()%>"><i class="material-icons preced">arrow_back</i></a>
+				</div>
                    <div class=" col-lg-offset-2 col-md-8">
 					<div class="card">
 						<div class="card-header card-header-info card-header-icon">
