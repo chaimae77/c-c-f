@@ -49,281 +49,281 @@
 					<a class="back" href="examen.chu?id=<%=dos.getId()%>"><i
 						class="material-icons preced">arrow_back</i></a>
 				</div>
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-12 col-md-offset-0">
 					<div class="card">
 						<div class="card-header card-header-info card-header-icon">
 							<div class="card-icon" style="float: none !important;">
-								<h4>Ajouter Traitement</h4>
+								<h4>Ajouter Endoscopie</h4>
 							</div>
 						</div>
-						<form role="form" action="ajoutTraitement.chu" method="post">
-							<div class="panel-body">
-								<div class="form-group">
-									<input type="hidden" class="form-control" name="dossier"
-										value="<%=dos.getId()%>">
-								</div>
-								<div class="form-group">
-									<label for="">Date de traitement :</label> <input type="text"
-										class="form-control" name="dateTrait" id=""
-										placeholder="jj/mm/aaaa">
-								</div>
-								<div class="form-group">
-									<label for="">Indication:</label> <input type="text"
-										class="form-control" name="indication" id="" placeholder="">
-								</div>
-								<div class="form-group">
-									<label for="">Hopital:</label>
+						<div class="card-body table-responsive">
+							<form role="form" enctype='multipart/form-data'
+								action="ajoutTraitement.chu" method="post">
+								<div class="row">
 									<%
-										HopitalDAO hopDAO = new HopitalDAO();
-										List<Hopital> hopitaux = new ArrayList<>();
-										hopitaux = hopDAO.listerLesHopitaux();
+										TypeExereseDAO typeDAO = new TypeExereseDAO();
+										List<TypeExerese> types = new ArrayList<>();
+										types = typeDAO.listerTypeExerese();
+										TypeInterventionDAO typeIntDAO = new TypeInterventionDAO();
+										List<TypeIntervention> interventions = new ArrayList<>();
+										interventions = typeIntDAO.listerTypeIntervention();
+										ElargissementDAO elargDAO = new ElargissementDAO();
+										List<Elargissement> elargies = new ArrayList<>();
+										elargies = elargDAO.listerLesElargissement();
+										GesteDAO gestDAO = new GesteDAO();
+										List<Geste> gestes = new ArrayList<>();
+										gestes = gestDAO.listerLesGeste();
+										RRscoringDAO scoringDAO = new RRscoringDAO();
+										List<RRscoring> scoring = new ArrayList<>();
+										scoring = scoringDAO.listerRRscoring();
+										ComplicationDAO compDAO = new ComplicationDAO();
+										List<Complication> complications = new ArrayList<>();
+										complications = compDAO.listerLesComplication();
 									%>
-									<select class="form-control" name="hopital">
-										<%
-											for (Hopital hop : hopitaux) {
-										%>
-										<option value="<%=hop.getId()%>"><%=hop%></option>
-										<%
-											}
-										%>
-									</select>
-								</div>
-								<div class="col-md-10 col-md-offset-1">
-									<div class="card">
-										<div class="card-header card-header-info card-header-icon">
-											<div class="card-icon" style="float: none !important;">
-												<h4>Chirurgie</h4>
+									<div class="col-md-6 col-sm-12">
+										<div class="card">
+											<div class="card-header card-header-info card-header-icon">
+												<div class="card-icon" style="float: none !important;">
+													<h4>Détail Traitement</h4>
+												</div>
+											</div>
+											<div class="card-body table-responsive">
+												<%-- <div class="form-group">
+													<input type="hidden" class="form-control" name="dossier"
+														value="<%=dos.getId()%>">
+												</div> --%>
+												<div class="form-group">
+													<label for="">Date de traitement :</label> <input
+														type="text" class="form-control" name="dateTrait" id=""
+														placeholder="jj/mm/aaaa">
+												</div>
+												<div class="form-group">
+													<label for="">Indication:</label> <input type="text"
+														class="form-control" name="indication" id=""
+														placeholder="">
+												</div>
+												<div class="form-group">
+													<label for="">Hopital:</label>
+													<%
+														HopitalDAO hopDAO = new HopitalDAO();
+														List<Hopital> hopitaux = new ArrayList<>();
+														hopitaux = hopDAO.listerLesHopitaux();
+													%>
+													<select class="form-control" name="hopital">
+														<%
+															for (Hopital hop : hopitaux) {
+														%>
+														<option value="<%=hop.getId()%>"><%=hop.getHopital()%></option>
+														<%
+															}
+														%>
+													</select>
+												</div>
 											</div>
 										</div>
-										<div class="panel-body">
-											<div class="form-group">
-												<label for="">en temps:</label> <input type="text"
-													class="form-control" name="temps" id="" placeholder="">
+									</div>
+									<div class="col-md-6 col-sm-12">
+										<div class="card">
+											<div class="card-header card-header-info card-header-icon">
+												<div class="card-icon" style="float: none !important;">
+													<h4>Traitement endoscopique</h4>
+												</div>
 											</div>
-											<div class="form-group">
-												<label for="">Date:</label> <input type="text"
-													class="form-control" name="date" id=""
-													placeholder="jj/mm/aaaa">
-											</div>
-											<div class="form-group">
-												<label for="">Service:</label> <input type="text"
-													class="form-control" name="service" placeholder="service">
-											</div>
-											<div class="form-group">
-												<label for="">Type d'exerèse</label> <select
-													class="form-control" name="typeExerese">
-													<%
-														TypeExereseDAO typeDAO = new TypeExereseDAO();
-														List<TypeExerese> types = new ArrayList<>();
-														types = typeDAO.listerTypeExerese();
-													%>
-													<%
-														for (TypeExerese type : types) {
-													%>
-													<option value="<%=type.getId()%>"><%=type%></option>
-													<%
-														}
-													%>
-												</select>
-											</div>
-
-											<div class="form-group">
-												<label for="">Elargie à:</label> <select
-													class="form-control" name="elargissement">
-													<option></option>
-													<%
-														ElargissementDAO elargDAO = new ElargissementDAO();
-														List<Elargissement> elargies = new ArrayList<>();
-														elargies = elargDAO.listerLesElargissement();
-													%>
-													<%
-														for (Elargissement elarg : elargies) {
-													%>
-													<option value="<%=elarg.getId()%>"><%=elarg%></option>
-													<%
-														}
-													%>
-												</select>
-											</div>
-
-											<div class="form-group">
-												<label for="">Gestes Complémentaires:</label> <select
-													class="form-control" name="geste">
-													<option></option>
-													<%
-														GesteDAO gestDAO = new GesteDAO();
-														List<Geste> gestes = new ArrayList<>();
-														gestes = gestDAO.listerLesGeste();
-													%>
-													<%
-														for (Geste geste : gestes) {
-													%>
-													<option value="<%=geste.getId()%>"><%=geste%></option>
-													<%
-														}
-													%>
-												</select>
-											</div>
-
-											<div class="form-group">
-												<label for="">RR scoring:</label> <select
-													class="form-control" name="scoring">
-													<option></option>
-													<%
-														RRscoringDAO scoringDAO = new RRscoringDAO();
-														List<RRscoring> scoring = new ArrayList<>();
-														scoring = scoringDAO.listerRRscoring();
-													%>
-													<%
-														for (RRscoring scor : scoring) {
-													%>
-													<option value="<%=scor.getId()%>"><%=scor%></option>
-													<%
-														}
-													%>
-												</select>
-											</div>
-
-											<div class="form-group">
-												<label for="">Ref Ana-path:</label> <input type="text"
-													class="form-control" name="refChirg">
-											</div>
-											<div class="form-group">
-												<label for="">Complication:</label> <select
-													class="form-control" name="complicationChirurg">
-													<opition></opition>
-													<%
-														ComplicationDAO compDAO = new ComplicationDAO();
-														List<Complication> complications = new ArrayList<>();
-														complications = compDAO.listerLesComplication();
-													%>
-													<%
-														for (Complication comp : complications) {
-													%>
-													<option value="<%=comp.getId()%>"><%=comp%></option>
-													<%
-														}
-													%>
-												</select>
+											<div class="card-body table-responsive">
+												<div class="form-group">
+													<label for="">Type d'intervention:</label> <select
+														class="form-control" name="typeInterv">
+														<%
+															for (TypeIntervention interv : interventions) {
+														%>
+														<option value="<%=interv.getId()%>"><%=interv.getIntervention()%></option>
+														<%
+															}
+														%>
+													</select>
+												</div>
+												<div class="form-group">
+													<label for="">Ref Ana-path:</label> <input type="text"
+														class="form-control" name="refTrait" placeholder="degre">
+												</div>
+												<div class="form-group">
+													<label for="">Complication:</label> <select
+														class="form-control" name="complicationTrait">
+														<%
+															for (Complication comp : complications) {
+														%>
+														<option value="<%=comp.getId()%>"><%=comp.getComplication()%></option>
+														<%
+															}
+														%>
+													</select>
+												</div>
 											</div>
 										</div>
-										</br>
-										<div class="card-header card-header-info card-header-icon">
-											<div class="card-icon" style="float: none !important;">
-												<h4>Traitement endoscopique</h4>
+									</div>
+									<div class="col-md-6 col-sm-12">
+										<div class="card">
+											<div class="card-header card-header-info card-header-icon">
+												<div class="card-icon" style="float: none !important;">
+													<h4>Chimiothérapie</h4>
+												</div>
+											</div>
+											<div class="card-body table-responsive">
+												<div class="form-group">
+													<label for="">Déroulement:</label> <select
+														class="form-control" name="deroulementChim">
+														<option value=""><%=Deroulement.ADJUVANTE%></option>
+														<option value=""><%=Deroulement.NEO_ADJUVANTE%></option>
+														<option value=""><%=Deroulement.PALLIATIVE%></option>
+
+													</select>
+												</div>
+
+												<div class="form-group">
+													<label for="">Date de début :</label> <input type="text"
+														class="form-control" name="dateDebutChim" id=""
+														placeholder="jj/mm/aaaa">
+												</div>
+												<div class="form-group">
+													<label for="">Date de fin:</label> <input type="text"
+														class="form-control" name="dateFinChim" id=""
+														placeholder="jj/mm/aaaa">
+												</div>
 											</div>
 										</div>
-										<div class="panel-body">
-
-											<div class="form-group">
-												<label for="">Type d'intervention:</label> <select
-													class="form-control" name="typeInterv">
-													<option></option>
-													<%
-														TypeInterventionDAO typeIntDAO = new TypeInterventionDAO();
-														List<TypeIntervention> interventions = new ArrayList<>();
-														interventions = typeIntDAO.listerTypeIntervention();
-													%>
-													<%
-														for (TypeIntervention interv : interventions) {
-													%>
-													<option value="<%=interv.getId()%>"><%=interv%></option>
-													<%
-														}
-													%>
-												</select>
+									</div>
+									<div class="col-md-6 col-sm-12">
+										<div class="card">
+											<div class="card-header card-header-info card-header-icon">
+												<div class="card-icon" style="float: none !important;">
+													<h4>Radiothérapie</h4>
+												</div>
 											</div>
-											<div class="form-group">
-												<label for="">Ref Ana-path:</label> <input type="text"
-													class="form-control" name="refTrait" placeholder="degre">
-											</div>
-											<div class="form-group">
-												<label for="">Complication:</label> <select
-													class="form-control" name="complicationTrait">
-													<opition></opition>
+											<div class="card-body table-responsive">
+												<div class="form-group">
+													<labelfor"">Déroulement:</label> <select
+														class="form-control" name="deroulementRadio">
+														<option value=""><%=Deroulement.ADJUVANTE%></option>
+														<option value=""><%=Deroulement.NEO_ADJUVANTE%></option>
+														<option value=""><%=Deroulement.PALLIATIVE%></option>
 
-													<%
-														for (Complication comp : complications) {
-													%>
-													<option value="<%=comp.getId()%>"><%=comp%></option>
-													<%
-														}
-													%>
-												</select>
+													</select>
+												</div>
+
+												<div class="form-group">
+													<label for="">Date de début :</label> <input type="text"
+														class="form-control" name="dateDebutRad" id=""
+														placeholder="jj/mm/aaaa">
+												</div>
+												<div class="form-group">
+													<label for="">Date de fin:</label> <input type="text"
+														class="form-control" name="dateFinRad" id=""
+														placeholder="jj/mm/aaaa">
+												</div>
 											</div>
 										</div>
-										</br> </br>
+									</div>
+									<div class="col-md-12 col-sm-12">
+										<div class="card">
+											<div class="card-header card-header-info card-header-icon">
+												<div class="card-icon" style="float: none !important;">
+													<h4>Chirurgie</h4>
+												</div>
+											</div>
+											<div class="card-body table-responsive">
+												<div class="col-md-6 col-sm-12">
+													<div class="form-group">
+														<label for="">en temps:</label> <input type="text"
+															class="form-control" name="temps" id="" placeholder="">
+													</div>
+													<div class="form-group">
+														<label for="">Date:</label> <input type="text"
+															class="form-control" name="date" id=""
+															placeholder="jj/mm/aaaa">
+													</div>
+													<div class="form-group">
+														<label for="">Service:</label> <input type="text"
+															class="form-control" name="service" placeholder="service">
+													</div>
+													<div class="form-group">
+														<label for="">Type d'exerèse</label> <select
+															class="form-control" name="typeExerese">
+															<%
+																for (TypeExerese type : types) {
+															%>
+															<option value="<%=type.getId()%>"><%=type.getTypeExerese()%></option>
+															<%
+																}
+															%>
+														</select>
+													</div>
 
-										<div class="card-header card-header-info card-header-icon">
-											<div class="card-icon" style="float: none !important;">
-												<h4>Chimiothérapie</h4>
+													<div class="form-group">
+														<label for="">Elargie à:</label> <select
+															class="form-control" name="elargissement">
+															<%
+																for (Elargissement elarg : elargies) {
+															%>
+															<option value="<%=elarg.getId()%>"><%=elarg.getElargie()%></option>
+															<%
+																}
+															%>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-12">
+													<div class="form-group">
+														<label for="">Gestes Complémentaires:</label> <select
+															class="form-control" name="geste">
+															<%
+																for (Geste geste : gestes) {
+															%>
+															<option value="<%=geste.getId()%>"><%=geste.getGeste()%></option>
+															<%
+																}
+															%>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="">RR scoring:</label> <select
+															class="form-control" name="scoring">
+															<%
+																for (RRscoring scor : scoring) {
+															%>
+															<option value="<%=scor.getId()%>"><%=scor.getScoring()%></option>
+															<%
+																}
+															%>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="">Ref Ana-path:</label> <input type="text"
+															class="form-control" name="refChirg">
+													</div>
+													<div class="form-group">
+														<label for="">Complication:</label> <select
+															class="form-control" name="complicationChirurg">
+															<%
+																for (Complication comp : complications) {
+															%>
+															<option value="<%=comp.getId()%>"><%=comp.getComplication()%></option>
+															<%
+																}
+															%>
+														</select>
+													</div>
+												</div>
 											</div>
 										</div>
-										<div class="panel-body">
-											<div class="form-group">
-												<label for="">Déroulement:</label> <select
-													class="form-control" name="deroulementChim">
-
-													<option value=""><%=Deroulement.ADJUVANTE%></option>
-													<option value=""><%=Deroulement.NEO_ADJUVANTE%></option>
-													<option value=""><%=Deroulement.PALLIATIVE%></option>
-
-												</select>
-											</div>
-
-											<div class="form-group">
-												<label for="">Date de début :</label> <input type="text"
-													class="form-control" name="dateDebutChim" id=""
-													placeholder="jj/mm/aaaa">
-											</div>
-											<div class="form-group">
-												<label for="">Date de fin:</label> <input type="text"
-													class="form-control" name="dateFinChim" id=""
-													placeholder="jj/mm/aaaa">
-											</div>
-
-										</div>
-
-										<div class="card-header card-header-info card-header-icon">
-											<div class="card-icon" style="float: none !important;">
-												<h4>Radiothérapie</h4>
-											</div>
-										</div>
-										<div class="panel-body">
-											<div class="form-group">
-												<labelfor"">Déroulement:</label> <select
-													class="form-control" name="deroulementRadio">
-
-													<option value=""><%=Deroulement.ADJUVANTE%></option>
-													<option value=""><%=Deroulement.NEO_ADJUVANTE%></option>
-													<option value=""><%=Deroulement.PALLIATIVE%></option>
-
-												</select>
-											</div>
-
-											<div class="form-group">
-												<label for="">Date de début :</label> <input type="text"
-													class="form-control" name="dateDebutRad" id=""
-													placeholder="jj/mm/aaaa">
-											</div>
-											<div class="form-group">
-												<label for="">Date de fin:</label> <input type="text"
-													class="form-control" name="dateFinRad" id=""
-													placeholder="jj/mm/aaaa">
-											</div>
-										</div>
-										</br>
 									</div>
 								</div>
-								<button type="submit"
-									class="btn btn-info waves-effect waves-light btnCardInfo">Enregistrer</button>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </body>
 

@@ -145,8 +145,8 @@
 														<td><%=statut.getT()%></td>
 														<td><%=statut.getM()%></td>
 														<td><%=statut.getN()%></td>
-														<td><a href="modStatut.chu?id=<%=statut.getId()%>"><i
-																class="fa fa-pencil-square-o"></i> Modifier </a></td>
+														<td><a href="modStatut.chu?id=<%=statut.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 
 													<%
@@ -174,7 +174,7 @@
 											</button>
 										</div>
 									</div>
-									
+
 									<div class="card">
 										<div class="card-header card-header-info card-header-icon">
 											<div class="card-icon" style="float: none !important;">
@@ -211,8 +211,8 @@
 														<td><%=examen.getOMS()%></td>
 														<td><%=examen.getIMC()%></td>
 														<td><%=examen.getTypeExamen()%></td>
-														<td><a href="modExamPre.jsp?id=<%=examen.getId()%>"><i
-																class="fa fa-pencil-square-o"></i> Modifier </a></td>
+														<td><a href="modExamPre.jsp?id=<%=examen.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 
 													<%
@@ -261,8 +261,9 @@
 														<td><%=examen.getDelai()%></td>
 														<td><%=examen.getNbreSelles()%></td>
 														<td><a
-															href="modExamenCliniquePost.chu?id=<%=examen.getId()%>"><i
-																class="fa fa-pencil-square-o"></i> Modifier </a></td>
+															href="modExamenCliniquePost.chu?id=<%=examen.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i>
+														</a></td>
 													</tr>
 
 													<%
@@ -330,8 +331,8 @@
  %>
 														</td>
 														<td><a
-															href="modEndoscopieNormal.chu?id=<%=endo.getId()%>"><i
-																class="fa fa-pencil-square-o"></i>Modifier</a></td>
+															href="modEndoscopieNormal.chu?id=<%=endo.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 
 													<%
@@ -400,8 +401,8 @@
  		}
  %>
 														</td>
-														<td><a href="modTumeur.chu?id=<%=tumeur.getId()%>"><i
-																class="fa fa-pencil-square-o"></i>Modifier</a></td>
+														<td><a href="modTumeur.chu?id=<%=tumeur.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 
 													<%
@@ -430,6 +431,7 @@
 														<th>Displasie</th>
 														<th>Limite</th>
 														<th>Date</th>
+														<th></th>
 													</tr>
 												</thead>
 												<tbody>
@@ -446,8 +448,8 @@
 														<td><%=poly.getDisplasie().getDysplasie()%></td>
 														<td><%=poly.getLimite().getLimite()%></td>
 														<td><%=dateFormatee%></td>
-														<td><a href="modPolype.chu?id=<%=poly.getId()%>"><i
-																class="fa fa-pencil-square-o"></i>Modifier</a></td>
+														<td><a href="modPolype.chu?id=<%=poly.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 
 													<%
@@ -500,8 +502,8 @@
 														<td><%=image.getExamen()%></td>
 														<td><%=image.getHopital()%></td>
 														<td><%=dateFormatee%></td>
-														<td><a href="modImag.chu?id=<%=image.getId()%>"><i
-																class="fa fa-pencil-square-o"></i>Modifier</a></td>
+														<td><a href="modImag.chu?id=<%=image.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 													<tr>
 														<td>Images</td>
@@ -567,8 +569,8 @@
 														<td><%=examen.getValeur()%></td>
 														<td><%=examen.getHopital()%></td>
 														<td><%=dateFormatee%></td>
-														<td><a href="modBiol.chu?id=<%=examen.getId()%>"><i
-																class="fa fa-pencil-square-o"></i>Modifier</a></td>
+														<td><a href="modBiol.chu?id=<%=examen.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 
 													<%
@@ -587,7 +589,7 @@
 									<div class="row">
 										<div class="col-lg-12 col-md-12">
 											<button type="button" class="btnAjout"
-												onclick="location.href='ajoutGenetique.jsp?id=<%=dos.getId() %>'">
+												onclick="location.href='ajoutGenetique.jsp?id=<%=dos.getId()%>'">
 												<i class="material-icons preced">add_circle_outline</i>
 											</button>
 										</div>
@@ -626,8 +628,8 @@
 														<td><%=gen.getMutaKras()%></td>
 														<td><%=gen.getMutaAPC()%></td>
 														<td><%=gen.getMutaMYH()%></td>
-														<td><a href="modGen.chu?id=<%=gen.getId()%>"><i
-																class="fa fa-pencil-square-o"></i>Modifier</a></td>
+														<td><a href="modGen.chu?id=<%=gen.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 
 													<%
@@ -680,8 +682,8 @@
 														<td><%=dateFormatee%></td>
 														<td><%=traitement.getIndication()%></td>
 														<td><%=traitement.getHopital()%></td>
-														<td><a href="modTrait.chu?id=<%=traitement.getId()%>"><i
-																class="fa fa-pencil-square-o"></i>Modifier</a></td>
+														<td><a href="modTrait.chu?id=<%=traitement.getId()%>"
+															title="modifier"><i class="material-icons warn">edit</i></a></td>
 													</tr>
 
 													<%
