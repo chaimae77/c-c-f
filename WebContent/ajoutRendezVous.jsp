@@ -38,10 +38,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
-
 		<div class="container-fluid">
 			<%@include file="navbar.jsp"%>
 			<%
@@ -101,10 +99,7 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- /.container-fluid -->
 		</div>
-		<!-- /#wrapper -->
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">

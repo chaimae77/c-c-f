@@ -207,7 +207,7 @@ public class ActionsTraitement {
 		Traitement trait = new Traitement(dateTrait, indication, chig, traitEndo, chimio, radio, hopital, dossier);
 		traitDAO.addTraitement(trait);
 
-		return "/ajoutTraitement.jsp";
+		return "/dossier.jsp";
 	}
 
 	public String suppTraitement() {

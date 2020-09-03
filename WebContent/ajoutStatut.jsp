@@ -66,6 +66,7 @@
 														statuts = staDAO.listerType();
 													%>
 													<select class="form-control" name="ccr">
+													<option></option>
 														<%
 															for (TypeStatut statut : statuts) {
 														%>
@@ -183,6 +184,7 @@
 												<div class="form-group">
 													<label for="">Type de Cancer:</label> <select
 														class="form-control" name="cec">
+														<option></option>
 														<%
 															for (TypeStatut statut : statuts) {
 														%>
@@ -288,6 +290,7 @@
 												<div class="form-group">
 													<label for="">Type de Cancer:</label> <select
 														class="form-control" name="p">
+														<option></option>
 														<%
 															for (TypeStatut statut : statuts) {
 														%>
@@ -354,6 +357,7 @@
 												<div class="form-group">
 													<label for="">Type de Cancer:</label> <select
 														class="form-control" name="mec">
+														<option></option>
 														<%
 															for (TypeStatut statut : statuts) {
 														%>

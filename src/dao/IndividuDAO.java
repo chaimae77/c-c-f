@@ -16,6 +16,7 @@ import dao.entities.Consentement;
 import dao.entities.Couple;
 import dao.entities.Decces;
 import dao.entities.Famille;
+import dao.entities.Imagerie;
 import dao.entities.Individu;
 import dao.entities.MotifDecces;
 import dao.entities.StatutCancereux;
@@ -448,4 +449,35 @@ public class IndividuDAO {
 		//
 
 	}
+	
+	public boolean modifierIndividu(int ancienindividu_id, Individu newIndividu){
+        EntityManager em = this.newEntityManager();
+        try {
+        	Individu ancienInd = em.find(Individu.class, ancienindividu_id);
+        	em.detach(ancienInd);
+        	ancienInd.setNom(newIndividu.getNom());
+        	ancienInd.setPrenom(newIndividu.getPrenom());
+        	ancienInd.setDateNaissance(newIndividu.getDateNaissance());
+        	ancienInd.setSexe(newIndividu.getSexe());
+        	ancienInd.setUrbain(newIndividu.isUrbain());
+        	ancienInd.setVille(newIndividu.getVille());
+        	ancienInd.setRegion(newIndividu.getRegion());
+        	ancienInd.setAdresse(newIndividu.getAdresse());
+        	ancienInd.setOrigine(newIndividu.getOrigine());
+        	ancienInd.setImage(newIndividu.getImage());
+        	ancienInd.setTel1((int) newIndividu.getTel1());
+        	ancienInd.setTel2((int) newIndividu.getTel2());
+        	ancienInd.setEducation(newIndividu.getEducation());
+        	ancienInd.setOccupation(newIndividu.getOccupation());
+        	ancienInd.setNiveauSocial(newIndividu.getNiveauSocial());
+        	ancienInd.setCouvertMedicale(newIndividu.getCouvertMedicale());
+        	em.merge(ancienInd);
+            this.closeEntityManager(em);
+            return true;
+        } catch (Exception e) {
+            System.out.println("Erreur de mise à jour : "+e.getMessage());
+            this.closeEntityManager(em);
+            return false; 
+        }
+    }
 }

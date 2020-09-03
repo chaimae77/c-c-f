@@ -148,7 +148,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-6 col-sm-12">
 					<%
 						FamilleDAO famille = new FamilleDAO();
 						List<Object[]> familles = famille.syndromeParFamille();
@@ -176,7 +176,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6 col-sm-12">
 					<%
 						IndividuDAO indivduDAO = new IndividuDAO();
 						List<Object[]> individus = indivduDAO.individuParTypeCancer();
@@ -204,7 +204,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6 col-sm-12">
 					<%
 						DeccesDAO decce = new DeccesDAO();
 						List<Object[]> decces = decce.deccesParMotif();

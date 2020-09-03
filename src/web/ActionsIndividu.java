@@ -31,7 +31,6 @@ import dao.entities.MotifDecces;
 import dao.entities.NiveauSocial;
 import dao.entities.SyndromeFamille;
 
-
 public class ActionsIndividu {
 
 	private HttpServletRequest request;
@@ -90,15 +89,15 @@ public class ActionsIndividu {
 		try {
 			part = request.getPart("file");
 			fileName = extractFileName(part);
-			if("".equals(fileName)) {
-				fileName=request.getParameter("file");
+			if ("".equals(fileName)) {
+				fileName = request.getParameter("file");
 			}
 			part.write(savePath + File.separator + fileName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//String image = savePath + File.separator + fileName;
+		// String image = savePath + File.separator + fileName;
 		String image = fileName;
 		String t1 = request.getParameter("tel1");
 		String t2 = request.getParameter("tel2");
@@ -139,13 +138,10 @@ public class ActionsIndividu {
 		int idIndividu = Integer.parseInt(idInd);
 		String fam = request.getParameter("famille");
 		int id = Integer.parseInt(fam);
-
 		Famille famille = familleDAO.trouverFamilleById(id);
-
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String date = request.getParameter("dateNais");
-
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date dateNais = new Date();
 		try {
@@ -187,11 +183,11 @@ public class ActionsIndividu {
 		} else {
 			urbain = false;
 		}
-
+		
 		Individu individu = new Individu(prenom, nom, dateNais, sexe, urbain, ville, region, adresse, origine, image,
 				tel1, tel2, education, occupation, niveauSocial, couvertMedicale, famille);
-
-		return "/modIndividu.jsp";
+		indDAO.modifierIndividu(idIndividu, individu);
+		return "/listeIndividu.jsp";
 	}
 
 	public String ajoutFamille() {
@@ -350,9 +346,10 @@ public class ActionsIndividu {
 	public String suppInd() {
 		String idy = request.getParameter("id");
 		int id = Integer.parseInt(idy);
+		System.out.println("delete individu :" + id);
 		indDAO.supprimerIndividu(id);
 
-		return "/suppIndividu.jsp";
+		return "/listeIndividu.jsp";
 	}
 
 	public String compInd() {
@@ -414,11 +411,11 @@ public class ActionsIndividu {
 		}
 		return "";
 	}
-	
+
 	public String afficherArbre() {
 		String idy = request.getParameter("id");
 		int id = Integer.parseInt(idy);
-		
+
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
 		return "arbre.jsp";

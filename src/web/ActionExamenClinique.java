@@ -160,7 +160,7 @@ public class ActionExamenClinique {
 				examenAnoDAO.ajouterExamenPreOpAnormal(examenAnormal);
 			}
 			
-			return "/ExamenClinique.jsp";
+			return "/dossier.jsp";
 		}
 
 		public String suppExamenCliniqueTraitNormal(){

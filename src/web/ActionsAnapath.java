@@ -283,7 +283,7 @@ public class ActionsAnapath {
 			polypeDAO.ajouterPolype(polype);
 		}
 
-		return "/ajoutAnaPathologie.jsp";
+		return "/dossier.jsp";
 	}
 
 	public String suppAnatPath() {

@@ -9,40 +9,32 @@
 
 <head>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-	<title>Gestion des familles</title>
-
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
-		type='text/css'>
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-	<!-- Bootstrap Core CSS -->
-	<!-- <link href="assetss/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-
-	<!-- Custom CSS -->
-	<link href="css/sb-admin.css" rel="stylesheet">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
-
-	<!-- Morris Charts CSS -->
-	<link href="css/plugins/morris.css" rel="stylesheet">
-
-	<!--Scripts-->
-	<!-- <script src="assetss/js/scripts.js"></script> -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<title>Gestion des familles</title>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
 </head>
 
 <body>
 	<!--principal wrapper-->
 	<div id="wrapper">
 		<%@include file="enteteUt.jsp"%>
-
 		<div class="container-fluid">
 			<%@include file="navbar.jsp"%>
 
@@ -52,155 +44,104 @@
 				familles = famDAO.lister();
 			%>
 
-			<div id="page-wrapper">
-
-				<div class="container-fluid">
-
-					<!-- Page Heading -->
-					<div class="row">
-						<!-- <div class="col-lg-12"> -->
-
-						<h3 class="page-header" style="text-align: center">
-							<img class="img" src="images\logo.png " width="" height="" alt="logo" /><small></small>
-						</h3>
-						
-						<div class="col-md-10 col-lg-offset-1">
-							<h3 class="page-header">
-								Gestion des familles <small></small>
-							</h3>
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<button type="button" data-toggle="modal" data-target="#myModal"
+						style="float: right; border: none;">
+						<i class="material-icons preced">add_circle_outline</i>
+					</button>
+				</div>
+				<div class="col-lg-12 col-md-12">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Liste des familles</h4>
+							</div>
 						</div>
 
-						<!-- /.row -->
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="panel-actions">
-									<button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal"
-										data-target="#myModal">Ajouter</button>
-								</div>
-								</br>
-							</div>
+						<div class="card-body table-responsive">
+							<table class="table table-hover" id="idDataTable">
+								<thead class="text-warning">
+									<tr>
+										<th>Nom de Famille</th>
+										<th>Cas Index</th>
+										<th>Diagnostic</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+										for (Famille famille : familles) {
+									%>
+									<tr>
+										<td><%=famille.getNomFamille()%></td>
+										<td><%=famille.getCasIndex()%></td>
+										<td><%=famille.getDiagnostic()%></td>
+										<td><a href="listInd.chu?id=<%=famille.getId()%>"> <i
+												class="material-icons " title="Liste Individu">remove_red_eye</i>
+										</a> <a href="modFamille.chu?id=<%=famille.getId()%>"> <i
+												class="material-icons " title="Modifier">edit</i>
+										</a> <a href="arbre.chu?id=<%=famille.getId()%>"> <i
+												class="material-icons " title="Arbre Généalogique">account_tree</i>
+										</a></td>
+									</tr>
+									<%
+										}
+									%>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
-
-
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card">
-
-							<div class="card-header card-header-info card-header-icon">
-								<div class="card-icon" style="float: none !important;">
-									<h4>Liste des familles</h4>
-								</div>
-							</div>
-
-							<div class="card-body table-responsive">
-								<table class="table table-hover" id="idDataTable">
-									<thead class="text-warning">
-										<tr>
-											<th></th>
-											<th>Nom de Famille</th>
-											<th>Cas Index</th>
-											<th>Diagnostic</th>
-										</tr>
-									</thead>
-									<tbody>
-										<%
-												int i = 1;
-												for (Famille famille : familles) {
-											%>
-										<tr>
-											<td><%=i%></td>
-											<td><%=famille.getNomFamille()%></td>
-											<td><%=famille.getCasIndex()%></td>
-											<td><%=famille.getDiagnostic()%></td>
-											<td><a href="listInd.chu?id=<%=famille.getId()%>">
-													<i class="fa fa-eye"> </i> Consulter
-												</a> <a href="modFamille.chu?id=<%=famille.getId()%>"><i
-														class="fa fa-pencil-square-o"></i> Modifier </a>
-												<a href="arbre.chu?id=<%=famille.getId()%>"><i class="fa fa-eye"></i>
-													Arbre Genealogique</a>
-											</td>
-										</tr>
-
-										<%
-												i++;
-												}
-											%>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div><!-- /.row -->
-
 			</div>
-
 		</div>
-	</div><!-- /#wrapper -->
-
-
+	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<div class="card">
-
-
 						<div class="card-header card-header-info card-header-icon">
 							<div class="card-icon" style="float: none !important;">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4>Ajout d'une famille</h4>
+								<h4>Ajouter une famille</h4>
 							</div>
 						</div>
-
-						<div class="modal-body">
+						<div class="card-body table-responsive">
 							<form role="form" action="ajoutFamille.chu" method="post">
 								<div class="form-group">
-									<label for="nomFamille">Nom de la famille</label> <input type="text"
-										class="form-control" name="nomFamille"
+									<label for="nomFamille">Nom de la famille</label> <input
+										type="text" class="form-control" name="nomFamille"
 										placeholder="Entrer le nom de la famille">
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 control-label">Dignostic:</label>
-									<div class="col-sm-8">
+									<label class="control-label">Dignostic:</label>
+									<div class="">
 										<%
-										SyndromeFamilleDAO diagDAO = new SyndromeFamilleDAO();
-										List<SyndromeFamille> diagnostics = new ArrayList<>();
-										diagnostics = diagDAO.listerDiagnostic();
-									%>
+											SyndromeFamilleDAO diagDAO = new SyndromeFamilleDAO();
+											List<SyndromeFamille> diagnostics = new ArrayList<>();
+											diagnostics = diagDAO.listerDiagnostic();
+										%>
 										<select class="form-control" name="diagnostic">
 											<%
-											for (SyndromeFamille diag : diagnostics) {
-										%>
+												for (SyndromeFamille diag : diagnostics) {
+											%>
 
 											<option value="<%=diag.getId()%>"><%=diag%></option>
 											<%
-											}
-										%>
+												}
+											%>
 										</select>
 									</div>
 								</div>
-								</br> </br>
-
-								<button type="submit" class="btn btn-info waves-effect waves-light">Enregistrer</button>
+								<button type="submit"
+									class="btn btn-info waves-effect waves-light btnCardInfo">Enregistrer</button>
 							</form>
 						</div>
-
-						<div class="modal-footer">
-							<button type="button" class="btn btn-info btn-default" data-dismiss="modal">Close</button>
-						</div>
-
 					</div>
-
 				</div>
 			</div>
-
-
-			<script src="assetss/js/common/jquery.min.js"></script>
-			<script src="assetss/bootstrap/js/bootstrap.min.js"></script>
 		</div>
 	</div>
 </body>

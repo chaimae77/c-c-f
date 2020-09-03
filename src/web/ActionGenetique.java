@@ -91,7 +91,7 @@ public class ActionGenetique {
 		Genetique gen= new Genetique(hopital, dossier,num, instabilite,mutationBraf,mutationKras,
 		mutationAPC,mutationMYH,autre);
 		genDAO.ajouterGenetique(gen);
-		return "dossier.jsp";
+		return "/dossier.jsp";
 	}
 
 	public String suppGenetique() {

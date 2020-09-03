@@ -78,16 +78,17 @@ public class ActionStatut {
 
 		String pat = request.getParameter("patient");
 		int id = Integer.parseInt(pat);
+		System.out.println("individu :" + id);
 		Individu patient = indDAO.trouverIndById(id);
 
 		String ccr = request.getParameter("ccr");
-		System.out.println("ccr : "+ccr);
-
+		System.out.println("ccr : " + ccr);
 		String cec = request.getParameter("cec");
-
+		System.out.println("cec : " + cec);
 		String p = request.getParameter("p");
-
+		System.out.println("p : " + p);
 		String mec = request.getParameter("mec");
+		System.out.println("mec : " + mec);
 
 		if (ccr != "") {
 			int ids = Integer.parseInt(ccr);
@@ -214,7 +215,7 @@ public class ActionStatut {
 			statutDAO.ajouterStatutMEC(cancermec, anneemec, agemec, type, prises, patient);
 		}
 
-		return "/statut.jsp";
+		return "/dossier.jsp";
 	}
 
 	public String detailStatut() {
@@ -234,7 +235,7 @@ public class ActionStatut {
 	public String modifierStatut() {
 		String statut = request.getParameter("statut");
 		int idStatut = Integer.parseInt(statut);
-		//StatutCancereux st = statutDAO.trouverStautById(idStatut);
+		// StatutCancereux st = statutDAO.trouverStautById(idStatut);
 		String typeStatut = request.getParameter("typeStatut");
 		int ids = Integer.parseInt(typeStatut);
 		TypeStatut typeCancer = typeCancerDAO.trouverSyndById(ids);

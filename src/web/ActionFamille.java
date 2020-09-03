@@ -60,7 +60,6 @@ public class ActionFamille {
 		int idAncien = Integer.parseInt(idAncienFamille);
 		String nomFamille = request.getParameter("nomFamille");
 		String diagnostic = request.getParameter("diagnostic");
-		System.out.println("diagnostic :"+diagnostic);
 		int id = Integer.parseInt(diagnostic);
 		
 		SyndromeFamilleDAO syndDAO = new SyndromeFamilleDAO();
@@ -71,7 +70,7 @@ public class ActionFamille {
 		
 		
 		familleDAO.modifierFamille(idAncien, famille);
-		return "/modFamille.jsp";
+		return "/espaceUtilisateur.jsp";
 	}
 	public String modifier(){
 		String idD = request.getParameter("id");
