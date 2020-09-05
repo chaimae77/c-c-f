@@ -15,84 +15,64 @@
 <script src="js/jquery.min.js">  </script>
 <script src="js/bootstrap.js">  </script>
 <title>Gestion des examens Cliniques</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="container">
-		<div    class="row" >
-			<div  class="col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 col-xs-1 col-xs-offset-1" id="logo">
-          		<img  class="img"  src="images\logo.png " width="" height="" alt="logo"/>
-          	</div>
-     		<div class="col-lg-12 ">
-				</br></br>
-            </div>
+	<div id="wrapper">
+		<%@include file="enteteUt.jsp"%>
+
+		<div class="container-fluid">
+			<%@include file="navbar.jsp"%>
 			<div class="row">
-				
-                <div class="pull-left col-lg-1">
-                                
-                    <div class="panel-body">
-                        <a href="espaceInfirmier.jsp"><button type="button" class="btn btn-primary btn-custom waves-effect waves-light m-b-5" style="width:250px" >Gestion Des Familles</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-                        <a href="gestionDossier.jsp"><button type="button" class="btn btn-success btn-custom waves-effect waves-light m-b-5" style="width:250px">Gestion Des Dossiers Medicales</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-                        <a href="ajoutRendezVous.jsp"><button type="button" class="btn btn-info btn-custom waves-effect waves-light m-b-5" style="width:250px" >Gestion Des Rendez-Vous</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-						<a><button type="button" class="btn btn-purple btn-custom waves-effect waves-light m-b-5" style="width:250px" >Deconnexion</button></a>
-                    </div>
-                                
-                </div>
-				
-                <div class="col-lg-9 col-lg-offset-2">
-                    <div class="panel-body">
-                        <a href="gestionDossier.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:250px">Nouveau Dossier Médical</button></a>
-                        <a href="examens.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:250px">Examens Medicales</button></a>
-                        <a href="consultation.jsp"><button type="button" class="btn btn-warning btn-rounded waves-effect waves-light m-b-5" style="width:250px">Consultation</button></a>
-						</br> </br>
-						<button type="button" class="btn btn-purple btn-rounded waves-effect waves-light m-b-5" style="width:770px; height:150px">Dossier Médical</button>
-                    </div>                       
-                </div>
-				<div class="col-lg-12 ">
-                    <div class="panel-body">
-                        <a href="statut.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Satut</button></a>
-                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
-                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:150px">Endoscopie</button></a>
-                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
-                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
-						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
-						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
-						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
-                    </div>                       
-                </div>
-                <form class="form-horizontal" role="form" action="modEndoscopieTrait.chu" method="post">
-                <div class="row">
-                		
-                        <div class="col-sm-8 col-sm-offset-2">
-                        	<div class="panel panel-default">
-												<div class="panel-heading"><h3 class="panel-title">Cas d'une endoscopie normal</h3></div>
-												<div class="panel-body">
-												<%
-												
+          
+              
+                        <div class="col-md-6 col-ms-12">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Cas d'une endoscopie normale</h4>
+							</div>
+						</div>
+						
+									<%
+										
 												Endoscopie examen = (Endoscopie)session.getAttribute("Endoscopie");
 												SimpleDateFormat formatDateJour = new SimpleDateFormat("dd/MM/yyyy"); 
 												String dateFormatee = formatDateJour.format(examen.getDateEndo());
 													
 											
 											%>
+											
+											<div class="card-body table-responsive">
+										    <form role="form" action="modEndoscopieTrait.chu" method="post" enctype='multipart/form-data'>
+											<div class="row">
+											<div class="panel-body">
 		                                    <div class="form-group">
-		                                         <input type="hidden" class="form-control" name="dossier" value="<%=examen.getDossier().getId()%>"  style="width:250px">
+		                                         <input type="hidden" class="form-control" name="dossier" value="<%=examen.getDossier().getId()%>">
 		                                    </div>
 		                                    <div class="form-group">
-		                                         <input type="hidden" class="form-control" name="idExamen" value="<%=examen.getId()%>"  style="width:250px">
+		                                         <input type="hidden" class="form-control" name="idExamen" value="<%=examen.getId()%>">
 		                                    </div>
 													<div class="form-group">
-													<label class="col-sm-2 form-control-label">Hopital:</label>
-													<div class="col-sm-8">
+													<label>Hôpital:</label>
+												
 													<%
 											            	HopitalDAO hopDAO = new HopitalDAO();
 											            	List<Hopital> hopitaux = new ArrayList<>();
 											            	hopitaux=hopDAO.listerLesHopitaux();
 											            %>
 											            
-														<select class="form-control" name="hopital" style="width:250px" required>
+														<select class="form-control" name="hopital">
 														<option value="<%=examen.getHopital().getId()%>"><%=examen.getHopital() %></option>
 														<% 
 				                                			for(Hopital hop : hopitaux ){
@@ -105,17 +85,15 @@
 				                                		%>  
 														</select>
 													</div>
-													</div>
+												
 													<div class="form-group">
-	                                                <label class="col-sm-2 form-control-label">Medecin:</label>
-	                                                <div class="col-sm-8">
+	                                                <label>Médecin:</label>
 	                                                <%
 														MedecinDAO medDAO = new MedecinDAO();
 														List<Object[]> medecins = medDAO.listerLesMedecin();
 														
 													%>
-													<select class="form-control" name="medecin"
-														style="width: 250px" required>
+													<select class="form-control" name="medecin">
 														<%
 														 for (Object[] med : medecins) {
 																
@@ -126,17 +104,17 @@
 														%>
 													</select>
 	                                                </div>
-                                           			 </div>
+                                           		
 													
 													<div class="form-group">
-														<label class="col-sm-4 form-control-label">Type Examen endoscopique:</label>
-														<div class="col-sm-8">
+														<label>Type Examen endoscopique:</label>
+														
 														 <%
 														 TypeAndoscopieDAO typeDAO = new TypeAndoscopieDAO();
 												            	List<TypeAndoscopie> types = new ArrayList<>();
 												            	types=typeDAO.listerTypeAndoscopie();
 												            %>
-															<select class="form-control" name="typeExamen" style="width:250px">
+															<select class="form-control" name="typeExamen">
 															<option value="<%=examen.getTypeEndo().getId()%>"><%=examen.getTypeEndo() %></option>
 															<% 
 					                                			for(TypeAndoscopie type : types ){
@@ -149,21 +127,21 @@
 					                                		%>  
 															</select>
 														</div>
-													</div>
+												
 													<div class="form-group">
-														<label for="dateexamen" class="col-sm-4 form-control-label">Date d'examen:</label>
+														<label for="dateexamen">Date d'examen:</label>
 														
-														  <input type="text" name="dateexamen" value="<%=dateFormatee %>" class="form-control" id="dateexamen" style="width:250px">
+														  <input type="text" name="dateexamen" value="<%=dateFormatee %>" class="form-control" id="dateexamen">
 														
 													</div> 
 													<div class="form-group">
-														<label for="poids" class="col-sm-4 form-control-label" >Numéro:</label>
-														<input type="text" class="form-control" name="numero" id="numero" value="<%=examen.getNumero() %>"  style="width:250px" >
+														<label for="poids">Numéro:</label>
+														<input type="text" class="form-control" name="numero" id="numero" value="<%=examen.getNumero() %>" >
 													</div>
 												 <div class="form-group">
-	                                                <label class="col-sm-4 form-control-label">Anesthesie</label>
-	                                                <div class="col-sm-8">
-	                                                    <select class="form-control" name="anesthesie" style="width:250px">
+	                                                <label>Ansthesie</label>
+	                                             
+	                                                    <select class="form-control" name="anesthesie">
 	                                                       <option value="<%=examen.getAnestesie()%>"><%=examen.getAnestesie()%></option>
 	                                                       <% 
 	                                                       List<Anesthesie> enumValues = Arrays.asList(Anesthesie.values());
@@ -179,28 +157,33 @@
 							                              
 	                                                    </select>
 	                                                </div>
-	                                            </div>
+	                                            
 												</div> <!-- panel-body -->
-												</br></br>
+												
 												
 												</div>
                         </div>     
-                 </div> 
+                 </div> </div>
                  <div class="row">
-                 	<div class="col-md-6 ">
-                 	<div class="panel panel-default">
-                 		<div class="panel-heading"><h3 class="panel-title">Masse Tomorale</h3></div>
+                 	
+                        <div class="col-md-6 col-ms-12">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Masse tumorale</h4>
+							</div>
+						</div>
 												<div class="panel-body">
 													<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Siege:</label>
+                                                <label for="">Siège:</label>
                                                 <%
                                                 	SiegeDAO siegeDAO = new SiegeDAO();
                                                 	List<Siege> sieges = new ArrayList<>();
                                                 	sieges = siegeDAO.listerSiege();
                                                 
                                                 %>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="siegeMasse" style="width:250px">
+                                               
+                                                    <select class="form-control" name="siegeMasse">
                                                     <option value=""></option>
                                                     <% 
 						                                			for(Siege  siege : sieges){
@@ -210,18 +193,18 @@
 						                                			}
 						                                		%>
                                                     </select>
-                                                </div>
+                                                
 												</div>
 												<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Aspect Macroscopique:</label>
+                                                <label for="">Aspect Macroscopique:</label>
                                                  <%
                                                 	AspectMacroDAO aspectDAO = new AspectMacroDAO();
                                                 	List<AspectMacro> aspects = new ArrayList<>();
                                                 	aspects = aspectDAO.listerAspect();
                                                 
                                                 %>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="aspectMasse"style="width:250px">
+                                              
+                                                    <select class="form-control" name="aspectMasse">
                                                         <% 
 						                                			for(AspectMacro  aspect : aspects){
 						                                		%>
@@ -231,17 +214,17 @@
 						                                		%> 
                                                     </select>
                                                 </div>
-												</div>
+												
 												<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Circonference:</label>
+                                                <label for="">Circonférence:</label>
                                                 <%
                                                 	CirconferenceDAO cirDAO = new CirconferenceDAO();
                                                 	List<Circonference> circonferences= new ArrayList<>();
                                                 	circonferences = cirDAO.listerLesCirconference();
                                                 
                                                 %>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="circonferenceMasse" style="width:250px">
+                                              
+                                                    <select class="form-control" name="circonferenceMasse">
                                                         <% 
 						                                			for(Circonference  cir : circonferences){
 						                                		%>
@@ -250,37 +233,42 @@
 						                                			}
 						                                		%>  
                                                     </select>
-                                                </div>
+                                            
 												</div>
 												<div class="form-group">
-                                                <label for="poids" class="col-sm-4 form-control-label" >Taille :</label>
-                                                <input type="text" class="form-control" name="tailleMasse" id="taille" placeholder=""  style="width:250px" >
+                                                <label for="poids" >Taille :</label>
+                                                <input type="text" class="form-control" name="tailleMasse" id="taille" placeholder="" >
 												</div>
 												<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Sténose:</label>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="stenose" style="width:250px">
+                                                <label>Sténose:</label>
+                                         
+                                                    <select class="form-control" name="stenose">
                                                         <option><%=Stenose.FRANCHISSABLE %></option>
                                                         <option><%=Stenose.NON_FRANCHISSABLE %></option> 
                                                     </select>
                                                 </div>
-												</div>
+											
 												<div class="form-group">
-                                                <label for="poids" class="col-sm-4 form-control-label" >Ref AnaPathologie:</label>
-                                                <input type="text" class="form-control" name="refAnaPathMasse" id="refAnaPath" placeholder=""  style="width:250px" >
+                                                <label for="poids">Ref AnaPathologie:</label>
+                                                <input type="text" class="form-control" name="refAnaPathMasse" id="refAnaPath" placeholder="">
 												</div>
 												</div>
                  	</div>
-                 	</div>
-                 	<div class="col-md-6 ">
-                 	<div class="panel panel-default">
-                 		<div class="panel-heading"><h3 class="panel-title">Polype</h3></div>
+                 </div></div>
+                  <div class="row">
+                 	
+                        <div class="col-md-6 col-ms-12">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Polype</h4>
+							</div>
+						</div>
 												<div class="panel-body">
-												
 												<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Siege:</label>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="siegePolype" style="width:250px">
+                                                <label>Siège:</label>
+                                               
+                                                    <select class="form-control" name="siegePolype">
                                                     	<option value=""></option>
                                                         <% 
 						                                			for(Siege  siege : sieges){
@@ -291,11 +279,11 @@
 						                                		%>
                                                     </select>
                                                 </div>
-												</div>
+											
 													<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Nombre:</label>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="nbre"style="width:250px">
+                                                <label>Nombre:</label>
+                                               
+                                                    <select class="form-control" name="nbre">
                                                         <option>1</option>
                                                         <option>2</option>
 														<option>3</option> 
@@ -303,16 +291,16 @@
 														<option>5</option> 
                                                     </select>
                                                 </div>
-												</div>
+												
 												<div class="form-group">
-                                                <label for="nbr1" class="col-sm-4 form-control-label" >Nombre > 1 cm:</label>
-                                                <input type="text" class="form-control" name="nbre1" id="nbre1" placeholder=""  style="width:250px" >
+                                                <label for="nbr1">Nombre > 1 cm:</label>
+                                                <input type="text" class="form-control" name="nbre1" id="nbre1" placeholder="">
 												</div>
 												
 												<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Aspect Macroscopique:</label>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="aspectPolype" style="width:250px">
+                                                <label>Aspect Macroscopique:</label>
+                                             
+                                                    <select class="form-control" name="aspectPolype">
                                                         <% 
 						                                			for(AspectMacro  aspect : aspects){
 						                                		%>
@@ -322,11 +310,11 @@
 						                                		%>  
                                                     </select>
                                                 </div>
-												</div>
+												
 												<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Circonference:</label>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="circonferencePolype" style="width:250px">
+                                                <label>Circonférence:</label>
+                                              
+                                                    <select class="form-control" name="circonferencePolype">
                                                          <% 
 						                                			for(Circonference  cir : circonferences){
 						                                		%>
@@ -336,36 +324,42 @@
 						                                		%>
                                                     </select>
                                                 </div>
-												</div>
+											
 												<div class="form-group">
-                                                <label for="poids" class="col-sm-4 form-control-label" >Taille (grand diamètre):</label>
-                                                <input type="text" class="form-control" name="taillePolype" id="taille" placeholder=""  style="width:250px" >
-												</div>
+                                                <label for="poids">Taille (grand diamètre):</label>
+                                                <input type="text" class="form-control" name="taillePolype" id="taille" placeholder="" >
+											
 												<div class="form-group">
-                                                <label class="col-sm-4 form-control-label">Couleur:</label>
-                                                <div class="col-sm-8">
-                                                    <select class="form-control" name="couleur" style="width:250px">
+                                                <label>Couleur:</label>
+                                              
+                                                    <select class="form-control" name="couleur">
                                                         <option>Bleu</option>
                                                         <option>Rouge</option> 
                                                     </select>
                                                 </div>
-												</div>
+												
 												<div class="form-group">
-                                                <label for="poids" class="col-sm-4 form-control-label" >Ref AnaPathologie:</label>
-                                                <input type="text" class="form-control" name="refAnaPathPolype" id="refAnaPath" placeholder=""  style="width:250px" >
+                                                <label for="poids">Ref AnaPathologie:</label>
+                                                <input type="text" class="form-control" name="refAnaPathPolype" id="refAnaPath" placeholder="">
 												</div>
                  	</div>
+                 </div></div>
                  </div>
-                 </div>
-                 	</br></br>
                  	
-                 	<div class="col-md-12 ">
-                 	<div class="panel panel-default">
-                 		<div class="panel-heading"><h3 class="panel-title">Complications</h3></div>
+                  <div class="row">
+                 	
+                        <div class="col-md-6 col-ms-12">
+					<div class="card">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;">
+								<h4>Complications: </h4>
+							</div>
+						</div>
 												<div class="panel-body">
 													<div class="form-group">
-													<label for="" class="col-sm-4 form-control-label"> Complications: </label>
-													<div class="checkbox checkbox-info checkbox-circle col-sm-10 col-sm-offset-4">
+													<label for=""> Complications: </label>
+												<div class="col-md-12">
+														<div class="checkbox">
 													 <%
 													 	ComplicationDAO compDAO = new ComplicationDAO();
 											            	List<Complication> complications = new ArrayList<>();
@@ -387,12 +381,13 @@
 												</div>
                  	</div>
                  </div>
-                </div>
-                 <div class="form-group m-b-0">
-                        <div class="col-sm-offset-3 col-sm-9">
-                              <button type="submit" class="btn btn-info waves-effect waves-light">Modifier</button>
-                         </div>
-                  </div> 
+            
+                <div class="row">
+									<div class="col-md-12">
+										<button type="submit"
+											class="btn btn-info waves-effect waves-light btnCardInfo">Modifier</button>
+									</div>
+								</div> </div>    </div>
                  </form> 
 				
 				
@@ -400,11 +395,5 @@
         </div>
     </div>	
 </body>
-<footer>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xs-4 col-xs-offset-4" id="foot">
-      			<p>Copyright &copy; Registe@CRF </p> 
-      		</div>
-		</div>        
-</footer>
+
 </html>

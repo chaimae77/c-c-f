@@ -45,6 +45,8 @@
 								StatutDAO type = new StatutDAO();
 								StatutCancereux statut = type.trouverStautById(id);
 							%>
+				
+				
 						<div class="col-md-8 col-md-offset-2">
 						<div class="card">
 						<div class="card-header card-header-info card-header-icon">
@@ -55,7 +57,7 @@
 									<form role="form" action="modifierStatut.chu" method="post">
 										<div class="card-body table-responsive">
 											<input type="hidden" class="form-control" name="statut"
-												value="<%=statut.getId()%>" style="width: 250px">
+												value="<%=statut.getId()%>">
 										
 						
 											<div class="form-group">
@@ -86,7 +88,7 @@
 												<label for="">Année :</label>
 												
 													<input type="text" name="annee" placeholder="aaaa"
-														class="form-control" id="annee" style="width: 250px"
+														class="form-control" id="annee"
 														value="<%=statut.getAnnee()%>">
 											
 											</div>
@@ -95,7 +97,7 @@
 												<label for="">Age</label>
 												
 													<input type="text" class="form-control" name="age" id="age"
-														placeholder="age" style="width: 250px"
+														placeholder="age"
 														value="<%=statut.getAge()%>">
 												</div>
 												

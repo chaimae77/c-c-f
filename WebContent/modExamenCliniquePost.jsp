@@ -35,68 +35,24 @@
 	
 			<div class="container-fluid">
 			 <%@include file="navbar.jsp"%>
-			 	<div class="col-lg-12 ">
-                    <div class="panel-body">
-                        <a href="statut.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:100px">Satut</button></a>
-                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Examen Clinique</button></a>
-                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
-                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
-                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
-						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
-						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
-						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
-                    </div>                       
-                </div>
+		
 
-	<!--  
-	<div class="container">
-		<div    class="row" >
-			<div  class="col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 col-xs-1 col-xs-offset-1" id="logo">
-          		<img  class="img"  src="images\logo.png " width="" height="" alt="logo"/>
-          	</div>
-     		<div class="col-lg-12 ">
-				</br></br>
-            </div>
-			<div class="row">
-				
-                <div class="pull-left col-lg-1">
-                                
-                    <div class="panel-body">
-                        <a href="espaceUtilisateur.jsp"><button type="button" class="btn btn-primary btn-custom waves-effect waves-light m-b-5" style="width:250px" >Gestion Des Familles</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-                        <a href="gestionDossier.jsp"><button type="button" class="btn btn-success btn-custom waves-effect waves-light m-b-5" style="width:250px">Gestion Des Dossiers Medicales</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-                        <a href="ajoutRendezVous.jsp"><button type="button" class="btn btn-info btn-custom waves-effect waves-light m-b-5" style="width:250px" >Gestion Des Rendez-Vous</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div></br></br>
-						<a><button type="button" class="btn btn-purple btn-custom waves-effect waves-light m-b-5" style="width:250px" >Deconnexion</button></a>
-                    </div>
-                                
-                </div>
-				
-                <div class="col-lg-9 col-lg-offset-2">
-                    <div class="panel-body">
-                        <a href="gestionDossier.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:250px">Nouveau Dossier Médical</button></a>
-                        <a href="examens.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:250px">Examens Medicales</button></a>
-                        <a href="consultation.jsp"><button type="button" class="btn btn-warning btn-rounded waves-effect waves-light m-b-5" style="width:250px">Consultation</button></a>
-						</br> </br>
-						<button type="button" class="btn btn-purple btn-rounded waves-effect waves-light m-b-5" style="width:770px; height:150px">Dossier Médical</button>
-                    </div>                       
-                </div>
-				<div class="col-lg-12 ">
-                    <div class="panel-body">
-                        <a href="statut.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Satut</button></a>
-                        <a href="ExamenClinique.jsp"><button type="button" class="btn btn-info btn-rounded waves-effect waves-light m-b-5" style="width:150px">Examen Clinique</button></a>
-                        <a href="Endoscopie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Endoscopie</button></a>
-                        <a href="AnaPathologie.jsp" ><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:200px">Anatomie Pathologique</button></a>
-                        <a href="Imagerie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Imagerie</button></a>
-						<a href="Biologie.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Biologie</button></a>
-						<a href="Genetique.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:100px">Génétique</button></a>
-						<a href="Traitement.jsp"><button type="button" class="btn btn-default btn-rounded waves-effect m-b-5" style="width:150px">Traitement</button></a>
-                    </div>                       
-                </div> -->
+	
 			
 					<div class="row">
-					
+						<%
+												String id_Dossier = (String)session.getAttribute("idDossier");
+												int  idDossier = Integer.parseInt(id_Dossier);
+												DossierDAO dosDAO = new DossierDAO();
+												DossierMedicale dos = dosDAO.trouverDossierById(idDossier);
+											
+												ExamenPostOp examen = (ExamenPostOp)session.getAttribute("ExamenPostOp");
+											%>
+											
+																						<div class="col-md-12 ">
+					<a class="back" href="examen.chu?id=<%=dos.getId()%>"><i
+						class="material-icons preced">arrow_back</i></a>
+				</div>
 
 						<div class="col-md-10 col-md-offset-1">
 					<div class="card">
@@ -106,14 +62,7 @@
 						</div>
 								<form  role="form" action="modExamenCliniquePostTrait.chu" method="post">
                    
-											<%
-												String id_Dossier = (String)session.getAttribute("idDossier");
-												int  idDossier = Integer.parseInt(id_Dossier);
-												DossierDAO dosDAO = new DossierDAO();
-												DossierMedicale dos = dosDAO.trouverDossierById(idDossier);
-											
-												ExamenPostOp examen = (ExamenPostOp)session.getAttribute("ExamenPostOp");
-											%>
+										
 											
 													<div class="col-md-8 col-md-offset-2">
 											    <div class="card-body table-responsive">

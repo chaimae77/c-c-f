@@ -20,21 +20,17 @@
 
 <title>Espace Utilisateur</title>
 
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- Custom CSS -->
 <link href="css/sb-admin.css" rel="stylesheet">
-
-<!-- Morris Charts CSS -->
-<link href="css/plugins/morris.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
 
 
 </head>
@@ -47,30 +43,11 @@
 		<div id="page-wrapper">
 
 			<div class="container-fluid">
-
-				<!-- Page Heading -->
-				<div class="row">
-					<h3 class="page-header" style="text-align: center">
-						<img class="img" src="images\logo.png " width="" height=""
-							alt="logo" /><small></small>
-					</h3>
-
-					<!-- /.row -->
+ <%@include file="navbar.jsp"%>
+				
 					<div class="row">
-						<div class="col-md-6 col-lg-offset-3">
-							<h3 class="page-header">
-								Modification d'un Examen Clinique <small></small>
-							</h3>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Modifier Examen Pres Opération</h3>
-								</div>
-								<div class="panel-body">
-									<form class="form-horizontal" role="form"
-										action="modExamPre.chu" method="post">
-										<div class="row">
-											<div class="panel-body">
-												<%
+						
+							<%
 													String ide = request.getParameter("id");
 													int id = Integer.parseInt(ide);
 													ExamenPreOpDAO examenDAO = new ExamenPreOpDAO();
@@ -82,17 +59,39 @@
 													DossierDAO dosDAO = new DossierDAO();
 													DossierMedicale dos = dosDAO.trouverDossierById(idDossier);
 												%>
+							
+															<div class="col-md-12 ">
+					<a class="back" href="examen.chu?id=<%=dos.getId()%>"><i
+						class="material-icons preced">arrow_back</i></a>
+				</div>
+				
+				
+                        <div class="col-md-8 col-md-offset-2">
+					<div class="card">
+                            <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Modification de l'examen Clinique pré-opératoire</h4>
+							</div>
+						</div>
+						
+								<div class="panel-body">
+								   <div class="card-body table-responsive">
+									<form  role="form"
+										action="modExamPre.chu" method="post">
+										<div class="row">
+											<div class="panel-body">
+											
+				
 												<div class="form-group">
 													<input type="hidden" class="form-control" name="dossier"
-														value="<%=dos.getId()%>" style="width: 250px">
+														value="<%=dos.getId()%>">
 												</div>
 												<div class="form-group">
 													<input type="hidden" class="form-control" name="idExamen"
-														value="<%=examen.getId()%>" style="width: 250px">
+														value="<%=examen.getId()%>">
 												</div>
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Hopital:</label>
-													<div class="col-sm-8">
+													<label>Hopital:</label>
+													
 														<%
 															HopitalDAO hopDAO = new HopitalDAO();
 															List<Hopital> hopitaux = new ArrayList<>();
@@ -100,7 +99,7 @@
 														%>
 
 														<select class="form-control" name="hopital"
-															style="width: 250px" required>
+														>
 															<option value="<%=examen.getHopital().getId()%>"><%=examen.getHopital()%></option>
 															<%
 																for (Hopital hop : hopitaux) {
@@ -113,51 +112,50 @@
 															%>
 														</select>
 													</div>
-												</div>
+												
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Date
+													<label>Date
 														d'examen:</label>
-													<div class="col-sm-8">
+													
 														<input type="date" name="dateexamen" class="form-control"
-															id="dateexamen" style="width: 250px" required
+															id="dateexamen" 
 															value="<%=dates%>">
 													</div>
-												</div>
+												
 												<div class="form-group">
-													<label class="col-sm-4 control-label">poids</label>
-													<div class="col-sm-8">
+													<label>poids</label>
+												
 														<input type="text" class="form-control" name="poids"
-															id="poids" placeholder="Le poids" style="width: 250px"
-															required value="<%=examen.getPoids()%>">
+															id="poids" placeholder="Le poids" value="<%=examen.getPoids()%>">
 													</div>
-												</div>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Taille</label>
-													<div class="col-sm-8">
+													<label>Taille</label>
+												
 														<input type="text" class="form-control" name="taille"
-															id="taille" placeholder="La taille" style="width: 250px"
-															required value="<%=examen.getTaille()%>">
-													</div>
+															id="taille" placeholder="La taille" 
+															 value="<%=examen.getTaille()%>">
+											
 												</div>
 												<div class="form-group">
-													<label class="col-sm-4 control-label">OMS</label>
-													<div class="col-sm-8">
+													<label>OMS</label>
+													
 														<input type="text" class="form-control" name="oms"
-															id="oms" placeholder="OMS" style="width: 250px" required
+															id="oms" placeholder="OMS" 
 															value="<%=examen.getOMS()%>">
 													</div>
-												</div>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">IMC</label>
-													<div class="col-sm-8">
+													<label>IMC</label>
+													
 														<input type="text" class="form-control" name="imc"
-															id="imc" placeholder="IMC" style="width: 250px" required
+															id="imc" placeholder="IMC" 
 															value="<%=examen.getIMC()%>">
 													</div>
-												</div>
+											
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Type Examen:</label>
-													<div class="col-sm-8">
+													<label>Type Examen:</label>
+												
 														<select class="form-control" name="typeExamen" required>
 															<!--  <option><%=examen.getTypeExamen()%></option>-->
 															<%
@@ -169,12 +167,16 @@
 																}
 															%>
 														</select>
-													</div>
+													
 												</div>
 											</div>
 										</div>
+									   <div class="row">
+									<div class="col-md-12">
 										<button type="submit"
-											class="btn btn-purple waves-effect waves-light">Modifier</button>
+											class="btn btn-info waves-effect waves-light btnCardInfo">Modifier</button>
+									</div>
+								</div>
 									</form>
 								</div>
 								<!-- panel-body -->

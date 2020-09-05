@@ -19,103 +19,44 @@
 	
 </script>
 <title>Gestion des examens Cliniques</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons'
+	rel='stylesheet' type='text/css'>
+
+
 </head>
+
 <body>
-	<div class="container">
-		<div class="row">
-			<div
-				class="col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 col-xs-1 col-xs-offset-1"
-				id="logo">
-				<img class="img" src="images\logo.png " width="" height=""
-					alt="logo" />
-			</div>
-			<div class="col-lg-12 ">
-				</br>
-				</br>
-			</div>
-			<div class="row">
 
-				<div class="pull-left col-lg-1">
+	<div id="wrapper">
+		<%@include file="enteteUt.jsp"%>
 
-					<div class="panel-body">
-						<a href="espaceInfirmier.jsp"><button type="button"
-								class="btn btn-primary btn-custom waves-effect waves-light m-b-5"
-								style="width: 250px">Gestion Des Familles</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div>
-						</br>
-						</br> <a href="gestionDossier.jsp"><button type="button"
-								class="btn btn-success btn-custom waves-effect waves-light m-b-5"
-								style="width: 250px">Gestion Des Dossiers Medicales</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div>
-						</br>
-						</br> <a href="ajoutRendezVous.jsp"><button type="button"
-								class="btn btn-info btn-custom waves-effect waves-light m-b-5"
-								style="width: 250px">Gestion Des Rendez-Vous</button></a>
-						<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2"></div>
-						</br>
-						</br> <a><button type="button"
-								class="btn btn-purple btn-custom waves-effect waves-light m-b-5"
-								style="width: 250px">Deconnexion</button></a>
-					</div>
+		<div id="page-wrapper">
 
-				</div>
-
-				<div class="col-lg-9 col-lg-offset-2">
-					<div class="panel-body">
-						<a href="gestionDossier.jsp"><button type="button"
-								class="btn btn-default btn-rounded waves-effect m-b-5"
-								style="width: 250px">Nouveau Dossier Médical</button></a> <a
-							href="examens.jsp"><button type="button"
-								class="btn btn-info btn-rounded waves-effect waves-light m-b-5"
-								style="width: 250px">Examens Medicales</button></a> <a
-							href="consultation.jsp"><button type="button"
-								class="btn btn-warning btn-rounded waves-effect waves-light m-b-5"
-								style="width: 250px">Consultation</button></a> </br> </br>
-						<button type="button"
-							class="btn btn-purple btn-rounded waves-effect waves-light m-b-5"
-							style="width: 770px; height: 150px">Dossier Médical</button>
-					</div>
-				</div>
-				<div class="col-lg-12 ">
-					<div class="panel-body">
-						<a href="statut.jsp"><button type="button"
-								class="btn btn-default btn-rounded waves-effect m-b-5"
-								style="width: 100px">Satut</button></a> <a href="ExamenClinique.jsp"><button
-								type="button"
-								class="btn btn-default btn-rounded waves-effect m-b-5"
-								style="width: 150px">Examen Clinique</button></a> <a
-							href="Endoscopie.jsp"><button type="button"
-								class="btn btn-default btn-rounded waves-effect m-b-5"
-								style="width: 150px">Endoscopie</button></a> <a
-							href="AnaPathologie.jsp"><button type="button"
-								class="btn btn-default btn-rounded waves-effect m-b-5"
-								style="width: 200px">Anatomie Pathologique</button></a> <a
-							href="Imagerie.jsp"><button type="button"
-								class="btn btn-info btn-rounded waves-effect waves-light m-b-5"
-								style="width: 100px">Imagerie</button></a> <a href="Biologie.jsp"><button
-								type="button"
-								class="btn btn-default btn-rounded waves-effect m-b-5"
-								style="width: 100px">Biologie</button></a> <a href="Genetique.jsp"><button
-								type="button"
-								class="btn btn-default btn-rounded waves-effect m-b-5"
-								style="width: 100px">Génétique</button></a> <a href="Traitement.jsp"><button
-								type="button"
-								class="btn btn-default btn-rounded waves-effect m-b-5"
-								style="width: 150px">Traitement</button></a>
-					</div>
-				</div>
+			<div class="container-fluid">
+ <%@include file="navbar.jsp"%>
 				<div class="row">
-					<div class="col-sm-12">
+					
 
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">Radiologie</h3>
-							</div>
-							<form class="form-horizontal" role="form"
+						<div class="col-md-8 col-md-offset-2">
+					<div class="card">
+                            <div class="card-header card-header-info card-header-icon">
+							<div class="card-icon" style="float: none !important;"><h4>Radiologie</h4>
+							</div></div>
+							<form role="form"
 								action="modImagerieTrait.chu" method="post">
 								<div class="row">
-									<div class="col-md-7 col-lg-offset-3">
+									
 										<div class="panel-body">
+										 <div class="card-body table-responsive">
 											<%
 												Imagerie examen = (Imagerie) session.getAttribute("Imagerie");
 												Date date = examen.getDateRadio();
@@ -125,15 +66,15 @@
 											<div class="form-group">
 												<input type="hidden" class="form-control" name="dossier"
 													value="<%=examen.getDossier().getId()%>"
-													style="width: 250px">
+												>
 											</div>
 											<div class="form-group">
 												<input type="hidden" class="form-control" name="idImagerie"
-													value="<%=examen.getId()%>" style="width: 250px">
+													value="<%=examen.getId()%>" >
 											</div>
 											<div class="form-group">
-												<label class="col-sm-2 form-control-label">Hopital:</label>
-												<div class="col-sm-8">
+												<label>Hopital:</label>
+												
 													<%
 														HopitalDAO hopDAO = new HopitalDAO();
 														List<Hopital> hopitaux = new ArrayList<>();
@@ -141,7 +82,7 @@
 													%>
 
 													<select class="form-control" name="hopital"
-														style="width: 250px" required>
+														>
 
 														<%
 															for (Hopital hop : hopitaux) {
@@ -152,17 +93,17 @@
 														%>
 													</select>
 												</div>
-											</div>
+											
 											<div class="form-group">
-												<label class="col-sm-2 form-control-label">Medecin:</label>
-												<div class="col-sm-8">
+												<label>Medecin:</label>
+											
 													<%
 														MedecinDAO medDAO = new MedecinDAO();
 														List<Object[]> medecins = medDAO.listerLesMedecin();
 														
 													%>
 													<select class="form-control" name="medecin"
-														style="width: 250px" required>
+						>
 														<%
 														 for (Object[] med : medecins) {
 																
@@ -173,17 +114,17 @@
 														%>
 													</select>
 												</div>
-											</div>
+								
 											<div class="form-group">
-												<label class="col-sm-2 form-control-label">Examen:</label>
-												<div class="col-sm-8">
+												<label>Examen:</label>
+											
 													<%
 														ExamenImagerieDAO examenDAO = new ExamenImagerieDAO();
 														List<ExamenImagerie> examens = new ArrayList<>();
 														examens = examenDAO.listerExamenImagerie();
 													%>
 													<select class="form-control" name="examen"
-														style="width: 250px" required>
+													>
 														<%
 															for (ExamenImagerie exam : examens) {
 														%>
@@ -193,52 +134,41 @@
 														%>
 													</select>
 												</div>
-											</div>
+											
 											<div class="form-group">
-												<label for="dateexamen" class="col-sm-2 form-control-label">Date
+												<label for="dateexamen">Date
 													d'examen:</label> <input type="text" name="dateImagerie"
 													value="<%=dateFormatee%>" class="form-control"
-													id="dateexamen" style="width: 250px" required>
+													id="dateexamen">
 
 											</div>
 											<div class="form-group">
-												<label for="" class="col-sm-2 form-control-label">Valeur</label>
+												<label>Valeur</label>
 												<input type="file" class="form-control" name="fichier" id=""
-													value="<%=examen.getFile()%>" style="width: 250px"
-													required>
+													value="<%=examen.getFile()%>">
 											</div>
 
 										</div>
-									</div>
-
-									<div class="form-group m-b-0">
-										<div class="col-sm-offset-3 col-sm-9">
-											<button type="submit"
-												class="btn btn-info waves-effect waves-light">Modifier</button>
-										</div>
-									</div>
+									
+   									
 
 
-								</div>
-							</form>
-						</div>
-
+							
+									<div class="col-md-12">
+										<button type="submit"
+											class="btn btn-info waves-effect waves-light btnCardInfo">Modifier</button>
+								
+								</div></div>
+							
+	</div>	</form>
 					</div>
 				</div>
-				<!-- col -->
+			
 
-
+</div>
 
 			</div>
-		</div>
+		</div> </div>
 </body>
-<footer>
-<div class="row">
-	<div
-		class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xs-4 col-xs-offset-4"
-		id="foot">
-		<p>Copyright &copy; Registe@CRF</p>
-	</div>
-</div>
-</footer>
+
 </html>
